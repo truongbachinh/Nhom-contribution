@@ -68,7 +68,7 @@ include "../connect_db.php"
     $button = '';
     if (isset($_POST["submitl"])) {
         $count = 0;
-        $res = mysqli_query($link, "select * from user where username ='$_POST[username]'") or die(mysqli_error($link));
+        $res = mysqli_query($conn, "select * from user where username ='$_POST[username]'") or die(mysqli_error($link));
         $count = mysqli_num_rows($res);
 
         if ($count > 0) {
@@ -79,14 +79,14 @@ include "../connect_db.php"
             </script>
         <?php
         } else {
-            mysqli_query($link, "insert into user (username, password, email) values('$_POST[username]','$_POST[password]','$_POST[email]')");
+            mysqli_query($conn, "insert into user (username, password, email) values('$_POST[username]','$_POST[password]','$_POST[email]')");
         ?>
             <script type="text/javascript">
                 const a = document.getElementById("success")
                 document.getElementById("success").style.display = "block";
                 document.getElementById("failure").style.display = "none";
                 if (a.style.display == "block") {
-                    window.location.href = "https://ciliweb/contribution_application/account/Login.php"
+                    window.location.href = "./login.php"
                 }
             </script>
     <?php

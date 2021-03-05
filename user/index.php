@@ -6,7 +6,11 @@ include "../connect_db.php";
     <span class="admin-name"><?php
                                 if (!empty($_SESSION["current_user_google"])) {
                                     echo $_SESSION["current_user_google"]["fullname"];
-                                }  ?></span>
+                                }
+                                if (!empty($_SESSION["current_user"])) {
+                                    echo $_SESSION["current_user"]["username"];
+                                }  ?>
+    </span>
 
     <li><a href="https://ciliweb.vn/contribution_application/account/logout.php"><span></span>Log out</a>
 

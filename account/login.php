@@ -89,11 +89,11 @@ include "../connect_db.php";
 
 <?php
 if (isset($_POST["login"])) {
-    $username = mysqli_real_escape_string($link, $_POST["username"]);
-    $password = mysqli_real_escape_string($link, $_POST["password"]);
+    $username = mysqli_real_escape_string($conn, $_POST["username"]);
+    $password = mysqli_real_escape_string($conn, $_POST["password"]);
 
     $count = 0;
-    $res = mysqli_query($link, "select * from user where username='$username' && password='$password'");
+    $res = mysqli_query($conn, "select * from user where username='$username' && password='$password'");
     $count = mysqli_num_rows($res);
     if ($count == 0) {
 ?>
