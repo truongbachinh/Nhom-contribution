@@ -116,67 +116,70 @@
                     <!-- Modal -->
 
                     <div class="modal fade modal-submit-artical" tabindex="-1" role="dialog"
-                                     aria-labelledby="submissionModal" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="submissionModal">Upload Article</h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
+                        aria-labelledby="submissionModal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="submissionModal">Upload Article</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
 
-                                            <div class="card m-b-30">
-                        <div class="card-header">
-                            <p class="m-b-0 text-muted">
-                            Students are need to provide complete information prior to submitting an article. 
-                            </p>
-                        </div>
-                        <div class="card-body ">
-                            <form action="">
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="inputName">Name of article</label>
-                                    <input type="text" class="form-control" id="inputName" placeholder="Name of article">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputAuthor">Author</label>
-                                    <input type="text" class="form-control" id="inputAuthor" name="name-author">
-                                </div>
-                            </div>
-                            <div class="form-group"">
+
+                                    <div class="card-header">
+                                        <p class="m-b-0 text-muted">
+                                            Students are need to provide complete information prior to submitting an
+                                            article.
+                                        </p>
+                                    </div>
+
+                                    <form action="">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputName">Name of article</label>
+                                                <input type="text" class="form-control" id="inputName"
+                                                    name="nameArticle" placeholder="Name of article">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="inputAuthor">Author</label>
+                                                <input type="text" class="form-control" id="inputAuthor"
+                                                    name="nameAuthor">
+                                            </div>
+                                        </div>
+                                        <div class="form-group"">
                             <div>
-                                <p class="font-secondary">File Uploads</p>
-                                <div class="input-group mb-3">
-                                    <div class="custom-file" onload="GetFileInfo ()">
-                                        <input type="file" class="custom-file-input" id="inputFile" multiple onchange="GetFileInfo ()">
-                                        <label class="custom-file-label" for="inputFile">Choose file</label>
+                                <p class=" font-secondary">File Uploads</p>
+                                            <div class="input-group mb-3">
+                                                <div class="custom-file" onload="GetFileInfo ()">
+                                                    <input type="file" class="custom-file-input" id="inputFile"
+                                                        name="inputFileArticle" multiple onchange="GetFileInfo ()">
+                                                    <label class="custom-file-label" for="inputFile">Choose file</label>
+                                                </div>
+                                            </div>
+                                            <div id="info" style="margin-top:10px"></div>
+                                        </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="gridCheck" name="agree">
+                                        <label class="form-check-label" for="gridCheck">
+                                            I agree to the Terms and Conditions
+                                        </label>
                                     </div>
                                 </div>
-                                <div id="info" style="margin-top:10px"></div>
-                            </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="gridCheck" name="agree">
-                                    <label class="form-check-label" for="gridCheck">
-                                          I agree to the Terms and Conditions
-                                    </label>
+                                <div class="form-group  float-right">
+                                    <button class="btn btn-primary">Submit</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                        Close
+                                    </button>
                                 </div>
+                                </form>
                             </div>
-                            <div class="form-group  float-right">
-                                <button class="btn btn-primary">Submit</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                                    Close
-                                                </button>
-                            </div>
-                            </form>
                         </div>
                     </div>
-                  </div>
-                                            
+
                 </div>
             </div>
         </section>
@@ -184,52 +187,55 @@
     </section>
 
     <head>
-    <script type="text/javascript">
-        function GetFileInfo () {
-            var fileInput = document.getElementById ("inputFile");
-
-            var message = "";
-            if ('files' in fileInput) {
-                if (fileInput.files.length == 0) {
-                    message = "Please browse for one or more files.";
-                } else {
-                    for (var i = 0; i < fileInput.files.length; i++) {
-                        message += "<br /><b>File"+(i+1)+"</b><br />";
-                        var file = fileInput.files[i];
-                        if ('name' in file) {
-                            message += "Name of file: " + file.name + "<br />";
-                        }
-                        else {
-                            message += "Name of file: " + file.fileName + "<br />";
-                        }
-                        if ('size' in file) {
-                            message += "Size of file: " + file.size + " bytes <br />";
-                        }
-                        else {
-                            message += "Size of file: " + file.fileSize + " bytes <br />";
-                        }
-                        if ('mediaType' in file) {
-                            message += "Type: " + file.mediaType + "<br />";
+        <script type="text/javascript">
+            var arrFile = [];
+            var mess = "";
+            var count =0;
+            function GetFileInfo() {
+                var fileInput = document.getElementById("inputFile");
+                var message = "";
+                if ('files' in fileInput) {
+                    if (fileInput.files.length == 0) {
+                        message = "Please browse for one or more files.";
+                    } else {
+                        for (var i = 0; i < fileInput.files.length; i++) {
+                            count = count +1;
+                            message += "<br /><b>File" + count + "</b><br />";
+                            var file = fileInput.files[i];
+                            if ('name' in file) {
+                                message += "Name of file: " + file.name + "<br />";
+                            }
+                            else {
+                                message += "Name of file: " + file.fileName + "<br />";
+                            }
+                            if ('size' in file) {
+                                message += "Size of file: " + file.size + " bytes <br />";
+                            }
+                            else {
+                                message += "Size of file: " + file.fileSize + " bytes <br />";
+                            }
+                            if ('mediaType' in file) {
+                                message += "Type: " + file.mediaType + "<br />";
+                            }
                         }
                     }
                 }
-            } 
-            else {
-                if (fileInput.value == "") {
-                    message += "Please browse for one or more files.";
-                    message += "<br />Use the Control or Shift key for multiple selection.";
-                }
                 else {
-                    message += "Your browser doesn't support the files property!";
-                    message += "<br />The path of the selected file: " + fileInput.value;
+                    if (fileInput.value == "") {
+                        message += "Please browse for one or more files.";
+                        message += "<br />Use the Control or Shift key for multiple selection.";
+                    }
+                    else {
+                        message += "Your browser doesn't support the files property!";
+                        message += "<br />The path of the selected file: " + fileInput.value;
+                    }
                 }
+                mess = mess + message;
+                var info = document.getElementById("info");
+                info.innerHTML = mess;
             }
-
-            var info = document.getElementById ("info");
-            info.innerHTML = message;
-        }
-    </script>
-</head>
+        </script>
+    </head>
 
 
     <script src='https://d33wubrfki0l68.cloudfront.net/bundles/85bd871e04eb889b6141c1aba0fedfa1a2215991.js'></script>
