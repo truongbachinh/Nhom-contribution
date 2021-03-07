@@ -188,7 +188,6 @@
 
     <head>
         <script type="text/javascript">
-            var arrFile = [];
             var mess = "";
             var count =0;
             function GetFileInfo() {
