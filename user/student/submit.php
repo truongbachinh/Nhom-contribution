@@ -222,7 +222,7 @@
                 }
                 else {
                     if (fileInput.value == "") {
-                        message += "Please browse for one or more files.";
+                        message += "Please browse for one or more files!";
                         message += "<br />Use the Control or Shift key for multiple selection.";
                     }
                     else {
