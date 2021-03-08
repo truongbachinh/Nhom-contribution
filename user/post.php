@@ -10,11 +10,6 @@ if (isset($_POST["submit"])) {
     // while ($row = mysqli_fetch_array($res)) {
     //     $product = $row['p_id'];
     // }
-
-
-
-
-
     $tm = md5(time());
     $fnm1 = $_FILES["upFile"]["name"];
     $dst1 = "./image/" . $tm . $fnm1;
