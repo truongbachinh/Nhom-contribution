@@ -232,6 +232,7 @@
                 mess = mess + message;
                 var info = document.getElementById("info");
                 info.innerHTML = mess;
+                
             }
         </script>
     </head>
