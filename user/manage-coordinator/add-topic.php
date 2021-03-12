@@ -55,56 +55,41 @@
                 <div class="card m-b-30">
                     <div class="card-header">
                         <h5 class="m-b-0">
-                            Create New Account
+                            Create New Topic
                         </h5>
                         <p class="m-b-0 text-muted">
-                            Please input fullfill information.
+                            Please input fullfill information to create topic.
                         </p>
                     </div>
                     <div class="card-body ">
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputName1">First Name</label>
-                                <input type="text" class="form-control" id="inputName1" name="firstName"
-                                    placeholder="Thu Thuy" required>
+                        <form action="">
+                            <div class="form-group">
+                                <label for="inputName1">Name of Topic</label>
+                                <input type="email" class="form-control" id="inputName1" name="topic"
+                                    placeholder="Enter name of topic" required>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputName2">Last Name</label>
-                                <input type="text" class="form-control" id="inputName2" name="lastName"
-                                    placeholder="Nguyen" required>
+                            <div class="form-group">
+                                <label>Select Begin Date</label>
+                                <input type="text" class="js-datepicker form-control"
+                                    placeholder="Click to selectdate date.">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail1">Email</label>
-                            <input type="email" class="form-control" id="inputEmail1"
-                                placeholder="thuthuynguyen@gmail.com" name="inputEmail" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPass1">Password</label>
-                            <input type="text" class="form-control" id="inputPass1" name="inputPass" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputPass2">Confirm Passs</label>
-                            <input type="text" class="form-control" id="inputPass2" name="inputConfirmPass" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputRole1">Roles</label>
-                            <select class="form-control" name="role">
-                                <option selected value="student">Student</option>
-                                <option value="manager-coordinator">Manager Coordinator</option>
-                                <option value="manager-marketing">Manager Marketing</option>
-                                <option value="admin">Admin</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputAddress1">Address</label>
-                            <input type="text" class="form-control" id="inputAddress1" name="inputAddress" required>
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary">Create Account</button>
-                        </div>
+                            <div class="form-group">
+                            <label>Select Begin Date</label>
+                                <div class="input-group">
+                                    <textarea class="form-control" aria-label="With textarea"
+                                        spellcheck="false" placeholder="Enter description in here."></textarea>
+                                    <grammarly-extension data-grammarly-shadow-root="true" class="cGcvT"
+                                        style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 3;">
+                                    </grammarly-extension>
+                                </div>
+                            </div>
+                            <input class="btn btn-primary btn-md float-right" value="Create Topic">
+
+                        </form>
                     </div>
+
                 </div>
+            </div>
             </div>
         </section>
     </main>
@@ -113,6 +98,10 @@
 
 </body>
 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <script src='https://d33wubrfki0l68.cloudfront.net/bundles/85bd871e04eb889b6141c1aba0fedfa1a2215991.js'></script>
 <!--page specific scripts for demo-->

@@ -52,6 +52,7 @@
 
         <section class="admin-content">
             <div class="container m-t-30">
+                <form action="">
                 <div class="card m-b-30">
                     <div class="card-header">
                         <h5 class="m-b-0">
@@ -101,10 +102,11 @@
                             <input type="text" class="form-control" id="inputAddress1" name="inputAddress" required>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-primary">Create Account</button>
+                            <input class="btn btn-primary float-right" value="Create Account"></button>
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </section>
     </main>
