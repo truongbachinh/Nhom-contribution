@@ -1,11 +1,15 @@
-<link rel="stylesheet" href="./css/student.css"/>
+<?php
+include "connect_db.php";
+
+?>
+<link rel="stylesheet" href="./css/student.css" />
 <header class="admin-header">
     <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
     <nav class=" ml-auto">
         <ul class="nav align-items-center m-r-30">
             <li class=nav-item>
-            <div class="d-flex p-all-15  justify-content-between">
-                <a href="#!" class="nar-link" ><i class="mdi mdi-24px mdi-chat"></i>
+                <div class="d-flex p-all-15  justify-content-between">
+                    <a href="#!" class="nar-link"><i class="mdi mdi-24px mdi-chat"></i>
                         <!-- <span class="notification-counter"></span></a> -->
             </li>
             <li class="nav-item">
@@ -43,28 +47,76 @@
                 </div>
             </li>
             <li class="nav-item dropdown ">
-                <a class="nav-link dropdown-toggle" href="#"  role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                   <div class="d-inline-flex">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="d-inline-flex">
                         <div class="avatar avatar-sm avatar-online mr-3">
-                             <span class="avatar-title rounded-circle bg-dark">T</span>
+                            <span class="avatar-title rounded-circle bg-dark">T</span>
                         </div>
-                         <div class="d-flex flex-column">
-                                <div class="name-student">Nguyen Thu Thuy</div>
-                                <div class="role">Student Account</div>  
-                        </div>
-                   </div>            
+
+                        <?php
+                        if (!empty($_SESSION["current_user"]["username"])) {
+
+
+                        ?>
+                            <div class="d-flex flex-column">
+                                <div class="name-student"><?php echo $_SESSION["current_user"]["username"] ?></div>
+                                <div class="role">Student Account</div>
+                            </div>
+                            <div class="dropdown-menu  dropdown-menu-right">
+                                <a class="dropdown-item" onclick="profileButton()"> Profile
+                                </a>
+                                <a class="dropdown-item" href="./change_password.php"> Reset Password</a>
+                                <a class="dropdown-item" href=""> Help </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" onclick="logoutButton()"> Logout</a>
+                            </div>
+                        <?php
+                        } elseif (!empty($_SESSION["current_user_goole"]["fullname"])) {
+                        ?>
+                            <div class="d-flex flex-column">
+                                <div class="name-student"><?php echo $_SESSION["current_user_goole"]["fullnames"] ?></div>
+                                <div class="role">Student Account</div>
+                            </div>
+                            <div class="dropdown-menu  dropdown-menu-right">
+                                <a class="dropdown-item" onclick="profileButton()"> Profile
+                                </a>
+                                <a class="dropdown-item" href=""> Help </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" onclick="logoutButton()"> Logout</a>
+                            </div>
+                        <?php
+                        } else {
+
+
+                        ?>
+                            <div class="d-flex flex-column">
+                                <div class="name-student">Guest</div>
+
+                            </div>
+                            <div class="dropdown-menu  dropdown-menu-right">
+                                <a class="dropdown-item" onclick="loginButton()"> Login</a>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
                 </a>
-                <div class="dropdown-menu  dropdown-menu-right"   >
-                    <a class="dropdown-item" href="#">  Profile
-                    </a>
-                    <a class="dropdown-item" href="#">  Reset Password</a>
-                    <a class="dropdown-item" href="#">  Help </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#"> Logout</a>
-                </div>
+
             </li>
         </ul>
 
     </nav>
 </header>
+<script type="text/javascript">
+    function logoutButton() {
+        window.location = "https://ciliweb.vn/a/contribution_application/account/logout.php";
+    }
+
+    function loginButton() {
+        window.location = "https://ciliweb.vn/a/contribution_application/account/login.php";
+    }
+
+    function profileButton() {
+        window.location = "https://ciliweb.vn/a/contribution_application/user/student/profile.php";
+    }
+</script>
