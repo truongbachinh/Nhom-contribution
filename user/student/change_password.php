@@ -2,8 +2,6 @@
 include "connect_db.php";
 session_start();
 $userId = $_SESSION["current_user"]["u_id"];
-$resultPassword = mysqli_query($conn, "SELECT password from user where u_id  =  '$userId'");
-$oldPassword = mysqli_fetch_array($resultPassword, MYSQLI_ASSOC);
 
 ?>
 
@@ -120,30 +118,42 @@ $oldPassword = mysqli_fetch_array($resultPassword, MYSQLI_ASSOC);
 
 <?php
 if (isset($_POST["changePassword"])) {
+    $pOldPassword = $_POST['oldPassword'];
+    $pNewPassword = $_POST['newPassword'];
+    $pConfirmPassword = $_POST['confirmPassword'];
+    $oldPassword = ($_SESSION["current_user"]['password']);
 
 
+    if ($pOldPassword != $oldPassword) {
 
-
-    if (($_POST['oldPassword'] == $oldPassword) && ($_POST['newPassword'] != $oldPassword)) {
-        mysqli_query($conn, "update user set `password` = '$_POST[newPassword]' where u_id =  $userId");
-        unset($_SESSION['current_user']);
 ?>
+        <script type="text/javascript">
+            document.getElementById("checkpass").style.display = "none";
+            document.getElementById("success").style.display = "none";
+            document.getElementById("failure").style.display = "block"
+        </script>
+    <?php
+    } elseif ($pNewPassword != $pConfirmPassword) {
+
+    ?>
+        <script type="text/javascript">
+            document.getElementById("checkpass").style.display = "block";
+            document.getElementById("success").style.display = "none";
+            document.getElementById("failure").style.display = "none"
+        </script>
+    <?php
+    } elseif (($pOldPassword == $oldPassword) && ($pNewPassword != $oldPassword)) {
+        mysqli_query($conn, "update user set `password` = '$pNewPassword' where u_id =  '$userId'");
+        unset($_SESSION['current_user']);
+    ?>
         <script type="text/javascript">
             document.getElementById("success").style.display = "block";
             document.getElementById("failure").style.display = "none";
             document.getElementById("checkpass").style.display = "none";
-            window.location = "../";
+            window.location = "https://ciliweb.vn/a/contribution_application/account/login.php";
         </script>
-    <?php
-    } else
-    ?>
-    <script type="text/javascript">
-        document.getElementById("checkpass").style.display = "none";
-        document.getElementById("success").style.display = "none";
-        document.getElementById("failure").style.display = "block"
-    </script>
 <?php
-
+    }
 }
 
 
