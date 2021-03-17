@@ -148,7 +148,7 @@
                                                     name="nameAuthor">
                                             </div>
                                         </div>
-                                        <div class="form-group"">
+                                        <div class="form-group">
                             <div>
                                 <p class=" font-secondary">File Uploads</p>
                                             <div class="input-group mb-3">

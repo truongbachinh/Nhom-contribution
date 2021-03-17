@@ -107,7 +107,6 @@
                                                                     disabled value="GCH18395">
                                                             </div>
                                     
-                                                            
                                                             <div class="form-group">
                                                                 <label for="inputEmail">Email</label>
                                                                 <input type="email" class="form-control"
