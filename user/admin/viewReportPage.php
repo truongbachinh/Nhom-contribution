@@ -18,7 +18,7 @@
 <meta property="og:image"
     content="https://cdn.dribbble.com/users/180706/screenshots/5424805/the_sceens_-_mobile_perspective_mockup_3_-_by_tranmautritam.jpg" />
 <meta property="og:site_name" content="atlas " />
-<title>View Report</title>
+<title>View Report Page</title>
 <link rel="icon" type="image/x-icon" href="assets/img/logo.png" />
 <link rel="icon" href="assets/img/logo.png" type="image/png" sizes="16x16">
 <link rel='stylesheet'
@@ -44,9 +44,12 @@
     href='https://d33wubrfki0l68.cloudfront.net/css/16e33a95bb46f814f87079394f72ef62972bd197/light/assets/css/atmos.min.css' />
 
 <body>
-<main class="admin-main">
-    <section id="container">
+<body class="sidebar-pinned ">
+    <?php include 'aside.php' ?>
+    <main class="admin-main">
+        <!-- Header -->
         <?php include 'header.php' ?>
+        <!-- Session -->
         <section>
             <section class="wrapper ">
                 <div class="row ">

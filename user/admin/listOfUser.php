@@ -33,22 +33,18 @@
 <!-- Additional library for page -->
 <link rel="stylesheet" type='text/css' href="./css/student.css" />
 
-<?php include 'asideadmin.php' ?>
-
-
 <body class="sidebar-pinned ">
-    <?php include 'asideadmin.php' ?>
+    <?php include 'aside.php' ?>
     <main class="admin-main">
         <!-- Header -->
         <?php include 'header.php' ?>
         <!-- Session -->
-
         <section class="admin-content">
             <div class="container m-t-30" style="margin-top: 0">
                 <div class="row justify-content-md-center">
                     <div class="col-md-12 mt-4 mb-4" style="background-color: #FFFFFF; font-weight: 
                     bold; padding-bottom: 1%;padding-top: 1%; border-radius: 10px;">
-                        MANAGE SYTEM > <a href="#" style="color: blue;">MANAGE ARTICLE</a></div>
+                        MANAGE SYTEM > <a href="#" style="color: blue;">MANAGE USER</a></div>
                     <div class="col-md-12 mt-4 mb-4" style="font-weight: bold;">
                         <img src="../images/users2.png" /> USER
                     </div>
@@ -58,7 +54,6 @@
                             <div class="form-group has-search col-md-6">
                                 <input type="text" class="form-control col-md-6" placeholder="Search">
                             </div>
-
 
 
                             <!-- Modal add user -->
@@ -82,15 +77,15 @@
                                                 <form action="">
                                                     <div class="form-group">
                                                         <label for="fullName">FullName</label>
-                                                        <input type="text" class="form-control" id="inputFullName" name="fullName" Value="">
+                                                        <input type="text" class="form-control" id="inputFullName" name="fullName" Value="" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="userName">UserName </label>
-                                                        <input type="text" class="form-control" id="inputUserName" name="userName" value="">
+                                                        <input type="text" class="form-control" id="inputUserName" name="userName" value="" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="inputEmail">Email</label>
-                                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" value ="">
+                                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" value ="" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="inputCreateDateTime">Create Date Time </label>
@@ -100,10 +95,10 @@
                                                         <label for="inputRole" class="col-md-12" style="padding: 0">Role</label>
                                                         <select class="form-select" style="width: 100%;height: 34px;border-color: #D4D2D2;border-radius: 5px">
                                                             <option selected>--Select Role--</option>
-                                                            <option value="1">Student</option>
-                                                            <option value="2">Admin</option>
-                                                            <option value="3">Manage Coordinator</option>
-                                                            <option value="4">Manager Marketing</option>
+                                                            <option value="student">Student</option>
+                                                            <option value="manager-coordinator">Manager Coordinator</option>
+                                                            <option value="manager-marketing">Manager Marketing</option>
+                                                            <option value="admin">Admin</option>
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
@@ -153,8 +148,6 @@
                                         <td style="padding: 1.5%;"><button style="border-radius: 10px" type="button" class="btn btn-success">Active</button></td>
                                         <td style="padding: 1.5%;width: 12%;">
 
-
-
                                     <button data-toggle="modal" data-target="#editUser" style="border:none; background:rgb(237, 242, 249); ; padding: 0">
                                     <img src="../images/pencil.png"></button>
 
@@ -172,9 +165,11 @@
                                                         <div class="modal-body">
                                                             <form action="">
                                                                 <div class="form-group">
-                                                                    <label style="    text-align: left;     /* text-align: start; */     display: block;     font-weight: 500;" for="fullName">Full Name</label>
+                                                                    <label style="    text-align: left;     /* text-align: start; */     display: block;     font-weight: 500;"for = "fullName">Full Name</label>
                                                                     <input type="text" class="form-control" id="inputFullName" name="fullName" Value="Nguyen Thu Thuy">
                                                                 </div>
+
+
                                                                 <div class="form-group">
                                                                     <label style="    text-align: left;     /* text-align: start; */     display: block;     font-weight: 500;" for="userName">User Name</label>
                                                                     <input type="text" class="form-control" id="inputUserName" name="userName" value="Thuy">
@@ -190,24 +185,22 @@
                                                                     <input type="date" class="form-control" id="inputCreateDateTime" name = "dateTime" value = "11/10/2020">
                                                                 </div>
 
+                        
                                                                 <div class="form-group">
-                                                                    <label style="    text-align: left;     /* text-align: start; */     display: block;     font-weight: 500;" for="inputRole" ">Role</label>
-                                                                         <select class="form-select" style="width: 100%;height: 34px;border-color: #D4D2D2;border-radius: 5px">
-                                                                            <option selected>--Select Role--</option>
-                                                                            <option value="1">Student</option>
-                                                                            <option value="2">Admin</option>
-                                                                            <option value="3">Manager Marketing</option>
-                                                                            <option value="4">Manage Coordinator</option>
-                                                                        </select>
-                                                                 </div>
+                                                                    <label for="inputRole" style="    text-align: left;     /* text-align: start; */     display: block;     font-weight: 500;">Role</label>
+                                                                     <select class="form-select" style="width: 100%;height: 34px;border-color: #D4D2D2;border-radius: 5px">
+                                                                    <option selected value="student">Student</option>
+                                                                    <option value="manager-coordinator">Manager Coordinator</option>
+                                                                     <option value="manager-marketing">Manager Marketing</option>
+                                                                    <option value="admin">Admin</option>
+                                                                    </select>
+                                                             </div>
 
                                                                 <div class="form-group">
                                                                     <label style="    text-align: left;     /* text-align: start; */     display: block;     font-weight: 500;" for="inputStatus" >Status</label>
                                                                     <select class="form-select" style="width: 100%;height: 34px;border-color: #D4D2D2;border-radius: 5px" value = "1">
-                                                                     <option selected>--Select--</option>
-                                                                        <option value="1">Active</option>
-                                                                            <option value="2">Non-active</option>
-
+                                                                        <option selected value="active">Active</option>
+                                                                        <option value="non-active">Non-active</option>
                                                                      </select>
                                                                  </div>
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -314,7 +307,6 @@
                                                         </div>
                                                     </div>
                         </div>
-
                         </td>
                         </tr>
                         <tr>
