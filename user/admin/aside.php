@@ -61,7 +61,7 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="./manage-facutlys.php" class=" menu-link">
+                        <a href="manage-facutlies.php" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name">Manager Faculty</span>
                             </span>
@@ -95,5 +95,3 @@
         </ul>
     </div>
 </aside>
-
-C:\xampp\htdocs\TCH001\contribution_application\user\admin\aside.php
