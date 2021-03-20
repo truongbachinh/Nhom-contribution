@@ -179,7 +179,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -236,7 +235,6 @@
             }
         </script>
     </head>
-
 
     <script src='https://d33wubrfki0l68.cloudfront.net/bundles/85bd871e04eb889b6141c1aba0fedfa1a2215991.js'></script>
     <!--page specific scripts for demo-->

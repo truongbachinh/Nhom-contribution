@@ -17,7 +17,7 @@
 <meta property="og:image"
     content="https://cdn.dribbble.com/users/180706/screenshots/5424805/the_sceens_-_mobile_perspective_mockup_3_-_by_tranmautritam.jpg" />
 <meta property="og:site_name" content="atlas " />
-<title>Manage Topic</title>
+<title>Manage Articles</title>
 <link rel="icon" type="image/x-icon" href="assets/img/logo.png" />
 <link rel="icon" href="assets/img/logo.png" type="image/png" sizes="16x16">
 <link rel='stylesheet'
@@ -50,14 +50,14 @@
         <?php include 'header.php' ?>
         <!-- Session -->
 
-        <section class="manage-topic">
+        <section class="manage-articles">
             <div class="container m-t-30">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
                                 <div class="card-title">
-                                    <h4> Manage Topic </h4>
+                                    <h4> Manage Articles</h4> </h4>
                                 </div>
 
                                 <div class="card-body">
@@ -68,23 +68,18 @@
                                                 <input type="text" class="form-control" placeholder="Search">
                                             </div>
                                         </div>
-                                        <div class="col-sm-6 ">
-                                            <a href="" class="btn btn-info float-right" role="button"
-                                                data-toggle="modal" data-target="#addTopic"><i
-                                                    class="mdi mdi-clipboard-plus"></i> Add Faculty
-                                            </a>
-                                        </div>
+                                    
                                     </div>
                                     <div class="table-responsive p-t-10">
-                                        <table id="example" class="table   " style="width:100%">
+                                        <table id="example" class="table text-center" style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
                                                     <th>ID</th>
-                                                    <th>Topic Name</th>
-                                                    <th>Faculty Manager</th>
-                                                    <th>Deadline</th>
-                                                    <th>Articles</th>
+                                                    <th>Article Name</th>
+                                                    <th>Student Owner</th>
+                                                    <th>Article Manager</th>
+                                                    <th>Acount of File</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
@@ -92,87 +87,34 @@
                                             <tbody>
                                                 <tr>
                                                     <td>1</td>
-                                                    <td>Topic_01</td>
-                                                    <td>Advance Computing</td>
+                                                    <td>Article_01</td>
+                                                    <td>Advance Cloud</td>
+                                                    <td>Nguyen Van B</td>
                                                     <td>Nguyen Van A</td>
-                                                    <td>12/01/2020</td>
-                                                    <td>40</td>
-                                                    <td>Processing</td>
+                                                    <td>2</td>
+                                                    <td><span class="badge badge-warning">Processing</span></td>
                                                     <td>
                                                         <a href="" class="btn btn-info" role="button"
-                                                            data-toggle="modal" data-target="#editTopic"><i
+                                                            data-toggle="modal" data-target="#editArticle"><i
                                                                 class="mdi mdi-pencil-outline"></i> </a>
                                                         <a href="" class="btn btn-danger" role="button"
-                                                            data-toggle="modal" data-target="#deleteTopic"><i
+                                                            data-toggle="modal" data-target="#deleteArticle"><i
                                                                 class="mdi mdi-delete"></i> </a>
                                                         <a href="" class="btn btn-primary" role="button"
-                                                            data-toggle="modal" data-target="#detailTopic"><i
+                                                            data-toggle="modal" data-target="#detailArticle"><i
                                                                 class="mdi mdi-dots-horizontal"></i> </a>
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
-
-                                        <!-- Modal add faculty -->
-                                        <div class="modal fade" id="addTopic" tabindex="-1" role="dialog"
-                                            aria-labelledby="addTopic" aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="addTopic">Add Topic</h5>
-                                                        </h5>
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form action="">
-                                                            <div class="form-group">
-                                                                <label for="inputNameTopic">Topic Name</label>
-                                                                <input type="text" class="form-control"
-                                                                    id="inputNameTopic" name="nameTopic"
-                                                                    placeholder="Input name" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="inputTopicId">Topic ID</label>
-                                                                <input type="text" class="form-control"
-                                                                    id="inputTopicId" name="topicId"
-                                                                    placeholder="Input Id" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="inputIdManager">Manager Topic</label>
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="Input name" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="example-date-input">Date</label>
-                                                                <input class="form-control" type="date"
-                                                                    value="2011-08-19" id="example-date-input">
-                                                            </div>
-
-                                                            <div class="model-footer">
-                                                                <input type="button" class="btn btn-warning"
-                                                                    name="change" value="Create Topic">
-                                                                <button type="button" class="btn btn-secondary"
-                                                                    data-dismiss="modal">
-                                                                    Close
-                                                                </button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
                                             <!-- Modal edit -->
 
-                                            <div class="modal fade" id="editTopic" tabindex="-1" role="dialog"
-                                                aria-labelledby="editTopic" aria-hidden="true">
+                                            <div class="modal fade" id="editArticle" tabindex="-1" role="dialog"
+                                                aria-labelledby="editArticle" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header">
-                                                            <h5 class="modal-title" id="editTopic">Edit Topic</h5>
+                                                            <h5 class="modal-title" id="editArticle">Edit Article</h5>
                                                             </h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
@@ -182,27 +124,35 @@
                                                         <div class="modal-body">
                                                             <form action="">
                                                                 <div class="form-group">
-                                                                    <label for="inputNameTopic">Topic Name</label>
+                                                                    <label for="inputNameArticle">Article Name</label>
                                                                     <input type="text" class="form-control"
-                                                                        id="inputNameTopic" name="nameTopic"
-                                                                        placeholder="Input name" required>
+                                                                        id="inputNameArticle" name="nameArticle"
+                                                                        placeholder="Advance Cloud" required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="inputTopicId">Topic ID</label>
+                                                                    <label for="inputArticleId">Article ID</label>
                                                                     <input type="text" class="form-control"
-                                                                        id="inputTopicId" name="topicId"
-                                                                        placeholder="Input Id" disabled
-                                                                        value="Topic_01">
+                                                                        id="inputArticleId" name="articleId" disabled
+                                                                        value="Article_01">
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="inputIdManager">Manager Topic</label>
-                                                                    <input type="text" class="form-control"
-                                                                        placeholder="Input name" value="Nguyen Van A">
+                                                                    <label for="inputStatus">Status</label>
+                                                                    <select class="form-control">
+                                                                        <option selected="">Choose...</option>
+                                                                        <option>Processing</option>
+                                                                        <option>Approved</option>
+                                                                        <option>Rejected</option>
+                                                                    </select>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="example-date-input">Date</label>
-                                                                    <input class="form-control" type="date"
-                                                                        value="2011-08-19" id="example-date-input">
+                                                                    <label>Student Owner</label>
+                                                                    <input type="text" class="form-control"
+                                                                     value="Nguyen Van A" disabled>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label>Article Manager</label>
+                                                                    <input type="text" class="form-control"
+                                                                     value="Nguyen Van A" disabled>
                                                                 </div>
 
                                                                 <div class="model-footer">
@@ -218,20 +168,20 @@
 
                                                     </div>
                                                 </div>
-
+                                                </div>
 
 
                                                 <!-- Modal delete -->
 
 
-                                                <div class="modal fade" id="deleteFaculty" tabindex="-1" role="dialog"
-                                                    aria-labelledby="deleteFaculty" aria-hidden="true">
+                                                <div class="modal fade" id="deleteArticle" tabindex="-1" role="dialog"
+                                                    aria-labelledby="deleteArticle" aria-hidden="true">
                                                     <div class="modal-dialog  modal-dialog-align-top-left"
                                                         role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="deleteFaculty">Confirm
-                                                                    Delete Faculty
+                                                                <h5 class="modal-title" id="deleteArticle">Confirm
+                                                                    Delete Article
                                                                 </h5>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
@@ -240,8 +190,7 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                 This action cannot undo. Are you sure you want to delete
-                                                                this
-                                                                faculty?
+                                                                this article?
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button"
@@ -258,13 +207,13 @@
 
                                                 <!-- Modal Detail -->
 
-                                                <div class="modal fade" id="detailFaculty" tabindex="-1" role="dialog"
-                                                    aria-labelledby="detailFaculty" aria-hidden="true">
+                                                <div class="modal fade" id="detailArticle" tabindex="-1" role="dialog"
+                                                    aria-labelledby="detailArticle" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="detailFaculty">Detai
-                                                                    Infomation Faculty
+                                                                <h5 class="modal-title" id="detailArticle">Detai
+                                                                    Infomation Article
                                                                 </h5>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
@@ -276,34 +225,36 @@
                                                                     <table class="table table-striped">
                                                                         <tbody>
                                                                             <tr>
-                                                                                <td>Name Faculty</td>
-                                                                                <td>Advance Computing</td>
+                                                                                <td>Article</td>
+                                                                                <td>Data Stucture</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td>Faculty ID</td>
-                                                                                <td>Faculty_01</td>
+                                                                                <td>Article ID</td>
+                                                                                <td>Article_01</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td>Manager Faculty</td>
+                                                                                <td>Status</td>
+                                                                                <td>Processing</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Student Owner</td>
+                                                                                <td>Nguyen Van B</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Article Manager</td>
                                                                                 <td>Nguyen Van A</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td>Amount of Topic</td>
-                                                                                <td>2</td>
+                                                                                <td>Topic</td>
+                                                                                <td>Advance Computing</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td>Amount of Student</td>
-                                                                                <td>2</td>
+                                                                                <td>Faculty</td>
+                                                                                <td>Facutly_01</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td>Amount of Articles</td>
+                                                                                <td>Amount of File</td>
                                                                                 <td>2</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>Desciption</td>
-                                                                                <td>
-                                                                                    Desciption here...
-                                                                                </td>
                                                                             </tr>
                                                                         </tbody>
                                                                     </table>
@@ -325,6 +276,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         </div>
         </section>
     </main>

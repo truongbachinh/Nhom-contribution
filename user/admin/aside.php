@@ -61,7 +61,7 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="/light/dashboard-02" class=" menu-link">
+                        <a href="./manage-facutlys.php" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name">Manager Faculty</span>
                             </span>
@@ -71,7 +71,7 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="/light/dashboard-03" class=" menu-link">
+                        <a href="./manage-topics.php" class=" menu-link">
                             <span class="menu-label">
                                 <span class="menu-name">Manager Topic</span>
                             </span>
@@ -80,8 +80,20 @@
                             </span>
                         </a>
                     </li>
+                    <li class="menu-item">
+                        <a href="./manage-articles.php" class=" menu-link">
+                            <span class="menu-label">
+                                <span class="menu-name">Manager Article</span>
+                            </span>
+                            <span class="menu-icon">
+                            <i class="mdi mdi-file mdi-24px "></i>
+                            </span>
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>
     </div>
 </aside>
+
+C:\xampp\htdocs\TCH001\contribution_application\user\admin\aside.php

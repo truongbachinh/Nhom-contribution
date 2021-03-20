@@ -71,18 +71,18 @@
                                         <div class="col-sm-6 ">
                                             <a href="" class="btn btn-info float-right" role="button"
                                                 data-toggle="modal" data-target="#addTopic"><i
-                                                    class="mdi mdi-clipboard-plus"></i> Add Faculty
+                                                    class="mdi mdi-clipboard-plus"></i> Add Topic
                                             </a>
                                         </div>
                                     </div>
                                     <div class="table-responsive p-t-10">
-                                        <table id="example" class="table   " style="width:100%">
+                                        <table id="example" class="table text-center" style="width:100%">
                                             <thead>
                                                 <tr>
                                                     <th>No</th>
                                                     <th>ID</th>
                                                     <th>Topic Name</th>
-                                                    <th>Faculty Manager</th>
+                                                    <th>Topic Manager</th>
                                                     <th>Deadline</th>
                                                     <th>Articles</th>
                                                     <th>Status</th>
@@ -97,7 +97,7 @@
                                                     <td>Nguyen Van A</td>
                                                     <td>12/01/2020</td>
                                                     <td>40</td>
-                                                    <td>Processing</td>
+                                                    <td><span class="badge badge-warning">Processing</span></td>
                                                     <td>
                                                         <a href="" class="btn btn-info" role="button"
                                                             data-toggle="modal" data-target="#editTopic"><i
@@ -132,7 +132,7 @@
                                                                 <label for="inputNameTopic">Topic Name</label>
                                                                 <input type="text" class="form-control"
                                                                     id="inputNameTopic" name="nameTopic"
-                                                                    placeholder="Input name" required>
+                                                                    value="Advnace Coding" required>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="inputTopicId">Topic ID</label>
@@ -150,6 +150,15 @@
                                                                 <input class="form-control" type="date"
                                                                     value="2011-08-19" id="example-date-input">
                                                             </div>
+                                                            <div class="form-group">
+                                                                <label for="inputManager">Desciption</label>
+                                                                <textarea class="form-control"
+                                                                    aria-label="With textarea"
+                                                                    spellcheck="false"></textarea>
+                                                                <grammarly-extension data-grammarly-shadow-root="true"
+                                                                    style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 3;"
+                                                                    class="cGcvT"></grammarly-extension>
+                                                            </div>
 
                                                             <div class="model-footer">
                                                                 <input type="button" class="btn btn-warning"
@@ -163,6 +172,7 @@
                                                     </div>
 
                                                 </div>
+                                            </div>
                                             </div>
 
                                             <!-- Modal edit -->
@@ -204,6 +214,15 @@
                                                                     <input class="form-control" type="date"
                                                                         value="2011-08-19" id="example-date-input">
                                                                 </div>
+                                                                <div class="form-group">
+                                                                <label for="inputManager">Desciption</label>
+                                                                <textarea class="form-control"
+                                                                    aria-label="With textarea"
+                                                                    spellcheck="false"></textarea>
+                                                                <grammarly-extension data-grammarly-shadow-root="true"
+                                                                    style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 3;"
+                                                                    class="cGcvT"></grammarly-extension>
+                                                            </div>
 
                                                                 <div class="model-footer">
                                                                     <input type="button" class="btn btn-warning"
@@ -218,20 +237,20 @@
 
                                                     </div>
                                                 </div>
-
+                                                </div>
 
 
                                                 <!-- Modal delete -->
 
 
-                                                <div class="modal fade" id="deleteFaculty" tabindex="-1" role="dialog"
-                                                    aria-labelledby="deleteFaculty" aria-hidden="true">
+                                                <div class="modal fade" id="deleteTopic" tabindex="-1" role="dialog"
+                                                    aria-labelledby="deleteTopic" aria-hidden="true">
                                                     <div class="modal-dialog  modal-dialog-align-top-left"
                                                         role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="deleteFaculty">Confirm
-                                                                    Delete Faculty
+                                                                <h5 class="modal-title" id="deleteTopic">Confirm
+                                                                    Delete Topic
                                                                 </h5>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
@@ -240,8 +259,7 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                 This action cannot undo. Are you sure you want to delete
-                                                                this
-                                                                faculty?
+                                                                this topic?
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button"
@@ -258,13 +276,13 @@
 
                                                 <!-- Modal Detail -->
 
-                                                <div class="modal fade" id="detailFaculty" tabindex="-1" role="dialog"
-                                                    aria-labelledby="detailFaculty" aria-hidden="true">
+                                                <div class="modal fade" id="detailTopic" tabindex="-1" role="dialog"
+                                                    aria-labelledby="detailTopic" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="detailFaculty">Detai
-                                                                    Infomation Faculty
+                                                                <h5 class="modal-title" id="detailTopic">Detai
+                                                                    Infomation Topic
                                                                 </h5>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                     aria-label="Close">
@@ -276,29 +294,30 @@
                                                                     <table class="table table-striped">
                                                                         <tbody>
                                                                             <tr>
-                                                                                <td>Name Faculty</td>
-                                                                                <td>Advance Computing</td>
+                                                                                <td>Topic Name</td>
+                                                                                <td>Advance Codingg</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td>Faculty ID</td>
-                                                                                <td>Faculty_01</td>
+                                                                                <td>Topic ID</td>
+                                                                                <td>Topic</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td>Manager Faculty</td>
+                                                                                <td>Status</td>
+                                                                                <td>Processing</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Topic Manager</td>
                                                                                 <td>Nguyen Van A</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td>Amount of Topic</td>
-                                                                                <td>2</td>
+                                                                                <td>Deadline</td>
+                                                                                <td>22/20/2021</td>
                                                                             </tr>
                                                                             <tr>
-                                                                                <td>Amount of Student</td>
-                                                                                <td>2</td>
+                                                                                <td>Amount of Article</td>
+                                                                                <td>80</td>
                                                                             </tr>
-                                                                            <tr>
-                                                                                <td>Amount of Articles</td>
-                                                                                <td>2</td>
-                                                                            </tr>
+                                                                           
                                                                             <tr>
                                                                                 <td>Desciption</td>
                                                                                 <td>
