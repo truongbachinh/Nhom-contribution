@@ -11,45 +11,47 @@ include "../connect_db.php"
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css?family=Play:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="../library/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../library/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../library/css/owl.carousel.css">
-    <link rel="stylesheet" href="../library/css/owl.theme.css">
-    <link rel="stylesheet" href="../library/css/main.css">
-    <link rel="stylesheet" href="../library/style.css">
-    <link rel="stylesheet" href="../library/css/responsive.css">
-    <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-
-    <div class="error-pagewrap">
-        <div class="error-page-int">
-            <div class="text-center custom-login">
-                <h3>Register Now</h3>
-
-            </div>
-            <div class="content-error">
-                <div class="hpanel">
-                    <div class="panel-body">
-                        <form action="" name="forml" method="post">
-                            <div class="row">
-                                <div class="form-group col-lg-12">
-                                    <label>Username</label>
-                                    <input type="text" name="username" class="form-control">
-                                </div>
-                                <div class="form-group col-lg-12">
-                                    <label>Password</label>
-                                    <input type="password" name="password" class="form-control">
-                                </div>
-                                <div class="form-group col-lg-12">
-                                    <label>Email</label>
-                                    <input type="text" name="email" class="form-control">
-                                </div>
+    <div class="d-lg-flex half">
+        <div class="contents order-1 order-md-2">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-7">
+                        <div class="mb-4">
+                            <h3><b>Register your account</b></h3>
+                        </div>
+                        <form class="form-vertical" action="" method="post">
+                            <h6>Username</h6>
+                            <div class="form-group first" style="border: 1px solid  #868080 !important;height: 50px !important; border-radius: 8px;">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" id="username" name="username">
                             </div>
-                            <div class="text-center">
-                                <button type="submit" name="submitl" class="btn btn-success">Register</button>
+                            <h6>Email</h6>
+                            <div class="form-group first" style="border: 1px solid  #868080 !important;height: 50px !important; border-radius: 8px;">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" name="email">
+                            </div>
+                            <h6 style="padding-top: 2% !important;">Password</h6>
+                            <div class="form-group last mb-3" style="border: 1px solid  #868080 !important;height: 50px !important; border-radius: 8px;">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password">
+
                             </div>
                             <div class="alert alert-success" id="success" style="margin-top: 10px; display: none">
                                 <strong>Success!</strong> Account Registration Successfully.
@@ -57,16 +59,25 @@ include "../connect_db.php"
                             <div class="alert alert-danger" id="failure" style="margin-top: 10px; display: none">
                                 <strong>Already exist!</strong> The Username Alreadly Exits!
                             </div>
+                            <input type="submit" value="Register" name="register" class="btn btn-block btn-success">
+
+
                         </form>
                     </div>
                 </div>
             </div>
-
         </div>
+        <div class="bg order-2 order-md-1" style="background-image: url('images/bg_1.jpg');"></div>
     </div>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+
     <?php
     $button = '';
-    if (isset($_POST["submitl"])) {
+    if (isset($_POST["register"])) {
         $count = 0;
         $res = mysqli_query($conn, "select * from user where username ='$_POST[username]'") or die(mysqli_error($link));
         $count = mysqli_num_rows($res);

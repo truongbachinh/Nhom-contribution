@@ -11,6 +11,7 @@ if (!empty($_SESSION['current_user_google'])) {
     </script>
 <?php
     unset($_SESSION['current_user_google']);
+    unset($_SESSION['access_token']);
 }
 if (!empty($_SESSION['current_user'])) {
 
