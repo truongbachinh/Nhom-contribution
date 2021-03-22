@@ -1,5 +1,5 @@
 <?php
-include "connect_db.php";
+include "./connect_db.php";
 session_start();
 $userId = $_SESSION["current_user"]["u_id"];
 $resultInfor = mysqli_query($conn, "select * from user_infor where user_id = '$userId'");
@@ -60,9 +60,7 @@ $rowInfor = mysqli_fetch_array($resultInfor, MYSQLI_ASSOC);
                                 <div class="text-center pull-up-sm">
                                     <div class="avatar avatar-xxl">
 
-                                        <img class="avatar-img rounded-circle"
-                                        src = "https://i.pinimg.com/originals/75/31/5d/75315db511a058432745fc37d82a7c44.png"
-                                            alt="avatar">
+                                        <img class="avatar-img rounded-circle" src="https://i.pinimg.com/originals/75/31/5d/75315db511a058432745fc37d82a7c44.png" alt="avatar">
 
                                     </div>
                                     <h4 class="text-center m-t-20">
@@ -324,7 +322,7 @@ if (isset($_POST["updateProfile"])) {
 ?>
         <script type="text/javascript">
             alert("update Infor successful");
-            window.location.reload;
+            window.location.replace("./profile.php");
         </script>
     <?php
     } else {
