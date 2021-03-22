@@ -117,6 +117,14 @@ if (isset($_POST["login"])) {
     $count = 0;
     $res = mysqli_query($conn, "select * from user where username='$username' && password='$password'");
     $count = mysqli_num_rows($res);
+    // while ($row = mysqli_fetch_array($res)) {
+    //     $status = $row["status"];
+    //     $role = $row["role"];
+    //     $result[] = $row;
+    // }
+    // var_dump($status);
+    // var_dump($role);
+
     if ($count == 0) {
 ?>
         <script type="text/javascript">
@@ -125,14 +133,26 @@ if (isset($_POST["login"])) {
     <?php
 
 
-    } else {
-        $user = mysqli_fetch_assoc($res);
+    } elseif ($username == "admin") {
+        $user = mysqli_fetch_array($res);
+        var_dump($user);
+        // exit;
         $userCurrent =  $_SESSION["current_user"] = $user;
-        var_dump($_SESSION["current_user"]);
+
 
     ?>
         <script type="text/javascript">
             window.location = "../user/student/homepage.php";
+        </script>
+    <?php
+    } elseif ($username == "admin123") {
+        $user = mysqli_fetch_assoc($res);
+        $userCurrent =  $_SESSION["current_user"] = $user;
+
+
+    ?>
+        <script type="text/javascript">
+            window.location = "../user/admin/listOfUser.php";
         </script>
 <?php
     }

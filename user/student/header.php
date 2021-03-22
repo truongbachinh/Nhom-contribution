@@ -65,21 +65,7 @@ include "connect_db.php";
                             <div class="dropdown-menu  dropdown-menu-right">
                                 <a class="dropdown-item" onclick="profileButton()"> Profile
                                 </a>
-                                <a class="dropdown-item" href="./change_password.php"> Reset Password</a>
-                                <a class="dropdown-item" href=""> Help </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" onclick="logoutButton()"> Logout</a>
-                            </div>
-                        <?php
-                        } elseif (!empty($_SESSION["current_user_goole"]["fullname"])) {
-                        ?>
-                            <div class="d-flex flex-column">
-                                <div class="name-student"><?php echo $_SESSION["current_user_goole"]["fullnames"] ?></div>
-                                <div class="role">Student Account</div>
-                            </div>
-                            <div class="dropdown-menu  dropdown-menu-right">
-                                <a class="dropdown-item" onclick="profileButton()"> Profile
-                                </a>
+                                <a class="dropdown-item" onclick="changePassword()"> Reset Password</a>
                                 <a class="dropdown-item" href=""> Help </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" onclick="logoutButton()"> Logout</a>
@@ -109,14 +95,18 @@ include "connect_db.php";
 </header>
 <script type="text/javascript">
     function logoutButton() {
-        window.location = "https://ciliweb.vn/a/contribution_application/account/logout.php";
+        window.location = "/b/contribution_application/account/logout.php";
     }
 
     function loginButton() {
-        window.location = "https://ciliweb.vn/a/contribution_application/account/login.php";
+        window.location = "/b/contribution_application/account/login.php";
     }
 
     function profileButton() {
-        window.location = "https://ciliweb.vn/a/contribution_application/user/student/profile.php";
+        window.location = "./profile.php";
+    }
+
+    function changePassword() {
+        window.location = "./change_password.php";
     }
 </script>
