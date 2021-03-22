@@ -38,7 +38,7 @@
             <li class="menu-item active opened">
                 <a href="#" class="open-dropdown menu-link">
                     <span class="menu-label">
-                        <span class="menu-name">Manager System
+                        <span class="menu-name">Manage System
                             <span class="menu-arrow"></span>
                         </span>
 
@@ -53,7 +53,7 @@
                     <li class="menu-item ">
                         <a href="/light/" class=" menu-link">
                             <span class="menu-label">
-                                <span class="menu-name">Manager Account</span>
+                                <span class="menu-name">Manage Account</span>
                             </span>
                             <span class="menu-icon">
                             <i class="mdi mdi-account-multiple mdi-24px "></i>
@@ -61,9 +61,9 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="/light/dashboard-02" class=" menu-link">
+                        <a href="manage-facutlies.php" class=" menu-link">
                             <span class="menu-label">
-                                <span class="menu-name">Manager Faculty</span>
+                                <span class="menu-name">Manage Faculty</span>
                             </span>
                             <span class="menu-icon">
                             <i class="mdi mdi-briefcase mdi-24px "></i>
@@ -71,12 +71,32 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="/light/dashboard-03" class=" menu-link">
+                        <a href="./manage-topics.php" class=" menu-link">
                             <span class="menu-label">
-                                <span class="menu-name">Manager Topic</span>
+                                <span class="menu-name">Manage Topic</span>
                             </span>
                             <span class="menu-icon">
                             <i class="mdi mdi-book-open-variant mdi-24px "></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="/light/dashboard-03" class=" menu-link">
+                            <span class="menu-label">
+                                <span class="menu-name">Manage User</span>
+                            </span>
+                            <span class="menu-icon">
+                            <i class="mdi mdi-book-open-variant mdi-24px "></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="./manage-articles.php" class=" menu-link">
+                            <span class="menu-label">
+                                <span class="menu-name">Manager Article</span>
+                            </span>
+                            <span class="menu-icon">
+                            <i class="mdi mdi-file mdi-24px "></i>
                             </span>
                         </a>
                     </li>
