@@ -17,7 +17,7 @@
 <meta property="og:image"
     content="https://cdn.dribbble.com/users/180706/screenshots/5424805/the_sceens_-_mobile_perspective_mockup_3_-_by_tranmautritam.jpg" />
 <meta property="og:site_name" content="atlas " />
-<title>Home Page</title>
+<title>Manage Topic</title>
 <link rel="icon" type="image/x-icon" href="assets/img/logo.png" />
 <link rel="icon" href="assets/img/logo.png" type="image/png" sizes="16x16">
 <link rel='stylesheet'
@@ -42,8 +42,6 @@
 <link rel='stylesheet' type='text/css'
     href='https://d33wubrfki0l68.cloudfront.net/css/16e33a95bb46f814f87079394f72ef62972bd197/light/assets/css/atmos.min.css' />
 <!-- Additional library for page -->
-<?php include 'aside.php' ?>
-
 
 <body class="sidebar-pinned ">
     <?php include 'aside.php' ?>
@@ -52,203 +50,303 @@
         <?php include 'header.php' ?>
         <!-- Session -->
 
-        <section class="admin-content">
+        <section class="manage-topic">
             <div class="container m-t-30">
-                <div class="card m-b-30">
-                    <div class="card-header">
-                        <h5 class="m-b-0">
-                            Cloud computing
-                        </h5>
-                        <p class="m-b-0 text-muted">
-                        </p>
-                    </div>
-                    <div class="card-body p-b-0">
-                        <table class="table table-striped">
-                            <tbody>
-                                <tr>
-                                    <td>Submission</td>
-                                    <td>No attempt</td>
-                                </tr>
-                                <tr>
-                                    <td>Grading status</td>
-                                    <td>Not graded</td>
-                                </tr>
-                                <tr>
-                                    <td>Due date</td>
-                                    <td>Thursday, 2 January 2021, 12:00 PM</td>
-                                </tr>
-                                <tr>
-                                    <td>Time remaining</td>
-                                    <td>Deadline is overdue by: 1 year 62 days</td>
-                                </tr>
-                                <tr>
-                                    <td>Last modified</td>
-                                    <td>Deadline is overdue by: 1 year 62 days</td>
-                                </tr>
-                                <tr>
-                                    <td>Submission comments</td>
-                                    <td>
-                                        <div class="input-group m-b-10">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">With textarea</span>
-                                            </div>
-                                            <textarea class="form-control" aria-label="With textarea"
-                                                spellcheck="false"></textarea>
-                                            <grammarly-extension data-grammarly-shadow-root="true"
-                                                style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 3;"
-                                                class="cGcvT"></grammarly-extension>
-                                        </div>
-                                        <div class="button-comment float-right">
-                                            <button class="btn btn-warning">Comments</button>
-                                            <button class="btn btn-danger">Cancle</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class=" card-footer button-submit text-center">
-                        <button type="button" class="btn btn-lg btn-primary" data-toggle="modal"
-                            data-target=".modal-submit-artical">Add Submission
-                        </button>
-                    </div>
-
-                    <!-- Modal -->
-
-                    <div class="modal fade modal-submit-artical" tabindex="-1" role="dialog"
-                        aria-labelledby="submissionModal" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="submissionModal">Upload Article</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h4> Manage Topic </h4>
                                 </div>
-                                <div class="modal-body">
 
-
-                                    <div class="card-header">
-                                        <p class="m-b-0 text-muted">
-                                            Students are need to provide complete information prior to submitting an
-                                            article.
-                                        </p>
-                                    </div>
-
-                                    <form action="">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputName">Name of article</label>
-                                                <input type="text" class="form-control" id="inputName"
-                                                    name="nameArticle" placeholder="Name of article">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputAuthor">Author</label>
-                                                <input type="text" class="form-control" id="inputAuthor"
-                                                    name="nameAuthor">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group has-search">
+                                                <span class="fa fa-search form-control-feedback"></span>
+                                                <input type="text" class="form-control" placeholder="Search">
                                             </div>
                                         </div>
-                                        <div class="form-group"">
-                            <div>
-                                <p class=" font-secondary">File Uploads</p>
-                                            <div class="input-group mb-3">
-                                                <div class="custom-file" onload="GetFileInfo ()">
-                                                    <input type="file" class="custom-file-input" id="inputFile"
-                                                        name="inputFileArticle" multiple onchange="GetFileInfo ()">
-                                                    <label class="custom-file-label" for="inputFile">Choose file</label>
+                                        <div class="col-sm-6 ">
+                                            <a href="" class="btn btn-info float-right" role="button"
+                                                data-toggle="modal" data-target="#addTopic"><i
+                                                    class="mdi mdi-clipboard-plus"></i> Add Faculty
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive p-t-10">
+                                        <table id="example" class="table   " style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>ID</th>
+                                                    <th>Topic Name</th>
+                                                    <th>Faculty Manager</th>
+                                                    <th>Deadline</th>
+                                                    <th>Articles</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Topic_01</td>
+                                                    <td>Advance Computing</td>
+                                                    <td>Nguyen Van A</td>
+                                                    <td>12/01/2020</td>
+                                                    <td>40</td>
+                                                    <td>Processing</td>
+                                                    <td>
+                                                        <a href="" class="btn btn-info" role="button"
+                                                            data-toggle="modal" data-target="#editTopic"><i
+                                                                class="mdi mdi-pencil-outline"></i> </a>
+                                                        <a href="" class="btn btn-danger" role="button"
+                                                            data-toggle="modal" data-target="#deleteTopic"><i
+                                                                class="mdi mdi-delete"></i> </a>
+                                                        <a href="" class="btn btn-primary" role="button"
+                                                            data-toggle="modal" data-target="#detailTopic"><i
+                                                                class="mdi mdi-dots-horizontal"></i> </a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <!-- Modal add faculty -->
+                                        <div class="modal fade" id="addTopic" tabindex="-1" role="dialog"
+                                            aria-labelledby="addTopic" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="addTopic">Add Topic</h5>
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="">
+                                                            <div class="form-group">
+                                                                <label for="inputNameTopic">Topic Name</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="inputNameTopic" name="nameTopic"
+                                                                    placeholder="Input name" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="inputTopicId">Topic ID</label>
+                                                                <input type="text" class="form-control"
+                                                                    id="inputTopicId" name="topicId"
+                                                                    placeholder="Input Id" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="inputIdManager">Manager Topic</label>
+                                                                <input type="text" class="form-control"
+                                                                    placeholder="Input name" required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="example-date-input">Date</label>
+                                                                <input class="form-control" type="date"
+                                                                    value="2011-08-19" id="example-date-input">
+                                                            </div>
+
+                                                            <div class="model-footer">
+                                                                <input type="button" class="btn btn-warning"
+                                                                    name="change" value="Create Topic">
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">
+                                                                    Close
+                                                                </button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+
                                                 </div>
                                             </div>
-                                            <div id="info" style="margin-top:10px"></div>
+
+                                            <!-- Modal edit -->
+
+                                            <div class="modal fade" id="editTopic" tabindex="-1" role="dialog"
+                                                aria-labelledby="editTopic" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="editTopic">Edit Topic</h5>
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form action="">
+                                                                <div class="form-group">
+                                                                    <label for="inputNameTopic">Topic Name</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="inputNameTopic" name="nameTopic"
+                                                                        placeholder="Input name" required>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="inputTopicId">Topic ID</label>
+                                                                    <input type="text" class="form-control"
+                                                                        id="inputTopicId" name="topicId"
+                                                                        placeholder="Input Id" disabled
+                                                                        value="Topic_01">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="inputIdManager">Manager Topic</label>
+                                                                    <input type="text" class="form-control"
+                                                                        placeholder="Input name" value="Nguyen Van A">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="example-date-input">Date</label>
+                                                                    <input class="form-control" type="date"
+                                                                        value="2011-08-19" id="example-date-input">
+                                                                </div>
+
+                                                                <div class="model-footer">
+                                                                    <input type="button" class="btn btn-warning"
+                                                                        name="change" value="Save Changes">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">
+                                                                        Close
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+
+
+                                                <!-- Modal delete -->
+
+
+                                                <div class="modal fade" id="deleteFaculty" tabindex="-1" role="dialog"
+                                                    aria-labelledby="deleteFaculty" aria-hidden="true">
+                                                    <div class="modal-dialog  modal-dialog-align-top-left"
+                                                        role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="deleteFaculty">Confirm
+                                                                    Delete Faculty
+                                                                </h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                This action cannot undo. Are you sure you want to delete
+                                                                this
+                                                                faculty?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button"
+                                                                    class="btn btn-danger">Delete</button>
+                                                                <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">
+                                                                    Close
+                                                                </button>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Modal Detail -->
+
+                                                <div class="modal fade" id="detailFaculty" tabindex="-1" role="dialog"
+                                                    aria-labelledby="detailFaculty" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="detailFaculty">Detai
+                                                                    Infomation Faculty
+                                                                </h5>
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="detail">
+                                                                    <table class="table table-striped">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>Name Faculty</td>
+                                                                                <td>Advance Computing</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Faculty ID</td>
+                                                                                <td>Faculty_01</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Manager Faculty</td>
+                                                                                <td>Nguyen Van A</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Amount of Topic</td>
+                                                                                <td>2</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Amount of Student</td>
+                                                                                <td>2</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Amount of Articles</td>
+                                                                                <td>2</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>Desciption</td>
+                                                                                <td>
+                                                                                    Desciption here...
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                                <div class="button-close float-right">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">
+                                                                        Close
+                                                                    </button>
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck" name="agree">
-                                        <label class="form-check-label" for="gridCheck">
-                                            I agree to the Terms and Conditions
-                                        </label>
                                     </div>
                                 </div>
-                                <div class="form-group  float-right">
-                                    <button class="btn btn-primary">Submit</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                        Close
-                                    </button>
-                                </div>
-                                </form>
                             </div>
                         </div>
-                    </div>
-
-                </div>
-            </div>
         </section>
     </main>
-    </section>
-
-    <head>
-        <script type="text/javascript">
-            var arrFile = [];
-            var mess = "";
-            function GetFileInfo() {
-                var fileInput = document.getElementById("inputFile");
-                var message = "";
-                if ('files' in fileInput) {
-                    if (fileInput.files.length == 0) {
-                        message = "Please browse for one or more files.";
-                    } else {
-                        for (var i = 0; i < fileInput.files.length; i++) {
-                            message += "<br /><b>File" + (i + 1) + "</b><br />";
-                            var file = fileInput.files[i];
-                            if ('name' in file) {
-                                message += "Name of file: " + file.name + "<br />";
-                            }
-                            else {
-                                message += "Name of file: " + file.fileName + "<br />";
-                            }
-                            if ('size' in file) {
-                                message += "Size of file: " + file.size + " bytes <br />";
-                            }
-                            else {
-                                message += "Size of file: " + file.fileSize + " bytes <br />";
-                            }
-                            if ('mediaType' in file) {
-                                message += "Type: " + file.mediaType + "<br />";
-                            }
-                        }
-                    }
-                }
-                else {
-                    if (fileInput.value == "") {
-                        message += "Please browse for one or more files.";
-                        message += "<br />Use the Control or Shift key for multiple selection.";
-                    }
-                    else {
-                        message += "Your browser doesn't support the files property!";
-                        message += "<br />The path of the selected file: " + fileInput.value;
-                    }
-                }
-                mess = mess + message;
-                var info = document.getElementById("info");
-                info.innerHTML = mess;
-            }
-        </script>
-    </head>
+</body>
 
 
-    <script src='https://d33wubrfki0l68.cloudfront.net/bundles/85bd871e04eb889b6141c1aba0fedfa1a2215991.js'></script>
-    <!--page specific scripts for demo-->
+</body>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66116118-3"></script>
-    <script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-66116118-3');</script>
 
-    <!--Additional Page includes-->
-    <script
-        src='https://d33wubrfki0l68.cloudfront.net/js/c36248babf70a3c7ad1dcd98d4250fa60842eea9/light/assets/vendor/apexchart/apexcharts.min.js'></script>
-    <!--chart data for current dashboard-->
-    <script
-        src='https://d33wubrfki0l68.cloudfront.net/js/d678dabfdc5c3131d492af7ef517fbe46fbbd8e4/light/assets/js/dashboard-01.js'></script>
+<script src='https://d33wubrfki0l68.cloudfront.net/bundles/85bd871e04eb889b6141c1aba0fedfa1a2215991.js'></script>
+<!--page specific scripts for demo-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-66116118-3"></script>
+<script> window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-66116118-3');</script>
+
+<!--Additional Page includes-->
+<script
+    src='https://d33wubrfki0l68.cloudfront.net/js/c36248babf70a3c7ad1dcd98d4250fa60842eea9/light/assets/vendor/apexchart/apexcharts.min.js'></script>
+<!--chart data for current dashboard-->
+<script
+    src='https://d33wubrfki0l68.cloudfront.net/js/d678dabfdc5c3131d492af7ef517fbe46fbbd8e4/light/assets/js/dashboard-01.js'></script>
 
 </body>
 

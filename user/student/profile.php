@@ -59,7 +59,11 @@ $rowInfor = mysqli_fetch_array($resultInfor, MYSQLI_ASSOC);
                             <div class="card-body">
                                 <div class="text-center pull-up-sm">
                                     <div class="avatar avatar-xxl">
-                                        <img class="avatar-img rounded-circle" src="https://graph.facebook.com/100035747543526/picture?type=large&access_token=EAAAAZAw4FxQIBAI7T713YZCCmgw2ZA9aZBAZBTHEvwK3ZCnZAPhVeAv8zr6dGoZCputlGrapQD4eoyuX88wECUj6qcmlZBEw2ZBFaAmaxUIGaDiAmlP4yU5WVasdnSsU3znj9bWyd8XB0U7ZCRh5TIDgQXQe6Q8GsH48g91EZCakkBvwIQZDZD" alt="avatar">
+
+                                        <img class="avatar-img rounded-circle"
+                                        src = "https://i.pinimg.com/originals/75/31/5d/75315db511a058432745fc37d82a7c44.png"
+                                            alt="avatar">
+
                                     </div>
                                     <h4 class="text-center m-t-20">
                                         <div class="text text-center m-b-5"><?= $rowInfor["name"] ?></div>
@@ -93,6 +97,7 @@ $rowInfor = mysqli_fetch_array($resultInfor, MYSQLI_ASSOC);
                                                             <label for="studentName">Name Student</label>
                                                             <input type="text" class="form-control" id="inputStudentName" name="nameStudent">
                                                         </div>
+
                                                         <div class="form-group">
                                                             <label for="inputAddress">Address</label>
                                                             <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address">

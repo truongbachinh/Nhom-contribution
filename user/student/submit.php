@@ -134,7 +134,7 @@ include "connect_db.php";
                                                 <input type="text" class="form-control" id="inputAuthor" name="nameAuthor">
                                             </div>
                                         </div>
-                                        <div class="form-group"">
+                                        <div class="form-group">
                             <div>
                                 <p class=" font-secondary">File Uploads</p>
                                             <div class="input-group mb-3">
@@ -164,7 +164,6 @@ include "connect_db.php";
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
@@ -218,7 +217,6 @@ include "connect_db.php";
             }
         </script>
     </head>
-
 
     <script src='https://d33wubrfki0l68.cloudfront.net/bundles/85bd871e04eb889b6141c1aba0fedfa1a2215991.js'></script>
     <!--page specific scripts for demo-->
