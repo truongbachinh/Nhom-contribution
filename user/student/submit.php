@@ -1,7 +1,78 @@
 <?php
-include "connect_db.php";
+session_start();
+include "../../connect_db.php";
 ?>
 
+<?php
+// Perform query
+$user_id = 353;
+$file_faculty_id = 34;
+$result = mysqli_query($conn, "SELECT * FROM file_submit_to_system WHERE user_id = $user_id and $file_faculty_id = $file_faculty_id");
+$file_submit_to_system = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+$current = strtotime(date("Y-m-d h:i:s"));
+$date    = strtotime($file_submit_to_system["file_date_uploaded"]);
+
+$datediff = $current - $date;
+?>
+
+<?php
+
+function getDifferenceToDate($date1, $date2)
+{
+    $diff = strtotime($date2) - strtotime($date1);
+    if ($diff < 0) {
+        print_r("Đã hết hạn nộp");
+        return;
+    }
+
+    $years = floor($diff / (365 * 60 * 60 * 24));
+
+    $months = floor(($diff - $years * 365 * 60 * 60 * 24)
+        / (30 * 60 * 60 * 24));
+
+    $days = floor(($diff - $years * 365 * 60 * 60 * 24 -
+            $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+
+    $hours = floor(($diff - $years * 365 * 60 * 60 * 24
+            - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24)
+        / (60 * 60));
+
+    if ($years != 0) {
+        printf("%d years, %d months, %d days, %d hours", $years, $months,
+            $days, $hours);
+    } else if ($months != 0) {
+        printf("%d months, %d days, %d hours", $months,
+            $days, $hours);
+    } else {
+        printf("%d days, %d hours",
+            $days, $hours);
+    }
+}
+
+?>
+
+<?php
+if(isset($_POST['uploadFile'])) {
+    echo("Test");
+    $tm = md5(time());
+    var_dump($_FILES);
+    $fnm1 = $_FILES["inputFileArticle"]["name"];
+    $dst1 = "./image/" . $tm . $fnm1;
+    $dst_db1 = "image/" . $tm . $fnm1;
+    move_uploaded_file($_FILES["inputFileArticle"]["tmp_name"], $dst1);
+    $date_uploaded = date('Y-m-d h:i:s');
+    $query = "insert into file_submit (file_id, file_content_upload, file_date_uploaded) values (NULL, '$dst1', '$date_uploaded')";
+    $upload_query = mysqli_query($conn, $query);
+    $file_submit_id_result = mysqli_query($conn, "SELECT file_id FROM file_submit WHERE file_content_upload = '$dst1'");
+    var_dump($file_submit_id_result);
+    $file_submit_id = mysqli_fetch_array($file_submit_id_result, MYSQLI_ASSOC)["file_id"];
+    $file_id = $file_submit_to_system["file_id"];
+    $request = "UPDATE file_submit_to_system SET file_submit_id = $file_submit_id WHERE file_id = $file_id";
+    echo $request;
+    mysqli_query($conn, $request );
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
@@ -64,19 +135,36 @@ include "connect_db.php";
                                 </tr>
                                 <tr>
                                     <td>Grading status</td>
-                                    <td>Not graded</td>
+                                    <td><?php
+
+                                        if ($file_submit_to_system["status"] == 0) {
+                                            print_r("Not graded");
+                                        } else if ($file_submit_to_system["status"] == 1) {
+                                            print_r("Processing");
+                                        } else if ($file_submit_to_system["status"] == 2) {
+                                            print_r("Approved");
+                                        } else if ($file_submit_to_system["status"] == 3) {
+                                            print_r("Rejected");
+                                        }
+                                        ?></td>
                                 </tr>
                                 <tr>
                                     <td>Due date</td>
-                                    <td>Thursday, 2 January 2021, 12:00 PM</td>
+                                    <td><?php
+                                        echo $file_submit_to_system["file_date_uploaded"];
+                                        ?></td>
                                 </tr>
                                 <tr>
                                     <td>Time remaining</td>
-                                    <td>Deadline is overdue by: 1 year 62 days</td>
+                                    <td>Deadline is overdue by:
+                                        <?php getDifferenceToDate($file_submit_to_system["file_date_uploaded"], date("Y-m-d h:i:s")); ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Last modified</td>
-                                    <td>Deadline is overdue by: 1 year 62 days</td>
+                                    <td>
+                                        <?php getDifferenceToDate($file_submit_to_system["file_date_edited"], date("Y-m-d h:i:s")); ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Submission comments</td>
@@ -94,13 +182,41 @@ include "connect_db.php";
                                         </div>
                                     </td>
                                 </tr>
+                                <?php
+                                if($datediff < 0) {
+                                    ?>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align: right"><div style="color: red">
+                                                Bạn đã hết hạn nộp bài.
+                                            </div></td>
+                                    </tr>
+                                    <?php
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>
                     <div class=" card-footer button-submit text-center">
-                        <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target=".modal-submit-artical">Add Submission
-                        </button>
+                        <?php
+                        if ($datediff > 0) {
+                            ?>
+                            <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target=".modal-submit-artical">Add Submission
+                            </button>
+                        <?php
+                        }
+                        else {
+                            ?>
+                            <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target=".modal-submit-artical" disabled>Add Submission
+                            </button>
+                            <?php
+                        }
+                        ?>
                     </div>
+
+<!--                    <form method="post">-->
+<!--                        <input type="submit" name="uploadFile" class="btn btn-primary" value="uploadFile" id="uploadFile" />-->
+<!--                    </form>-->
 
                     <!-- Modal -->
 
@@ -113,18 +229,16 @@ include "connect_db.php";
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
+                                <form method="post" enctype="multipart/form-data">
                                 <div class="modal-body">
-
-
                                     <div class="card-header">
                                         <p class="m-b-0 text-muted">
                                             Students are need to provide complete information prior to submitting an
                                             article.
                                         </p>
                                     </div>
-
-                                    <form action="" method="post" enctype="multipart/form-data">
-                                        <div class="form-row">
+<form action="" method="post" enctype="multipart/form-data">
+    <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputName">Name of article</label>
                                                 <input type="text" class="form-control" id="inputName" name="nameArticle" placeholder="Name of article">
@@ -134,6 +248,9 @@ include "connect_db.php";
                                                 <input type="text" class="form-control" id="inputAuthor" name="nameAuthor">
                                             </div>
                                         </div>
+                                        <div class="form-group"">
+                                        <div>
+                                            <p class=" font-secondary">File Uploads</p>
                                         <div class="form-group">
                             <div>
                                 <p class=" font-secondary">File Uploads</p>
@@ -144,8 +261,7 @@ include "connect_db.php";
                                                 </div>
                                             </div>
                                             <div id="info" style="margin-top:10px"></div>
-                                        </div>
-                                </div>
+                                        </div></div>
                                 <div class="form-group">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="gridCheck" name="agree">
@@ -155,8 +271,8 @@ include "connect_db.php";
                                     </div>
                                 </div>
                                 <div class="form-group  float-right">
-                                    <button class="btn btn-primary" name="addSubmission">Submit</button>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    <input type="submit" name="uploadFile" class="btn btn-primary" value="uploadFile" id="uploadFile"></input>
+<!--                                    <button type="submit" value="Upload" name="uploadFile" class="btn btn-primary" value="uploadFile" id="uploadFile" onclick="onUploadI()">Submit</button>-->                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                         Close
                                     </button>
                                 </div>
@@ -241,21 +357,3 @@ include "connect_db.php";
 </body>
 
 </html>
-
-<?php
-if (isset($_POST['addSubmission'])) {
-    $tm = md5(time());
-    $fnm1 = $_FILES["inputFileArticle"]["name"];
-    $dst1 = "./image/" . $tm . $fnm1;
-    $dst_db1 = "image/" . $tm . $fnm1;
-    move_uploaded_file($_FILES["inputFileArticle"]["tmp_name"], $dst1);
-    $rest = mysqli_query($conn, "INSERT INTO `file_submit` (`file_id`, `file_authod`, `file_art`, `file_content_upload`, `file_date_uploaded`) VALUES (NULL, '$_POST[nameAuthor]','$_POST[nameArticle]','$dst1','" . time() . "') ");
-?>
-    <script type="text/javascript">
-        alert("add successfull");
-        window.location.href = window.location.href;
-    </script>
-<?php
-}
-
-?>

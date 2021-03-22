@@ -2,6 +2,16 @@
 session_start();
 include "../connect_db.php";
 ?>
+
+<?php
+// Perform query
+$user_id = 353;
+$file_faculty_id = 34;
+$result = mysqli_query($conn, "SELECT * FROM file_submit_to_system WHERE user_id = $user_id and $file_faculty_id = 34");
+$file_submit_to_system = mysqli_fetch_array($result, MYSQLI_ASSOC);
+print_r($file_submit_to_system);
+?>
+
 <?php
 
 if (isset($_POST["submit"])) {
@@ -15,23 +25,21 @@ if (isset($_POST["submit"])) {
     $dst1 = "./image/" . $tm . $fnm1;
     $dst_db1 = "image/" . $tm . $fnm1;
     move_uploaded_file($_FILES["upFile"]["tmp_name"], $dst1);
-
-
-
-    mysqli_query($conn, "insert into file_submit (file_id, file_content_upload, file_date_uploaded) values (NULL, '$dst1','" . time() . "') ");
-
-
-?>
+    mysqli_query($conn, "insert into file_submit (file_id, file_content_upload, file_date_uploaded) values (NULL, '$dst1','" . date() . "') ");
+    $file_submit_id_result = mysqli_query($conn, "SELECT file_id FROM file_submit WHERE file_submit.file_content_upload = './image/6e9b94ff974eb0caea9788a7aaa976d897485493_2490671654577425_8179314827781472256_n.png'");
+    $file_submit_id = mysqli_fetch_assoc($file_submit_id_result, MYSQLI_ASSOC);
+    $file_id = $file_submit_to_system["file_id"];
+    print_r($file_submit_id);
+    mysqli_query($conn,  "UPDATE file_submit_to_system SET file_submit_id = $file_submit_id WHERE file_id = $file_id")
+    ?>
     <script type="text/javascript">
-        alert("add successfull");
+        alert("Add successfully");
         window.location.href = window.location.href;
     </script>
 <?php
 
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -116,17 +124,26 @@ if (isset($_POST["submit"])) {
 
                 <!-- Author -->
                 <p class="lead">
-                    by <span class="admin-name" style="color: red"><?php
-                                                                    if (!empty($_SESSION["current_user_google"])) {
-                                                                        echo $_SESSION["current_user_google"]["fullname"];
-                                                                    }  ?></span>
+                    by <span class="admin-name" style="color: #ff0000">
+                        <?php
+                        $file_faculty_id = $file_submit_to_system["file_faculty_id"];
+                        $username = mysqli_query($conn, "SELECT user.username FROM user INNER JOIN faculty ON faculty.teacher_id=user.u_id WHERE f_id = {$file_faculty_id}");
+                        $faculty = mysqli_fetch_array($username, MYSQLI_ASSOC);
+                        echo $faculty["username"];
+                        ?>
+                    </span>
 
                 </p>
 
                 <hr>
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+                <p><span class="glyphicon glyphicon-time"></span>
+                    Posted on
+                    <?php
+                    echo $file_submit_to_system["date_post"];
+                    ?>
+                </p>
 
                 <hr>
                 <!-- Post Content -->
@@ -313,3 +330,21 @@ if (isset($_POST["submit"])) {
 </body>
 
 </html>
+
+<?php
+class FileSubmit
+{
+    private $file_id;
+    private $file_categories_id;
+private $user_id;
+private $file_name;
+private $file_description;
+private $file_faculty_id;
+private $file_semester_id;
+private $status;
+private $comment;
+private $file_date_uploaded;
+private $file_date_edited;
+private $file_content_upload;
+}
+?>
