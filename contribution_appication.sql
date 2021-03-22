@@ -76,6 +76,7 @@ INSERT INTO `file_submit` (`file_id`, `file_content_upload`, `file_date_uploaded
 CREATE TABLE `file_submit_to_system` (
   `file_id` int(20) NOT NULL,
   `file_categories_id` int(20) NOT NULL,
+  `user_id` int(20) NOT NULL,
   `file_name` varchar(255) NOT NULL,
   `file_description` text NOT NULL,
   `file_faculty_id` int(20) NOT NULL,
@@ -206,8 +207,8 @@ ALTER TABLE `file_submit_to_system`
   ADD PRIMARY KEY (`file_id`),
   ADD KEY `fogeign_key_file_semester` (`file_semester_id`),
   ADD KEY `file_submit_to_system_ibfk_1` (`file_categories_id`),
+    ADD KEY `file_submit_to_system_user_id` (`user_id`),
   ADD KEY `fogeign_key_file_faculty` (`file_faculty_id`);
-
 --
 -- Indexes for table `news`
 --
@@ -298,8 +299,8 @@ ALTER TABLE `user_role`
 ALTER TABLE `file_submit_to_system`
   ADD CONSTRAINT `file_submit_to_system_ibfk_1` FOREIGN KEY (`file_categories_id`) REFERENCES `file_categories` (`ctg_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fogeign_key_file_faculty` FOREIGN KEY (`file_faculty_id`) REFERENCES `faculty` (`f_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fogeign_key_file_semester` FOREIGN KEY (`file_semester_id`) REFERENCES `semester` (`semester_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+  ADD CONSTRAINT `fogeign_key_file_semester` FOREIGN KEY (`file_semester_id`) REFERENCES `semester` (`semester_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+ADD CONSTRAINT `file_submit_to_system_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`u_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 --
 -- Constraints for table `notification`
 --

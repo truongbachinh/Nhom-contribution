@@ -1,3 +1,69 @@
+<?php
+session_start();
+include "../../connect_db.php";
+?>
+
+<?php
+// Perform query
+$user_id = 353;
+$file_faculty_id = 34;
+$result = mysqli_query($conn, "SELECT * FROM file_submit_to_system WHERE user_id = $user_id and $file_faculty_id = $file_faculty_id");
+$file_submit_to_system = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>
+
+<?php
+
+function getDifferenceToDate($date1, $date2)
+{
+    $diff = abs(strtotime($date2) - strtotime($date1));
+
+    $years = floor($diff / (365 * 60 * 60 * 24));
+
+    $months = floor(($diff - $years * 365 * 60 * 60 * 24)
+        / (30 * 60 * 60 * 24));
+
+    $days = floor(($diff - $years * 365 * 60 * 60 * 24 -
+            $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+
+    $hours = floor(($diff - $years * 365 * 60 * 60 * 24
+            - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24)
+        / (60 * 60));
+
+    if ($years != 0) {
+        printf("%d years, %d months, %d days, %d hours", $years, $months,
+            $days, $hours);
+    } else if ($months != 0) {
+        printf("%d months, %d days, %d hours", $months,
+            $days, $hours);
+    } else {
+        printf("%d days, %d hours",
+            $days, $hours);
+    }
+}
+
+?>
+
+<?php
+if(isset($_POST['uploadFile'])) {
+    echo("Test");
+    $tm = md5(time());
+    var_dump($_FILES);
+    $fnm1 = $_FILES["inputFileArticle"]["name"];
+    $dst1 = "./image/" . $tm . $fnm1;
+    $dst_db1 = "image/" . $tm . $fnm1;
+    move_uploaded_file($_FILES["inputFileArticle"]["tmp_name"], $dst1);
+    $date_uploaded = date('Y-m-d h:i:s');
+    $query = "insert into file_submit (file_id, file_content_upload, file_date_uploaded) values (NULL, '$dst1', '$date_uploaded')";
+    $upload_query = mysqli_query($conn, $query);
+    $file_submit_id_result = mysqli_query($conn, "SELECT file_id FROM file_submit WHERE file_content_upload = '$dst1'");
+    var_dump($file_submit_id_result);
+    $file_submit_id = mysqli_fetch_array($file_submit_id_result, MYSQLI_ASSOC)["file_id"];
+    $file_id = $file_submit_to_system["file_id"];
+    $request = "UPDATE file_submit_to_system SET file_submit_id = $file_submit_id WHERE file_id = $file_id";
+    echo $request;
+    mysqli_query($conn, $request );
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
@@ -75,11 +141,15 @@
                                 </tr>
                                 <tr>
                                     <td>Due date</td>
-                                    <td>Thursday, 2 January 2021, 12:00 PM</td>
+                                    <td><?php
+                                        echo $file_submit_to_system["file_date_uploaded"];
+                                        ?></td>
                                 </tr>
                                 <tr>
                                     <td>Time remaining</td>
-                                    <td>Deadline is overdue by: 1 year 62 days</td>
+                                    <td>Deadline is overdue by:
+                                        <?php getDifferenceToDate($file_submit_to_system["file_date_uploaded"], date("Y-m-d h:i:s")); ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Last modified</td>
@@ -113,6 +183,10 @@
                         </button>
                     </div>
 
+<!--                    <form method="post">-->
+<!--                        <input type="submit" name="uploadFile" class="btn btn-primary" value="uploadFile" id="uploadFile" />-->
+<!--                    </form>-->
+
                     <!-- Modal -->
 
                     <div class="modal fade modal-submit-artical" tabindex="-1" role="dialog"
@@ -125,17 +199,14 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
+                                <form method="post" enctype="multipart/form-data">
                                 <div class="modal-body">
-
-
                                     <div class="card-header">
                                         <p class="m-b-0 text-muted">
                                             Students are need to provide complete information prior to submitting an
                                             article.
                                         </p>
                                     </div>
-
-                                    <form action="">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputName">Name of article</label>
@@ -149,8 +220,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group"">
-                            <div>
-                                <p class=" font-secondary">File Uploads</p>
+                                        <div>
+                                            <p class=" font-secondary">File Uploads</p>
                                             <div class="input-group mb-3">
                                                 <div class="custom-file" onload="GetFileInfo ()">
                                                     <input type="file" class="custom-file-input" id="inputFile"
@@ -159,8 +230,7 @@
                                                 </div>
                                             </div>
                                             <div id="info" style="margin-top:10px"></div>
-                                        </div>
-                                </div>
+                                        </div></div>
                                 <div class="form-group">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="gridCheck" name="agree">
@@ -170,7 +240,8 @@
                                     </div>
                                 </div>
                                 <div class="form-group  float-right">
-                                    <button class="btn btn-primary">Submit</button>
+                                    <input type="submit" name="uploadFile" class="btn btn-primary" value="uploadFile" id="uploadFile"></input>
+<!--                                    <button type="submit" value="Upload" name="uploadFile" class="btn btn-primary" value="uploadFile" id="uploadFile" onclick="onUploadI()">Submit</button>-->
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                         Close
                                     </button>
