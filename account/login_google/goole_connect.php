@@ -7,7 +7,7 @@ require_once('Google/libraries/Google/autoload.php');
 //You can get it from : https://console.developers.google.com/
 $client_id = '134422567213-nbug341hlpic70fpir1pjn59ueic170s.apps.googleusercontent.com';
 $client_secret = 'z7t84FkSeZa_yyG_H8P9KRoI';
-$redirect_uri = 'https://ciliweb.vn/contribution_application/account/login.php';
+$redirect_uri = 'https://ciliweb.vn/a/contribution_application/account/login.php';
 
 //incase of logout request, just unset the session var
 //if (isset($_GET['logout'])) {
