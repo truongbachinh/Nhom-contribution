@@ -51,7 +51,7 @@
                             <li class="menu-item ">
                                 <a href="#" class=" menu-link">
                                     <span class="menu-label">
-                                        <span class="menu-name">Manage Account</span>
+                                        <span class="menu-name">Manage User</span>
                                     </span>
                                     <span class="menu-icon">
                                         <i class="mdi mdi-account-multiple mdi-24px "></i>
@@ -72,16 +72,6 @@
                                 <a href="/user/admin/manage_topics.php" class=" menu-link">
                                     <span class="menu-label">
                                         <span class="menu-name">Manage Topic</span>
-                                    </span>
-                                    <span class="menu-icon">
-                                        <i class="mdi mdi-book-open-variant mdi-24px "></i>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="/user/admin/manage_users.php" class=" menu-link">
-                                    <span class="menu-label">
-                                         <span class="menu-name">Manage User</span>
                                     </span>
                                     <span class="menu-icon">
                                         <i class="mdi mdi-book-open-variant mdi-24px "></i>
@@ -194,7 +184,6 @@
                             </span>
                         </a>
                     </li>
-
                 <?php endif ?>
 
             <?php endif; ?>
