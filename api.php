@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-include "./connect_db.php";
+include "./config.php";
 
 $response = array();
 $data = [];
@@ -10,7 +10,6 @@ $action = @$_POST['action'];
 
 
 // check login and password
-$isLoggedIn = true;
 if ($isLoggedIn) {
     // process requests
     switch ($action) {
@@ -86,6 +85,42 @@ if ($isLoggedIn) {
                 $msg = "Error delete record: " . $conn->error;
             }
             break;
+        case "get_user_info":
+            $id = $_POST['id'];
+            $stmt = $conn->prepare("SELECT * FROM `user` WHERE `u_id` = ?");
+            if ($stmt->bind_param("i", $id) && $stmt->execute()) {
+                $result = $stmt->get_result();
+                if ($result->num_rows == 0) {
+                    $error = 404;
+                    $msg = "Account is not exist.";
+                } else {
+                    $row = $result->fetch_assoc();
+                    $row['password'] = "";
+                    $data = $row;
+                }
+            } else {
+                $error = 400;
+                $msg = "Unknown error occurred.";
+            }
+            break;
+        case "update_user_info":
+            $id = $_POST['id'];
+            $stmt = $conn->prepare("UPDATE `user` SET `username` = ?, `email` = ?, `fullname` = ?, `status` = ?, `role` = ? WHERE `u_id` = ?");
+            if ($stmt->bind_param(
+                "sssisi",
+                $_POST['username'], $_POST['email'], $_POST['fullname'], $_POST['status'], $_POST['role'], $id
+            ) && $stmt->execute()) {
+                $stmt2 = $conn->prepare("UPDATE `user` SET `password` = ? WHERE `u_id` = ?");
+                if ($stmt2->bind_param("si", $_POST['newPassword'], $id)) {
+                    $msg = "Changed information & password successfully!";
+                } else {
+                    $error = 400;
+                    $msg = "Failed to change password but information is updated.";
+                }
+            } else {
+                $error = 400;
+                $msg = "Unknown error occurred.";
+            }
     }
 } else {
     $error = 500;
