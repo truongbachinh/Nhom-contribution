@@ -6,7 +6,6 @@ $response = array();
 $data = [];
 $msg = "";
 $error = 0;
-
 $action = @$_POST['action'];
 
 

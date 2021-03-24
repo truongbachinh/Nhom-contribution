@@ -1,5 +1,5 @@
 class Utils {
-    static API_URL = "http://localhost/Nhom-contribution/api.php";
+    static API_URL = "http://localhost/api.php";
     constructor() {
 
     }

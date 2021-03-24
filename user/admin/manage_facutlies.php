@@ -1,6 +1,5 @@
 <?php
-include "connect_db.php";
-session_start();
+include "../../config.php";
 // $user = $conn->query("SELECT * from user where role = 'manager-coordinator'");
 // $userRole = array();
 // while ($rowUser = mysqli_fetch_array($user)) {
@@ -119,15 +118,18 @@ session_start();
                                                     <td><?= $row["f_description"] ?></td>
                                                     <td><?= $row["f_manager"] ?></td>
                                                     <td>
-                                                        <a href="" class="btn btn-info btn-edit-faculty" role="button"
-                                                           data-id="<?php echo $row["f_id"] ?>"><i
-                                                                    class="mdi mdi-pencil-outline"></i> </a>
-                                                        <a href="" class="btn btn-danger btn-delete-faculty"
-                                                           data-id="<?php echo $row["f_id"] ?>"><i
-                                                                    class="mdi mdi-delete"></i> </a>
-                                                        <a href="" class="btn btn-primary btn-detail-faculty"
-                                                           data-id="<?php echo $row["f_id"] ?>" role="button"><i
-                                                                    class="mdi mdi-dots-horizontal"></i> </a>
+                                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                                            <a href="" class="btn btn-info btn-edit-faculty"
+                                                               role="button"
+                                                               data-id="<?php echo $row["f_id"] ?>"><i
+                                                                        class="mdi mdi-pencil-outline"></i> </a>
+                                                            <a href="" class="btn btn-danger btn-delete-faculty"
+                                                               data-id="<?php echo $row["f_id"] ?>"><i
+                                                                        class="mdi mdi-delete"></i> </a>
+                                                            <a href="" class="btn btn-primary btn-detail-faculty"
+                                                               data-id="<?php echo $row["f_id"] ?>" role="button"><i
+                                                                        class="mdi mdi-dots-horizontal"></i> </a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             <?php }

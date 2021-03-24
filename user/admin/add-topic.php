@@ -1,6 +1,6 @@
 <?php
-session_start();
-include "../connect_db.php";
+include "../../config.php";
+
 // $idFaculty = $_GET['idl'];
 // $userFacultyId = $_SESSION["current_user"]["faculty_id"];
 // $userId = $_SESSION["current_user"]["u_id"];

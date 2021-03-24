@@ -1,6 +1,5 @@
 <?php
-include "connect_db.php";
-session_start();
+include "../../config.php";
 $date2 = strtotime("2018-09-21 10:44:01");
 
 ?>
@@ -107,15 +106,19 @@ $date2 = strtotime("2018-09-21 10:44:01");
                                                 <td><?php echo $row["topic_deadline"]; ?></td>
                                                 <td><?php echo $row["topic_deadline"]; ?></td>
                                                 <td><span class="badge badge-warning">Processing</span></td>
-                                                <td style="display: flex; justify-content: center;margin: 5px;">
-                                                    <a href="" class="btn btn-info btn-get-info" role="button"
-                                                       data-id="<?= $row['id'] ?>"><i
-                                                                class="mdi mdi-pencil-outline"></i> </a>
-                                                    <a href="" class="btn btn-danger btn-delete-topic" role="button"
-                                                       data-id="<?= $row['id'] ?>"><i class="mdi mdi-delete"></i> </a>
-                                                    <a href="" class="btn btn-primary btn-detail-topic" role="button"
-                                                       data-id="<?= $row['id'] ?>"><i
-                                                                class="mdi mdi-dots-horizontal"></i> </a>
+                                                <td>
+                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <a href="" class="btn btn-info btn-get-info" role="button"
+                                                           data-id="<?= $row['id'] ?>"><i
+                                                                    class="mdi mdi-pencil-outline"></i> </a>
+                                                        <a href="" class="btn btn-danger btn-delete-topic" role="button"
+                                                           data-id="<?= $row['id'] ?>"><i class="mdi mdi-delete"></i>
+                                                        </a>
+                                                        <a href="" class="btn btn-primary btn-detail-topic"
+                                                           role="button"
+                                                           data-id="<?= $row['id'] ?>"><i
+                                                                    class="mdi mdi-dots-horizontal"></i> </a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             <?php
@@ -225,7 +228,9 @@ $date2 = strtotime("2018-09-21 10:44:01");
                                                         </div>
 
                                                         <div class="model-footer">
-                                                            <input type="button" class="btn btn-warning btn-update-topic" name="change"
+                                                            <input type="button"
+                                                                   class="btn btn-warning btn-update-topic"
+                                                                   name="change"
                                                                    value="Save Changes">
                                                             <button type="button" class="btn btn-secondary"
                                                                     data-dismiss="modal">
@@ -308,9 +313,8 @@ $date2 = strtotime("2018-09-21 10:44:01");
                                                                 <td>22/20/2021</td>
                                                             </tr
                                                             <tr>
-                                                                <td>Desciption</td>
+                                                                <td>Description</td>
                                                                 <td id="t-description">
-                                                                    Desciption here...
                                                                 </td>
                                                             </tr>
                                                             </tbody>
@@ -408,7 +412,7 @@ $date2 = strtotime("2018-09-21 10:44:01");
                 $('#t-name').text(response.data.topic_name);
                 $('#t-id').text(response.data.topic_id);
                 $('#t_deadline').text(response.data.topic_deadline)
-                $('#t-description').text(response.data.f_description)
+                $('#t-description').text(response.data.topic_description)
                 $('#detailTopic').modal();
             }).catch(err => {
 
