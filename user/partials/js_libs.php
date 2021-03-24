@@ -9,10 +9,9 @@
 <script src="/assets/vendor/daterangepicker/daterangepicker.js"></script>
 <script src="/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 <script src="/assets/vendor/bootstrap-notify/bootstrap-notify.min.js"   ></script>
-<script src="/assets/js/atmos.min.js"></script>
+<script src="/assets/js/atmos.js"></script>
 <!--page specific scripts for demo-->
 
 <!--Additional Page includes-->
 <script src="/assets/vendor/apexchart/apexcharts.min.js"></script>
 <!--chart data for current dashboard-->
-<script src="/assets/js/dashboard-01.js" ></script>

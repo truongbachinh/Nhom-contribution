@@ -43,19 +43,18 @@
             </li>
             <?php if (!empty($_SESSION["current_user"]["username"])): ?>
             <li class="nav-item dropdown ">
-                <a class="nav-link dropdown-toggle" href="#"   role="button" data-toggle="dropdown"
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false">
                     <div class="avatar avatar-sm avatar-online">
                         <span class="avatar-title rounded-circle bg-dark">T</span>
                     </div>
                 </a>
                 <div class="dropdown-menu  dropdown-menu-right">
-                    <a class="dropdown-item" onclick="profileButton()"> Profile
-                    </a>
-                    <a class="dropdown-item" onclick="changePassword()"> Reset Password</a>
+                    <a href="/user/profile.php" class="dropdown-item"> Profile</a>
+                    <a href="/user/change-password.php" class="dropdown-item"> Reset Password</a>
                     <a class="dropdown-item" href=""> Help </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" onclick="logoutButton()"> Logout</a>
+                    <a href="/user/logout.php" class="dropdown-item"> Logout</a>
                 </div>
             </li>
             <div class="nav-item m-r-3">
@@ -72,20 +71,3 @@
 
     </nav>
 </header>
-<script type="text/javascript">
-    function logoutButton() {
-        window.location = "/account/logout.php";
-    }
-
-    function loginButton() {
-        window.location = "/account/login.php";
-    }
-
-    function profileButton() {
-        window.location = "./profile.php";
-    }
-
-    function changePassword() {
-        window.location = "./change_password.php";
-    }
-</script>
