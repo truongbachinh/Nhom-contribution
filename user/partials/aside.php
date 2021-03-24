@@ -49,7 +49,7 @@
                         <!--submenu-->
                         <ul class="sub-menu" style="display: block;">
                             <li class="menu-item ">
-                                <a href="#" class=" menu-link">
+                                <a href="/user/admin/manage_users.php" class=" menu-link">
                                     <span class="menu-label">
                                         <span class="menu-name">Manage User</span>
                                     </span>

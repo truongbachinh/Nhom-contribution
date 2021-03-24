@@ -121,6 +121,18 @@ if ($isLoggedIn) {
                 $error = 400;
                 $msg = "Unknown error occurred.";
             }
+            break;
+        case "delete_user":
+            $id = $_POST['id'];
+            $stmt = $conn->prepare("DELETE FROM `user` WHERE `u_id` = ?");
+            if ($stmt->bind_param("i", $id) && $stmt->execute()) {
+                $msg = "Successfully deleted this user.";
+            } else {
+                $error = 400;
+                $msg = "Failed to change password but information is updated.";
+            }
+
+            break;
     }
 } else {
     $error = 500;

@@ -215,7 +215,25 @@ $date2 = strtotime("2018-09-21 10:44:01");
 
 <script>
     function remove(userId) {
-
+        swal({
+            title: "Please confirm",
+            text: 'Are sure you want to delete this user?',
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then((willDelete) => {
+            if (willDelete) {
+                Utils.api('delete_user', {
+                    id: userId,
+                }).then(response => {
+                    $("#editFaculty").modal("hide");
+                    swal("Notice", response.msg, "success").then(function (e) {
+                        location.reload();
+                    });
+                }).catch(err => {
+                })
+            }
+        });
     }
 
     function edit(userId) {
