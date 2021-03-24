@@ -110,7 +110,7 @@ while ($rowSt = mysqli_fetch_array($res)) {
                                     ?>
                                         <tr>
                                             <th scope="row"><?= $stt++ ?></th>
-                                            <td><img src="../images/AvatarListofReport.png"></td>
+                                            <td><img src="../assets/images/AvatarListofReport.png"></td>
                                             <td style="padding: 2.5%;"><?= $stReport["username"] ?></td>
                                             <td style="padding: 2.5%;"><?= $stReport["email"] ?></td>
                                             <td style="padding: 1.5%;">

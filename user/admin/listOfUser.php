@@ -66,7 +66,7 @@ while ($userInfor = mysqli_fetch_array($infor)) {
                     bold; padding-bottom: 1%;padding-top: 1%; border-radius: 10px;">
                         MANAGE SYTEM > <a href="#" style="color: blue;">MANAGE USER</a></div>
                     <div class="col-md-12 mt-4 mb-4" style="font-weight: bold;">
-                        <img src="../images/users2.png" /> USER
+                        <img src="../assets/images/users2.png" /> USER
                     </div>
 
                     <div class="form-group col-md-12 row" style="background-color: #F4F7FC; border-radius: 10px;">
@@ -180,7 +180,7 @@ while ($userInfor = mysqli_fetch_array($infor)) {
                                         <th style="color: black !important" scope="col">STATUS</th>
                                         <th style="color: black !important; width: 10%;" scope="col">CREATE DATE TIME</th>
                                         <th style="color: black !important; width: 10%;" scope="col">UPDATE DATE TIME</th>
-                                        <th scope="col"><img src="../images/dots48.png"></th>
+                                        <th scope="col"><img src="../assets/images/dots48.png"></th>
                                     </tr>
                                 </thead>
                                 <tbody style="text-align: center;">
@@ -189,7 +189,7 @@ while ($userInfor = mysqli_fetch_array($infor)) {
                                     ?>
                                         <tr>
                                             <th scope="row" style="padding: 2.5%;"><?= $i++ ?></th>
-                                            <td><img src="../images/AvatarListofReport.png"></td>
+                                            <td><img src="../assets/images/AvatarListofReport.png"></td>
                                             <td id="fullname" style="padding: 2.5%;"><?= (!empty($row['fullname']) ? $row['fullname'] : "Null") ?></td>
                                             <td id="username" style="padding: 2.5%;"><?= (!empty($row['username']) ? $row['username'] : "Null") ?></td>
                                             <td style="padding: 2.5%;"><?= (!empty($row['email']) ? $row['email'] : "Null") ?></td>
@@ -229,7 +229,7 @@ while ($userInfor = mysqli_fetch_array($infor)) {
                                             <td style="padding: 1.5%;width: 12%;">
 
                                                 <button name="editUserButton" class="updateUserForm" data-id="<?= $row["u_id"] ?>" data-toggle="modal" data-target="#editUser" style="border:none; background:rgb(237, 242, 249); ; padding: 0">
-                                                    <img src="../images/pencil.png"></button>
+                                                    <img src="../assets/images/pencil.png"></button>
 
                                                 <!-- Model edit user  -->
                                                 <div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -305,7 +305,7 @@ while ($userInfor = mysqli_fetch_array($infor)) {
                         <!-- Model delete  -->
 
                         <button class="deleteUserForm" data-id="<?= $row["u_id"] ?>" style="border:none; background: rgb(237, 242, 249);; padding: 0" data-toggle="modal" data-target="#deleteUser">
-                            <img src="../images/trash.png">
+                            <img src="../assets/images/trash.png">
                         </button>
                         <div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -329,7 +329,7 @@ while ($userInfor = mysqli_fetch_array($infor)) {
 
                         <!-- Model view -->
                         <button class="viewUserForm" data-id="<?= $row["u_id"] ?>" data-toggle="modal" data-target="#viewUser" style="border:none; background: rgb(237, 242, 249);; padding: 0">
-                            <img src="../images/dots.png"></button>
+                            <img src="../assets/images/dots.png"></button>
 
                         <div class="modal fade" id="viewUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">

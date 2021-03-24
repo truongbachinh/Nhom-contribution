@@ -7,17 +7,16 @@ $userid = 1;
 $partnerId = 2;
 $_SESSION["userid"] = $userid;
 $_SESSION["partnerId"] = $partnerId;
-
+//
 //printf("select DISTINCT tbl_chat.use_id_1 FROM tbl_chat WHERE tbl_chat.use_id_1 in ($userid, $partnerId) and tbl_chat.use_id_2 in ($userid, $partnerId)");
-$res = mysqli_fetch_array($conn->query("select DISTINCT tbl_chat.use_id_1 FROM tbl_chat WHERE tbl_chat.use_id_1 in ($userid, $partnerId) and tbl_chat.use_id_2 in ($userid, $partnerId)"), MYSQLI_ASSOC);
-var_dump($res);
-exit;
-$useridIsOne = $res["use_id_1"] == $userid;
-$_SESSION["useridIsOne"] = $useridIsOne;
+//$res = mysqli_fetch_array($conn->query("select DISTINCT tbl_chat.use_id_1 FROM tbl_chat WHERE tbl_chat.use_id_1 in ($userid, $partnerId) and tbl_chat.use_id_2 in ($userid, $partnerId)"), MYSQLI_ASSOC);
+//var_dump(res);
+//exit;
+//$useridIsOne = $res["use_id_1"] == $userid;
+//$_SESSION["useridIsOne"] = $useridIsOne;
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
 <html>
 <head>
 
