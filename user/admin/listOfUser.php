@@ -4,8 +4,6 @@ session_start();
 
 $i = 1;
 $res = mysqli_query($conn, "select * from user");
-$rows = mysqli_fetch_array($res, MYSQLI_ASSOC);
-$id = $rows["u_id"];
 
 ?>
 <!DOCTYPE html>
@@ -111,6 +109,7 @@ $id = $rows["u_id"];
                                                             <option value="admin">Admin</option>
                                                         </select>
                                                     </div>
+
                                                     <div class="form-group">
                                                         <label for="inputStatus">Status</label>
                                                         <select name="statusOption" class="form-select" style="width: 100%;height: 34px;border-color: #D4D2D2;border-radius: 5px">
@@ -147,6 +146,7 @@ $id = $rows["u_id"];
                                         <th style="color: black !important" scope="col">USERNAME</th>
                                         <th style="color: black !important" scope="col">EMAIL</th>
                                         <th style="color: black !important; width: 10%;" scope="col">CREATE DATE TIME</th>
+                                        <th style="color: black !important; width: 10%;" scope="col">UPDATE DATE TIME</th>
                                         <th style="color: black !important" scope="col">ROLE</th>
                                         <th style="color: black !important" scope="col">STATUS</th>
                                         <th scope="col"><img src="../images/dots48.png"></th>
@@ -163,6 +163,18 @@ $id = $rows["u_id"];
                                             <td id="username" style="padding: 2.5%;"><?= (!empty($row['username']) ? $row['username'] : "Null") ?></td>
                                             <td style="padding: 2.5%;"><?= (!empty($row['email']) ? $row['email'] : "Null") ?></td>
                                             <td style="padding: 2.5%;"><?php echo date("d/m/y H:i", $row["u_create_time"]); ?></td>
+                                            <?php
+                                            if (!empty($row['u_update_time'] == 0)) {
+
+                                            ?>
+                                                <td style="padding: 2.5%;">Not Update</td>
+
+                                            <?php
+                                            } else {  ?>
+                                                <td style="padding: 2.5%;"><?php echo date("d/m/y H:i", $row["u_update_time"]); ?></td>
+                                            <?php
+                                            }
+                                            ?>
                                             <td style="padding: 2.5%;"><?= (!empty($row['role']) ? $row['role'] : "Null") ?></td>
 
 
@@ -184,9 +196,9 @@ $id = $rows["u_id"];
 
 
                                             <td style="padding: 1.5%;width: 12%;">
-                                                <a href="listOfUser.php?<?= $id ?>">
-                                                    <button id="updateUserForm" data-id="<?= $id ?>" data-toggle="modal" data-target="#editUser" style="border:none; background:rgb(237, 242, 249); ; padding: 0">
-                                                        <img src="../images/pencil.png"></button></a>
+
+                                                <button name="editUserButton" class="updateUserForm" data-id="<?= $row["u_id"] ?>" data-toggle="modal" data-target="#editUser" style="border:none; background:rgb(237, 242, 249); ; padding: 0">
+                                                    <img src="../images/pencil.png"></button>
 
                                                 <!-- Model edit user  -->
                                                 <div class="modal fade" id="editUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -195,38 +207,43 @@ $id = $rows["u_id"];
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title" id="exampleModalCenterTitle">Edit User
                                                                 </h5>
-                                                                <h1 id="idUser"></h1>
+
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form action="">
+                                                                <form action="" name="formEditUser" method="post" class="form-horizontal" enctype="multipart/form-data">
+                                                                    <div class="form-group">
+                                                                        <label style="    text-align: left;     /* text-align: start; */     display: block;     font-weight: 500;" for="fullName">User Id</label>
+                                                                        <input type="text" name="idUser" class="form-control" id="idUser" readonly>
+                                                                    </div>
+
+
                                                                     <div class="form-group">
                                                                         <label style="    text-align: left;     /* text-align: start; */     display: block;     font-weight: 500;" for="fullName">Full Name</label>
-                                                                        <input type="text" class="form-control" id="inputFullName" name="fullName" Value="Nguyen Thu Thuy">
+                                                                        <input type="text" class="form-control" id="fullname" name="fullName" require>
                                                                     </div>
 
 
                                                                     <div class="form-group">
                                                                         <label style="    text-align: left;     /* text-align: start; */     display: block;     font-weight: 500;" for="userName">User Name</label>
-                                                                        <input type="text" class="form-control" id="inputUserName" name="userName" value="Thuy">
+                                                                        <input type="text" class="form-control" id="inputUserName" name="userName" require>
                                                                     </div>
+                                                                    <div class="form-group">
+                                                                        <label style="    text-align: left;     /* text-align: start; */     display: block;     font-weight: 500;" for="userName">Password</label>
+                                                                        <input type="text" class="form-control" id="inputUserName" name="password" require>
+                                                                    </div>
+
 
 
                                                                     <div class="form-group">
                                                                         <label style="    text-align: left;     /* text-align: start; */     display: block;     font-weight: 500;" for="inputEmail">Email</label>
-                                                                        <input type="email" class="form-control" id="inputEmail" name="Email" Value="haduc2468@gmail.com">
+                                                                        <input type="email" class="form-control" id="inputEmail" name="Email" require>
                                                                     </div>
-                                                                    <div class="form-group">
-                                                                        <label style="    text-align: left;     /* text-align: start; */     display: block;     font-weight: 500;" for="inputCreateDateTime">Create Date Time </label>
-                                                                        <input type="date" class="form-control" id="inputCreateDateTime" name="dateTime" value="11/10/2020">
-                                                                    </div>
-
-
                                                                     <div class="form-group">
                                                                         <label for="inputRole" style="    text-align: left;     /* text-align: start; */     display: block;     font-weight: 500;">Role</label>
-                                                                        <select class="form-select" style="width: 100%;height: 34px;border-color: #D4D2D2;border-radius: 5px">
+                                                                        <select require name="roleOption" class="form-select" style="width: 100%;height: 34px;border-color: #D4D2D2;border-radius: 5px">
                                                                             <option selected value="student">Student</option>
                                                                             <option value="manager-coordinator">Manager Coordinator</option>
                                                                             <option value="manager-marketing">Manager Marketing</option>
@@ -235,16 +252,17 @@ $id = $rows["u_id"];
                                                                     </div>
 
                                                                     <div class="form-group">
-                                                                        <label style="    text-align: left;     /* text-align: start; */     display: block;     font-weight: 500;" for="inputStatus">Status</label>
-                                                                        <select class="form-select" style="width: 100%;height: 34px;border-color: #D4D2D2;border-radius: 5px" value="1">
-                                                                            <option selected value="active">Active</option>
-                                                                            <option value="non-active">Non-active</option>
+                                                                        <label for="inputStatus" style="    text-align: left;     /* text-align: start; */     display: block;     font-weight: 500;">Status</label>
+                                                                        <select name="statusOption" class="form-select" style="width: 100%;height: 34px;border-color: #D4D2D2;border-radius: 5px">
+                                                                            <option selected>--Select--</option>
+                                                                            <option value="1">Active</option>
+                                                                            <option value="0">Non-active</option>
                                                                         </select>
                                                                     </div>
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                                         Close
                                                                     </button>
-                                                                    <input type="button" class="btn btn-primary" name="change" value="Save changes">
+                                                                    <input type="submit" class="btn btn-primary" name="changeUser" value="Save changes">
                                                                 </form>
                                                             </div>
 
@@ -254,7 +272,8 @@ $id = $rows["u_id"];
                         </div>
 
                         <!-- Model delete  -->
-                        <button style="border:none; background: rgb(237, 242, 249);; padding: 0" data-toggle="modal" data-target="#deleteUser">
+
+                        <button class="deleteUserForm" data-id="<?= $row["u_id"] ?>" style="border:none; background: rgb(237, 242, 249);; padding: 0" data-toggle="modal" data-target="#deleteUser">
                             <img src="../images/trash.png">
                         </button>
                         <div class="modal fade" id="deleteUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -278,7 +297,7 @@ $id = $rows["u_id"];
                         </div>
 
                         <!-- Model view -->
-                        <button data-toggle="modal" data-target="#viewUser" style="border:none; background: rgb(237, 242, 249);; padding: 0">
+                        <button class="viewUserForm" data-id="<?= $row["u_id"] ?>" data-toggle="modal" data-target="#viewUser" style="border:none; background: rgb(237, 242, 249);; padding: 0">
                             <img src="../images/dots.png"></button>
 
                         <div class="modal fade" id="viewUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -358,7 +377,13 @@ $id = $rows["u_id"];
         </section>
     </main>
 </body>
-
+<!-- jquery 4 cdn -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS 
+    -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src='https://d33wubrfki0l68.cloudfront.net/bundles/85bd871e04eb889b6141c1aba0fedfa1a2215991.js'></script>
 <!--page specific scripts for demo-->
 
@@ -379,29 +404,48 @@ $id = $rows["u_id"];
 <!--chart data for current dashboard-->
 <script src='https://d33wubrfki0l68.cloudfront.net/js/d678dabfdc5c3131d492af7ef517fbe46fbbd8e4/light/assets/js/dashboard-01.js'></script>
 
-<!-- <script>
+
+<script>
     document.addEventListener('DOMContentLoaded', function() {
         var id;
         var btnDelete = document.getElementById('updateUserForm');
 
         $('#editUser').on('show.bs.modal', function(event) {
             var button = $(event.relatedTarget);
-            var id = button.data('id');
+            id = button.data('id');
+            console.log(id);
+            $('input[id=idUser]').val(id);
+
         });
     })
-</script> -->
+    document.addEventListener('DOMContentLoaded', function() {
+        var id;
+        var btnDelete = document.getElementById('deleteUserForm');
 
-<script>
-    $(document).ready(function() {
-        $('#updateUserForm').on('click', function() {
-            $('#editUser').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget);
-                var id = button.data('id');
-            });
+        $('#deleteUser').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget);
+            id = button.data('id');
+            console.log(id);
+            $('#idUser').val("id");
+            $('input[id=idUser]').val(id);
 
-        })
+        });
+    })
+    document.addEventListener('DOMContentLoaded', function() {
+        var id;
+        var btnDelete = document.getElementById('viewUserForm');
+
+        $('#viewUser').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget);
+            id = button.data('id');
+            console.log(id);
+            $('#idUser').val("id");
+            $('input[id=idUser]').val(id);
+
+        });
     })
 </script>
+
 
 </body>
 
@@ -432,8 +476,21 @@ if (isset($_POST["addNewUser"])) {
                 window.location.replace("./listOfUser.php");
             </script>
 
-<?php
+        <?php
         }
+    }
+}
+if (isset($_POST["changeUser"])) {
+    var_dump($_POST);
+    $updateUser = $conn->query("UPDATE `user` SET `username` = '$_POST[userName]', `password` ='$_POST[password]', `email`= '$_POST[Email]', `status` ='$_POST[statusOption]', `role` ='$_POST[roleOption]', `fullname` = '$_POST[fullName]', `u_update_time` =  '" . time() . "' WHERE `u_id` = '$_POST[idUser]'");
+    if ($updateUser == true) {
+        ?>
+        <script type="text/javascript">
+            alert("Add user successful");
+            window.location.replace("./listOfUser.php");
+        </script>
+
+<?php
     }
 }
 

@@ -1,26 +1,46 @@
 <?php
 session_start();
-include "../../connect_db.php";
-?>
+include "./connect_db.php";
 
-<?php
-// Perform query
-$user_id = 353;
-$file_faculty_id = 34;
-$result = mysqli_query($conn, "SELECT * FROM file_submit_to_system WHERE user_id = $user_id and $file_faculty_id = $file_faculty_id");
-$file_submit_to_system = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$userId = $_SESSION["current_user"]["u_id"];
+
+$idFaculty = $_GET["idf"];
+$idTopic = $_GET["idt"];
+
+$topic = $conn->query("SELECT * from topic where id = '$idTopic' ");
+$topicSubmit = mysqli_fetch_assoc($topic);
+$faculty = $conn->query("SELECT * from faculty where f_id = '$idFaculty' ");
+$facultySubmit = mysqli_fetch_assoc($faculty);
+
+$file = $conn->query("SELECT * from file_submit_to_topic where file_userId_uploaded = '$userId' AND `file_topic_uploaded` = '$idTopic' ");
+
+if ($file == true) {
+    $fileSubmit = mysqli_fetch_assoc($file);
+}
 
 $current = strtotime(date("Y-m-d h:i:s"));
-$date    = strtotime($file_submit_to_system["file_date_uploaded"]);
+// $date    = strtotime($topicSubmit["topic_deadline"]);
+// $a = ($current - $date) / 60 / 60 / 24;
+// echo ($a);
 
-$datediff = $current - $date;
+$selected_date = ($topicSubmit["topic_deadline"]);
+// echo $selected_date, "a ";
+$duration = 14;
+$duration_type = 'day';
+$date1 = ("2021/05/06 22:00:00");
+$deadline = date('Y/m/d H:i:s', strtotime($selected_date . ' +' . $duration . ' ' . $duration_type));
+// echo $deadline;
+$diff = strtotime($date1) - strtotime($deadline);
+var_dump($diff);
+// exit;
 ?>
-
 <?php
+
 
 function getDifferenceToDate($date1, $date2)
 {
     $diff = strtotime($date2) - strtotime($date1);
+
     if ($diff < 0) {
         print_r("Đã hết hạn nộp");
         return;
@@ -32,45 +52,90 @@ function getDifferenceToDate($date1, $date2)
         / (30 * 60 * 60 * 24));
 
     $days = floor(($diff - $years * 365 * 60 * 60 * 24 -
-            $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+        $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
 
     $hours = floor(($diff - $years * 365 * 60 * 60 * 24
-            - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24)
+        - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24)
         / (60 * 60));
 
     if ($years != 0) {
-        printf("%d years, %d months, %d days, %d hours", $years, $months,
-            $days, $hours);
+        printf(
+            "%d years, %d months, %d days, %d hours",
+            $years,
+            $months,
+            $days,
+            $hours
+        );
     } else if ($months != 0) {
-        printf("%d months, %d days, %d hours", $months,
-            $days, $hours);
+        printf(
+            "%d months, %d days, %d hours",
+            $months,
+            $days,
+            $hours
+        );
     } else {
-        printf("%d days, %d hours",
-            $days, $hours);
+        printf(
+            "%d days, %d hours",
+            $days,
+            $hours
+        );
     }
 }
 
 ?>
+?>
+
+
 
 <?php
-if(isset($_POST['uploadFile'])) {
-    echo("Test");
+if (isset($_POST['uploadFile'])) {
+
+
+
+
+
+
     $tm = md5(time());
-    var_dump($_FILES);
+
     $fnm1 = $_FILES["inputFileArticle"]["name"];
     $dst1 = "./image/" . $tm . $fnm1;
     $dst_db1 = "image/" . $tm . $fnm1;
     move_uploaded_file($_FILES["inputFileArticle"]["tmp_name"], $dst1);
-    $date_uploaded = date('Y-m-d h:i:s');
-    $query = "insert into file_submit (file_id, file_content_upload, file_date_uploaded) values (NULL, '$dst1', '$date_uploaded')";
-    $upload_query = mysqli_query($conn, $query);
-    $file_submit_id_result = mysqli_query($conn, "SELECT file_id FROM file_submit WHERE file_content_upload = '$dst1'");
-    var_dump($file_submit_id_result);
-    $file_submit_id = mysqli_fetch_array($file_submit_id_result, MYSQLI_ASSOC)["file_id"];
-    $file_id = $file_submit_to_system["file_id"];
-    $request = "UPDATE file_submit_to_system SET file_submit_id = $file_submit_id WHERE file_id = $file_id";
-    echo $request;
-    mysqli_query($conn, $request );
+
+
+
+    $upload_query = $conn->query("INSERT INTO `file_submit_to_topic` (`id`, `file_name`, `file_authod`, `file_content`, `file_status`, `file_date_uploaded`,  `file_topic_uploaded`, `file_userId_uploaded`) VALUES (NULL, '$_POST[nameArticle]', '$_POST[nameAuthor]', '$dst1','1', '" . time() . "', '$idTopic', '$userId')");
+    if ($upload_query == true) {
+
+
+        $to = "chinhtbgch17527@fpt.edu.vn.com";
+        $subject = "This is subject";
+
+        $message = "<b>This is HTML message.</b>";
+        $message .= "<h1>This is headline.</h1>";
+
+        $header = "From:my-gmail-id@gmail.com \r\n";
+        $header .= "Cc:my-gmail-id@gmail.com \r\n";
+        $header .= "MIME-Version: 1.0\r\n";
+        $header .= "Content-type: text/html\r\n";
+
+        $retval = mail($to, $subject, $message, $header);
+
+        if ($retval == true) {
+            echo "Message sent successfully...";
+        } else {
+            echo "Message could not be sent...";
+
+            exit;
+        }
+    }
+    // $file_submit_id_result = mysqli_query($conn, "SELECT file_id FROM file_submit WHERE file_content_upload = '$dst1'");
+    // var_dump($file_submit_id_result);
+    // $file_submit_id = mysqli_fetch_array($file_submit_id_result, MYSQLI_ASSOC)["file_id"];
+    // $file_id = $file_submit_to_system["file_id"];
+    // $request = "UPDATE file_submit_to_system SET file_submit_id = $file_submit_id WHERE file_id = $file_id";
+    // echo $request;
+    // mysqli_query($conn, $request);
 }
 ?>
 <!DOCTYPE html>
@@ -120,8 +185,13 @@ if(isset($_POST['uploadFile'])) {
             <div class="container m-t-30">
                 <div class="card m-b-30">
                     <div class="card-header">
-                        <h5 class="m-b-0">
-                            Cloud computing
+                        <h1 class="m-b-0">
+                            Submit Article to faculty <span style="color:red"> <?= $facultySubmit['f_name'] ?></span>
+                        </h1>
+                        <br>
+                        <br>
+                        <h5>
+                            This is topic <span style="color:red"> <?= $topicSubmit['topic_name'] ?></span>
                         </h5>
                         <p class="m-b-0 text-muted">
                         </p>
@@ -131,39 +201,70 @@ if(isset($_POST['uploadFile'])) {
                             <tbody>
                                 <tr>
                                     <td>Submission</td>
-                                    <td>No attempt</td>
+                                    <td><?php
+
+                                        if ($fileSubmit == NULL) {
+                                        ?>
+                                            <span>Not Submitted</span>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <span>Submitted for grading</span>
+                                        <?php
+                                        }
+                                        ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Grading status</td>
                                     <td><?php
 
-                                        if ($file_submit_to_system["status"] == 0) {
-                                            print_r("Not graded");
-                                        } else if ($file_submit_to_system["status"] == 1) {
-                                            print_r("Processing");
-                                        } else if ($file_submit_to_system["status"] == 2) {
-                                            print_r("Approved");
-                                        } else if ($file_submit_to_system["status"] == 3) {
-                                            print_r("Rejected");
+                                        if (!empty($file == false)) {
+                                        ?>
+                                            <span>Not Graded</span>
+                                        <?php
+                                        } else if (!empty($fileSubmit["file_status"]) == "1") {
+                                        ?>
+                                            <span>Processing</span>
+                                        <?php
+
+                                        } else if (!empty($fileSubmit["file_status"]) == "2") {
+                                        ?>
+                                            <span>Approved</span>
+                                        <?php
+
+                                        } else if (!empty($fileSubmit["file_status"]) == "3") {
+                                        ?>
+                                            <span>Rejected</span>
+                                        <?php
                                         }
-                                        ?></td>
+                                        ?>
                                 </tr>
                                 <tr>
-                                    <td>Due date</td>
-                                    <td><?php
-                                        echo $file_submit_to_system["file_date_uploaded"];
-                                        ?></td>
+                                    <td>Deadline date</td>
+                                    <td>
+                                        <?=
+                                        (!empty($topicSubmit["topic_deadline"]) ?  $deadline : "Not submited"); ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Time remaining</td>
                                     <td>Deadline is overdue by:
-                                        <?php getDifferenceToDate($file_submit_to_system["file_date_uploaded"], date("Y-m-d h:i:s")); ?>
+                                        <?php (!empty($fileSubmit["file_date_uploaded"]) ? getDifferenceToDate($fileSubmit["file_date_uploaded"], date("Y-m-d h:i:s")) : "Not submited"); ?>
                                     </td>
                                 </tr>
+                                <!-- <tr>
+                                    <td>Time submit</td>
+
+                                    <td>
+                                        <?= (!empty($fileSubmit["file_date_uploaded"]) ? date("d/m/Y H:i:s", $fileSubmit["file_date_uploaded"]) : "Not submited") ?>
+                                    </td>
+                                </tr> -->
                                 <tr>
                                     <td>Last modified</td>
+
                                     <td>
-                                        <?php getDifferenceToDate($file_submit_to_system["file_date_edited"], date("Y-m-d h:i:s")); ?>
+                                        <?= (!empty($fileSubmit["file_date_edited"]) ? getDifferenceToDate($fileSubmit["file_date_edited"], date("Y-m-d h:i:s")) : "Not updated") ?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -182,41 +283,44 @@ if(isset($_POST['uploadFile'])) {
                                         </div>
                                     </td>
                                 </tr>
-                                <?php
-                                if($datediff < 0) {
-                                    ?>
+                                <!-- <?php
+                                        if ($datediff < 0) {
+                                        ?>
                                     <tr>
                                         <td></td>
-                                        <td style="text-align: right"><div style="color: red">
+                                        <td style="text-align: right">
+                                            <div style="color: red">
                                                 Bạn đã hết hạn nộp bài.
-                                            </div></td>
+                                            </div>
+                                        </td>
                                     </tr>
-                                    <?php
-                                }
-                                ?>
+                                <?php
+                                        }
+                                ?> -->
                             </tbody>
                         </table>
                     </div>
                     <div class=" card-footer button-submit text-center">
-                        <?php
-                        if ($datediff > 0) {
-                            ?>
+                        <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target=".modal-submit-artical">Add Submission
+                        </button>
+                        <!-- <?php
+                                if ($datediff > 0) {
+                                ?>
                             <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target=".modal-submit-artical">Add Submission
                             </button>
                         <?php
-                        }
-                        else {
-                            ?>
+                                } else {
+                        ?>
                             <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target=".modal-submit-artical" disabled>Add Submission
                             </button>
-                            <?php
-                        }
-                        ?>
+                        <?php
+                                }
+                        ?> -->
                     </div>
 
-<!--                    <form method="post">-->
-<!--                        <input type="submit" name="uploadFile" class="btn btn-primary" value="uploadFile" id="uploadFile" />-->
-<!--                    </form>-->
+                    <!--                    <form method="post">-->
+                    <!--                        <input type="submit" name="uploadFile" class="btn btn-primary" value="uploadFile" id="uploadFile" />-->
+                    <!--                    </form>-->
 
                     <!-- Modal -->
 
@@ -230,58 +334,59 @@ if(isset($_POST['uploadFile'])) {
                                     </button>
                                 </div>
                                 <form method="post" enctype="multipart/form-data">
-                                <div class="modal-body">
-                                    <div class="card-header">
-                                        <p class="m-b-0 text-muted">
-                                            Students are need to provide complete information prior to submitting an
-                                            article.
-                                        </p>
-                                    </div>
-<form action="" method="post" enctype="multipart/form-data">
-    <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="inputName">Name of article</label>
-                                                <input type="text" class="form-control" id="inputName" name="nameArticle" placeholder="Name of article">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="inputAuthor">Author</label>
-                                                <input type="text" class="form-control" id="inputAuthor" name="nameAuthor">
-                                            </div>
+                                    <div class="modal-body">
+                                        <div class="card-header">
+                                            <p class="m-b-0 text-muted">
+                                                Students are need to provide complete information prior to submitting an
+                                                article.
+                                            </p>
                                         </div>
-                                        <div class="form-group"">
-                                        <div>
-                                            <p class=" font-secondary">File Uploads</p>
-                                        <div class="form-group">
-                            <div>
-                                <p class=" font-secondary">File Uploads</p>
-                                            <div class="input-group mb-3">
-                                                <div class="custom-file" onload="GetFileInfo ()">
-                                                    <input type="file" class="custom-file-input" id="inputFile" name="inputFileArticle" multiple onchange="GetFileInfo ()">
-                                                    <label class="custom-file-label" for="inputFile">Choose file</label>
+                                        <form action="" method="post" enctype="multipart/form-data">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputName">Name of article</label>
+                                                    <input type="text" class="form-control" id="inputName" name="nameArticle" placeholder="Name of article">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="inputAuthor">Author</label>
+                                                    <input type="text" class="form-control" id="inputAuthor" name="nameAuthor">
                                                 </div>
                                             </div>
-                                            <div id="info" style="margin-top:10px"></div>
-                                        </div></div>
-                                <div class="form-group">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="gridCheck" name="agree">
-                                        <label class="form-check-label" for="gridCheck">
-                                            I agree to the Terms and Conditions
-                                        </label>
+                                            <div class="form-group">
+                                                <div>
+                                                    <p class=" font-secondary">File Uploads</p>
+                                                    <div class="form-group">
+                                                        <div>
+                                                            <p class=" font-secondary">File Uploads</p>
+                                                            <div class="input-group mb-3">
+                                                                <div class="custom-file" onload="GetFileInfo ()">
+                                                                    <input type="file" class="custom-file-input" id="inputFile" name="inputFileArticle" multiple onchange="GetFileInfo ()">
+                                                                    <label class="custom-file-label" for="inputFile">Choose file</label>
+                                                                </div>
+                                                            </div>
+                                                            <div id="info" style="margin-top:10px"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="gridCheck" name="agree">
+                                                            <label class="form-check-label" for="gridCheck">
+                                                                I agree to the Terms and Conditions
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group  float-right">
+                                                        <input type="submit" name="uploadFile" class="btn btn-primary" value="uploadFile" id="uploadFile"></input>
+                                                        <!--                                    <button type="submit" value="Upload" name="uploadFile" class="btn btn-primary" value="uploadFile" id="uploadFile" onclick="onUploadI()">Submit</button>--> <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                            Close
+                                                        </button>
+                                                    </div>
+                                        </form>
                                     </div>
-                                </div>
-                                <div class="form-group  float-right">
-                                    <input type="submit" name="uploadFile" class="btn btn-primary" value="uploadFile" id="uploadFile"></input>
-<!--                                    <button type="submit" value="Upload" name="uploadFile" class="btn btn-primary" value="uploadFile" id="uploadFile" onclick="onUploadI()">Submit</button>-->                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                        Close
-                                    </button>
-                                </div>
-                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
     </main>
     </section>

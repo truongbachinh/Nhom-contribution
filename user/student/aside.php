@@ -1,7 +1,7 @@
 <aside class="admin-sidebar">
     <div class="admin-sidebar-brand">
         <!-- begin sidebar branding-->
-        <img class="admin-brand-logo" >LOGO TEAM </img>
+        <img class="admin-brand-logo">LOGO TEAM </img>
         <!-- end sidebar branding-->
         <div class="ml-auto">
             <!-- sidebar pin-->
@@ -49,15 +49,15 @@
             <li class="menu-item ">
                 <a href="#" class="open-dropdown menu-link">
                     <span class="menu-label">
-                        <span class="menu-name">My Faculty
-                        </span>
+                        <a href="./select_faculty.php"> <span class="menu-name">My Faculty
+                            </span></a>
                     </span>
                     <span class="menu-icon">
                         <i class="icon-placeholder fe fe-folder"></i>
                     </span>
                 </a>
             </li>
-        
+
         </ul>
     </div>
 </aside>

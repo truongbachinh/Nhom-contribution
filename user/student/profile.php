@@ -3,7 +3,11 @@ include "./connect_db.php";
 session_start();
 $userId = $_SESSION["current_user"]["u_id"];
 $resultInfor = mysqli_query($conn, "select * from user_infor where user_id = '$userId'");
+$result = mysqli_query($conn, "select * from user where u_id = '$userId'");
 $rowInfor = mysqli_fetch_array($resultInfor, MYSQLI_ASSOC);
+$rowUserInfor = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +68,7 @@ $rowInfor = mysqli_fetch_array($resultInfor, MYSQLI_ASSOC);
 
                                     </div>
                                     <h4 class="text-center m-t-20">
-                                        <div class="text text-center m-b-5"><?= $rowInfor["name"] ?></div>
+                                        <div class="text text-center m-b-5"><?= $rowUserInfor["fullname"] ?></div>
                                     </h4>
                                 </div>
                                 <!-- Modal edit profile -->
@@ -148,7 +152,7 @@ $rowInfor = mysqli_fetch_array($resultInfor, MYSQLI_ASSOC);
                                                         </div>
                                                         <div class="col-md-6">
                                                             <?php
-                                                            if ($rowInfor["id_card"]) {
+                                                            if (!empty($rowInfor["id_card"])) {
                                                             ?>
                                                                 <p><?= $rowInfor["id_card"] ?></p>
                                                             <?php
@@ -167,7 +171,7 @@ $rowInfor = mysqli_fetch_array($resultInfor, MYSQLI_ASSOC);
                                                         </div>
                                                         <div class="col-md-6">
                                                             <?php
-                                                            if ($rowInfor["name"]) {
+                                                            if (!empty($rowInfor["name"])) {
                                                             ?>
                                                                 <p><?= $rowInfor["name"] ?></p>
                                                             <?php
@@ -185,7 +189,7 @@ $rowInfor = mysqli_fetch_array($resultInfor, MYSQLI_ASSOC);
                                                         </div>
                                                         <div class="col-md-6">
                                                             <?php
-                                                            if ($rowInfor["DOB"]) {
+                                                            if (!empty($rowInfor["DOB"])) {
                                                             ?>
                                                                 <p><?= $rowInfor["DOB"] ?></p>
                                                             <?php
@@ -204,7 +208,7 @@ $rowInfor = mysqli_fetch_array($resultInfor, MYSQLI_ASSOC);
                                                         </div>
                                                         <div class="col-md-6">
                                                             <?php
-                                                            if ($rowInfor["phone"]) {
+                                                            if (!empty($rowInfor["phone"])) {
                                                             ?>
                                                                 <p><?= $rowInfor["phone"] ?></p>
                                                             <?php
@@ -222,7 +226,7 @@ $rowInfor = mysqli_fetch_array($resultInfor, MYSQLI_ASSOC);
                                                         </div>
                                                         <div class="col-md-6">
                                                             <?php
-                                                            if ($rowInfor["email"]) {
+                                                            if (!empty($rowInfor["email"])) {
                                                             ?>
                                                                 <p><?= $rowInfor["email"] ?></p>
                                                             <?php
@@ -240,7 +244,7 @@ $rowInfor = mysqli_fetch_array($resultInfor, MYSQLI_ASSOC);
                                                         </div>
                                                         <div class="col-md-6">
                                                             <?php
-                                                            if ($rowInfor["major"]) {
+                                                            if (!empty($rowInfor["major"])) {
                                                             ?>
                                                                 <p><?= $rowInfor["major"] ?></p>
                                                             <?php
@@ -309,19 +313,26 @@ $rowInfor = mysqli_fetch_array($resultInfor, MYSQLI_ASSOC);
 <?php
 if (isset($_POST["updateProfile"])) {
 
-    if ($resultInfor == false) {
+    if ($rowInfor == NULL) {
 
-        $t = mysqli_query($conn, "INSERT INTO `user_infor` (`user_id`, `id_card`, `name`, `address`, `phone`,`email`, `DOB`, `major`) VALUES ('$userId', '$_POST[idStudent]', '$_POST[nameStudent]', '$_POST[address]', '$_POST[phone]','$_POST[email]', '$_POST[DoB]', '$_POST[major]');");
+        $addInfor = mysqli_query($conn, "INSERT INTO `user_infor` (`user_id`, `id_card`, `name`, `address`, `phone`,`email`, `DOB`, `major`) VALUES ('$userId', '$_POST[idStudent]', '$_POST[nameStudent]', '$_POST[address]', '$_POST[phone]','$_POST[email]', '$_POST[DoB]', '$_POST[major]');");
     } else {
-        $t = mysqli_query($conn, "update `user_infor` set `user_id` = '$userId' , `id_card`  = '$_POST[idStudent]', `name`  = '$_POST[nameStudent]', `address`  = '$_POST[address]', `phone`  = '$_POST[phone]',`email`  = '$_POST[email]', `DOB`  = '$_POST[DoB]', `major` = '$_POST[major]';");
+        $updateInfor = mysqli_query($conn, "update `user_infor` set `user_id` = '$userId' , `id_card`  = '$_POST[idStudent]', `name`  = '$_POST[nameStudent]', `address`  = '$_POST[address]', `phone`  = '$_POST[phone]',`email`  = '$_POST[email]', `DOB`  = '$_POST[DoB]', `major` = '$_POST[major]';");
     }
 
 
 
-    if ($t == true) {
+    if ($updateInfor == true) {
 ?>
         <script type="text/javascript">
             alert("update Infor successful");
+            window.location.replace("./profile.php");
+        </script>
+    <?php
+    } elseif ($addInfor == true) {
+    ?>
+        <script type="text/javascript">
+            alert("add Infor successful");
             window.location.replace("./profile.php");
         </script>
     <?php
