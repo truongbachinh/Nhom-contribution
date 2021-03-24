@@ -20,7 +20,6 @@ $pageTitle = "CMS";
     <!-- PLACE CODE INSIDE THIS AREA -->
 
 
-
     <!--/ PLACE CODE INSIDE THIS AREA -->
 </main>
 <?php include "partials/js_libs.php"; ?>
