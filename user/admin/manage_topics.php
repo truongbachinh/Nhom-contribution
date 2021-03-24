@@ -25,8 +25,6 @@ $date2 = strtotime("2018-09-21 10:44:01");
                                 <h4> Manage Topic </h4>
                             </div>
                         </div>
-
-
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6">

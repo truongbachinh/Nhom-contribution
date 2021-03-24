@@ -75,7 +75,6 @@ while ($userInfor = mysqli_fetch_array($infor)) {
                                 <input type="text" class="form-control col-md-6" placeholder="Search">
                             </div>
 
-
                             <!-- Modal add user -->
                             <div class="form-group col-md-6">
                                 <button type="button" class="btn btn-primary col-md-4 float-right" data-toggle="modal" data-target="#exampleModalCenter" style="margin-right: 10%;">
