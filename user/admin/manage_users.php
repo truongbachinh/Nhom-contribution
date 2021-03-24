@@ -267,7 +267,11 @@ $date2 = strtotime("2018-09-21 10:44:01");
     }
 
     function detail(userId) {
-
+        Utils.api("get_user_info", {
+            id: userId
+        }).then(response => {
+            $('#userDetail').modal();
+        });
     }
 </script>
 </body>
