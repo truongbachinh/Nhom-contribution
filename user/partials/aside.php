@@ -59,7 +59,7 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="./admin/manage_faculties.php" class=" menu-link">
+                                <a href="/user/admin/manage_faculties.php" class=" menu-link">
                                      <span class="menu-label">
                                         <span class="menu-name">Manage Faculty</span>
                                          </span>
@@ -69,7 +69,7 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="./admin/manage-topics.php" class=" menu-link">
+                                <a href="/user/admin/manage-topics.php" class=" menu-link">
                                     <span class="menu-label">
                                         <span class="menu-name">Manage Topic</span>
                                     </span>
@@ -79,7 +79,7 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="./admin/manage_users.php" class=" menu-link">
+                                <a href="/user/admin/manage_users.php" class=" menu-link">
                                     <span class="menu-label">
                                          <span class="menu-name">Manage User</span>
                                     </span>
@@ -89,7 +89,7 @@
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="./admin/manage_articles.php" class=" menu-link">
+                                <a href="/user/admin/manage_articles.php" class=" menu-link">
                                     <span class="menu-label">
                                         <span class="menu-name">Manage Article</span>
                                      </span>
