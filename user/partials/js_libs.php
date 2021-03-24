@@ -15,3 +15,4 @@
 <!--Additional Page includes-->
 <script src="/assets/vendor/apexchart/apexcharts.min.js"></script>
 <!--chart data for current dashboard-->
+<script src="/assets/js/utils.js"></script>
