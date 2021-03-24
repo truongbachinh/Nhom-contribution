@@ -21,5 +21,6 @@
 <!--Material Icons-->
 <link rel="stylesheet" type="text/css" href="/assets/fonts/feather/feather-icons.css">
 <!--Bootstrap + atmos Admin CSS-->
-<link rel="stylesheet" type="text/css" href="/assets/css/atmos.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/atmos.min.css"/>
 <!-- Additional library for page -->
+<link rel="stylesheet" type="text/css" href="/assets/css/student.css"/>
