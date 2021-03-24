@@ -18,7 +18,8 @@ echo "Role: " . ($_SESSION["current_user"]["role"]);
             <li class="menu-item active ">
                 <a href="#" class="menu-link">
                     <span class="menu-label">
-                        <span class="menu-name">Homescreen
+                        <span class="menu-name">
+                            Home
                         </span>
                     </span>
                     <span class="menu-icon">
@@ -29,7 +30,8 @@ echo "Role: " . ($_SESSION["current_user"]["role"]);
             <li class="menu-item ">
                 <a href="#" class="open-dropdown menu-link">
                     <span class="menu-label">
-                        <span class="menu-name">Dashboard
+                        <span class="menu-name">
+                            Dashboard
                         </span>
                     </span>
                     <span class="menu-icon">
@@ -40,7 +42,9 @@ echo "Role: " . ($_SESSION["current_user"]["role"]);
             <li class="menu-item ">
                 <a href="#" class="open-dropdown menu-link">
                     <span class="menu-label">
-                            <span class="menu-name">My Faculty </span>
+                        <span class="menu-name">
+                            My Faculty
+                        </span>
                     </span>
                     <span class="menu-icon">
                         <i class="icon-placeholder fe fe-folder"></i>

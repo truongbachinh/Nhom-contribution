@@ -41,47 +41,33 @@
                     </div>
                 </div>
             </li>
+            <?php if (!empty($_SESSION["current_user"]["username"])): ?>
             <li class="nav-item dropdown ">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="d-inline-flex">
-                        <div class="avatar avatar-sm avatar-online mr-3">
-                            <span class="avatar-title rounded-circle bg-dark">T</span>
-                        </div>
-
-                        <?php
-                        if (!empty($_SESSION["current_user"]["username"])) {
-
-
-                            ?>
-                            <div class="d-flex flex-column">
-                                <div class="name-student"><?php echo $_SESSION["current_user"]["username"] ?></div>
-                                <div class="role">Student Account</div>
-                            </div>
-                            <div class="dropdown-menu  dropdown-menu-right">
-                                <a class="dropdown-item" onclick="profileButton()"> Profile
-                                </a>
-                                <a class="dropdown-item" onclick="changePassword()"> Reset Password</a>
-                                <a class="dropdown-item" href=""> Help </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" onclick="logoutButton()"> Logout</a>
-                            </div>
-                            <?php
-                        } else {
-                            ?>
-                            <div class="d-flex flex-column">
-                                <div class="name-student">Guest</div>
-
-                            </div>
-                            <div class="dropdown-menu  dropdown-menu-right">
-                                <a class="dropdown-item" onclick="loginButton()"> Login</a>
-                            </div>
-                            <?php
-                        }
-                        ?>
+                <a class="nav-link dropdown-toggle" href="#"   role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-title rounded-circle bg-dark">T</span>
                     </div>
                 </a>
-
+                <div class="dropdown-menu  dropdown-menu-right">
+                    <a class="dropdown-item" onclick="profileButton()"> Profile
+                    </a>
+                    <a class="dropdown-item" onclick="changePassword()"> Reset Password</a>
+                    <a class="dropdown-item" href=""> Help </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" onclick="logoutButton()"> Logout</a>
+                </div>
             </li>
+            <div class="nav-item m-r-3">
+                <a href="/account/login.php">
+                    <b><?=$_SESSION['current_user']['fullname']?></b> (<?=$_SESSION['current_user']['role']?>)
+                </a>
+            </div>
+            <?php else: ?>
+                <li class="nav-item m-r-3">
+                    <a href="/account/login.php" class="btn btn-dark">Login</a>
+                </li>
+            <?php endif; ?>
         </ul>
 
     </nav>
