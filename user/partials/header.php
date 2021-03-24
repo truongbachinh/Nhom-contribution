@@ -67,8 +67,6 @@
                             </div>
                             <?php
                         } else {
-
-
                             ?>
                             <div class="d-flex flex-column">
                                 <div class="name-student">Guest</div>
@@ -90,11 +88,11 @@
 </header>
 <script type="text/javascript">
     function logoutButton() {
-        window.location = "/b/contribution_application/account/logout.php";
+        window.location = "/account/logout.php";
     }
 
     function loginButton() {
-        window.location = "/b/contribution_application/account/login.php";
+        window.location = "/account/login.php";
     }
 
     function profileButton() {

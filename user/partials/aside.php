@@ -1,3 +1,6 @@
+<?php
+echo "Role: " . ($_SESSION["current_user"]["role"]);
+?>
 <aside class="admin-sidebar">
     <div class="admin-sidebar-brand">
         <!-- begin sidebar branding-->
