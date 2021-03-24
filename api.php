@@ -51,7 +51,7 @@ if ($isLoggedIn) {
             break;
         case "get_topic_info":
             $id = $_POST['id'];
-            $query = $conn ->query("SELECT * FROM `topic`");
+            $query = $conn ->query("SELECT * FROM `topic` WHERE `id` = $id");
             if($query -> num_rows == 0 ){
                 $error = 1;
                 $smg = "This file is not available";

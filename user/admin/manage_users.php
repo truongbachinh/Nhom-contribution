@@ -159,8 +159,8 @@ $date2 = strtotime("2018-09-21 10:44:01");
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="detailTopic">Detai
-                                Infomation Topic
+                            <h5 class="modal-title" id="detailTopic">Detail
+                                Information User
                             </h5>
                             <button type="button" class="close" data-dismiss="modal"
                                     aria-label="Close">
@@ -172,24 +172,28 @@ $date2 = strtotime("2018-09-21 10:44:01");
                                 <table class="table table-striped">
                                     <tbody>
                                     <tr>
-                                        <td>Topic Name</td>
-                                        <td id="t-name"></td>
+                                        <td>Full Name</td>
+                                        <td id="u-name"></td>
                                     </tr>
                                     <tr>
-                                        <td>Topic ID</td>
-                                        <td id="t-id"></td>
+                                        <td>User Name</td>
+                                        <td id="username"></td>
                                     </tr>
                                     <tr>
-                                        <td>Start Date</td>
-                                        <td id="t_deadline"></td>
+                                        <td>Email</td>
+                                        <td id="u-email"></td>
                                     </tr>
                                     <tr>
-                                        <td>Deadline</td>
-                                        <td>22/20/2021</td>
+                                        <td>Role</td>
+                                        <td id="u-role"></td>
                                     </tr
                                     <tr>
-                                        <td>Description</td>
-                                        <td id="t-description">
+                                        <td>Status</td>
+                                        <td id="u-status"></td>
+                                    </tr
+                                    <tr>
+                                        <td>Time Created</td>
+                                        <td id="u-time">
                                         </td>
                                     </tr>
                                     </tbody>
@@ -270,8 +274,16 @@ $date2 = strtotime("2018-09-21 10:44:01");
         Utils.api("get_user_info", {
             id: userId
         }).then(response => {
+            $("#u-name").text(response.data.fullname);
+            $("#username").text(response.data.username);
+            $("#u-role").text(response.data.role);
+            $("#u-email").text(response.data.email);
+            $("#u-status").text(response.data.role === 1 ? "active" : "block");
+            $("#u-time").text(response.data.u_create_time);
             $('#userDetail').modal();
-        });
+        }).catch(err => {
+
+        })
     }
 </script>
 </body>

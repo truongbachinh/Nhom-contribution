@@ -261,7 +261,6 @@ $date2 = strtotime("2018-09-21 10:44:01");
                 </div>
             </div>
     </section>
-
     <!--/ PLACE CODE INSIDE THIS AREA -->
 </main>
 <?php include "../partials/js_libs.php"; ?>
