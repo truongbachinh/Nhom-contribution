@@ -59,7 +59,7 @@
                 </div>
             </li>
             <div class="nav-item m-r-3">
-                <a href="/account/login.php">
+                <a href="#">
                     <b><?=$_SESSION['current_user']['fullname']?></b> (<?=$_SESSION['current_user']['role']?>)
                 </a>
             </div>
