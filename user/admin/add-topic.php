@@ -25,6 +25,7 @@ while ($rowFaculty =  mysqli_fetch_array($resFaculty)) {
 
 
 $infor = $conn->query("SELECT f.*, t.* FROM topic as t INNER JOIN faculty as f ON  t.faculty_id = f.f_id ");
+if (!$infor) die($conn->error);
 $topicInfor = array();
 while ($topicF = mysqli_fetch_array($infor)) {
     $topicInfor[] = $topicF;
@@ -62,7 +63,7 @@ if (isset($_POST["addTopic"])) {
     <!-- PLACE CODE INSIDE THIS AREA -->
 
     <section class="admin-content">
-        <div class="container m-t-30">
+        <div class="container m-t-30 m-b-30">
             <div class="card m-b-30">
                 <div class="card-header">
                     <h5 class="m-b-0">
