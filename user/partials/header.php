@@ -1,8 +1,3 @@
-<?php
-include "connect_db.php";
-
-?>
-<link rel="stylesheet" href="./css/student.css" />
 <header class="admin-header">
     <a href="#" class="sidebar-toggle" data-toggleclass="sidebar-open" data-target="body"> </a>
     <nav class=" ml-auto">
