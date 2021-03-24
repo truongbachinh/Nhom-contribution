@@ -15,7 +15,6 @@ $date2 = strtotime("2018-09-21 10:44:01");
 
     <!-- PLACE CODE INSIDE THIS AREA -->
 
-
     <section class="manage-topic">
         <div class="container m-t-30">
             <div class="row">
@@ -91,214 +90,175 @@ $date2 = strtotime("2018-09-21 10:44:01");
                                     ?>
                                     </tbody>
                                 </table>
-
-                                <!-- Modal add faculty -->
-                                <div class="modal fade" id="addTopic" tabindex="-1" role="dialog"
-                                     aria-labelledby="addTopic" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="addTopic">Add Topic</h5>
-                                                </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="">
-                                                    <div class="form-group">
-                                                        <label for="inputNameTopic">Topic Name</label>
-                                                        <input type="text" class="form-control" id="inputNameTopic"
-                                                               name="nameTopic" value="Advnace Coding" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="inputTopicId">Topic ID</label>
-                                                        <input type="text" class="form-control" id="inputTopicId"
-                                                               name="topicId" placeholder="Input Id" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="inputIdManager">Manager Topic</label>
-                                                        <input type="text" class="form-control"
-                                                               placeholder="Input name" required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="example-date-input">Date</label>
-                                                        <input class="form-control" type="date" value="2011-08-19"
-                                                               id="example-date-input">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="inputManager">Desciption</label>
-                                                        <textarea class="form-control" aria-label="With textarea"
-                                                                  spellcheck="false"></textarea>
-                                                        <grammarly-extension data-grammarly-shadow-root="true"
-                                                                             style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 3;"
-                                                                             class="cGcvT"></grammarly-extension>
-                                                    </div>
-
-                                                    <div class="model-footer">
-                                                        <input type="button" class="btn btn-warning" name="change"
-                                                               value="Create Topic">
-                                                        <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">
-                                                            Close
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Modal edit -->
-
-                                <div class="modal fade" id="editTopic" tabindex="-1" role="dialog"
-                                     aria-labelledby="editTopic" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="editTopic">Edit Topic</h5>
-                                                </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="">
-                                                    <div class="form-group">
-                                                        <label for="inputNameTopic">Topic Name</label>
-                                                        <input type="text" class="form-control" id="topicName"
-                                                               required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="inputTopicId">Topic ID</label>
-                                                        <input type="text" class="form-control" id="topicCode"
-                                                               required>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="example-date-input">Deadline</label>
-                                                        <input class="form-control" type="datetime-local"
-                                                               id="deadline">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="inputManager">Description</label>
-                                                        <textarea class="form-control" id="description"
-                                                                  aria-label="With textarea"
-                                                                  spellcheck="false"></textarea>
-                                                        <grammarly-extension data-grammarly-shadow-root="true"
-                                                                             style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 3;"
-                                                                             class="cGcvT"></grammarly-extension>
-                                                    </div>
-
-                                                    <div class="model-footer">
-                                                        <input type="button"
-                                                               class="btn btn-warning btn-update-topic"
-                                                               name="change"
-                                                               value="Save Changes">
-                                                        <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">
-                                                            Close
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <!-- Modal delete -->
-
-
-                                <div class="modal fade" id="deleteTopic" tabindex="-1" role="dialog"
-                                     aria-labelledby="deleteTopic" aria-hidden="true">
-                                    <div class="modal-dialog  modal-dialog-align-top-left" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteTopic">Confirm
-                                                    Delete Topic
-                                                </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                This action cannot undo. Are you sure you want to delete
-                                                this topic?
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger">Delete</button>
-                                                <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">
-                                                    Close
-                                                </button>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Modal Detail -->
-
-                                <div class="modal fade" id="detailTopic" tabindex="-1" role="dialog"
-                                     aria-labelledby="detailTopic" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="detailTopic">Detai
-                                                    Infomation Topic
-                                                </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="detail">
-                                                    <table class="table table-striped">
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>Topic Name</td>
-                                                            <td id="t-name"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Topic ID</td>
-                                                            <td id="t-id"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Start Date</td>
-                                                            <td id="t_deadline"></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>Deadline</td>
-                                                            <td>22/20/2021</td>
-                                                        </tr
-                                                        <tr>
-                                                            <td>Description</td>
-                                                            <td id="t-description">
-                                                            </td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="button-close float-right">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">
-                                                        Close
-                                                    </button>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal add faculty -->
+            <div class="modal fade" id="addTopic" tabindex="-1" role="dialog"
+                 aria-labelledby="addTopic" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addTopic">Add Topic</h5>
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal"
+                                    aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="">
+                                <div class="form-group">
+                                    <label for="inputNameTopic">Topic Name</label>
+                                    <input type="text" class="form-control" id="inputNameTopic"
+                                           name="nameTopic" value="Advnace Coding" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputTopicId">Topic ID</label>
+                                    <input type="text" class="form-control" id="inputTopicId"
+                                           name="topicId" placeholder="Input Id" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputIdManager">Manager Topic</label>
+                                    <input type="text" class="form-control"
+                                           placeholder="Input name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-date-input">Date</label>
+                                    <input class="form-control" type="date" value="2011-08-19"
+                                           id="example-date-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputManager">Desciption</label>
+                                    <textarea class="form-control" aria-label="With textarea"
+                                              spellcheck="false"></textarea>
+                                </div>
+
+                                <div class="model-footer">
+                                    <input type="button" class="btn btn-warning" name="change"
+                                           value="Create Topic">
+                                    <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">
+                                        Close
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal edit -->
+            <div class="modal fade" id="editTopic" tabindex="-1" role="dialog"
+                 aria-labelledby="editTopic" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editTopic">Edit Topic</h5>
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal"
+                                    aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="">
+                                <div class="form-group">
+                                    <label for="inputNameTopic">Topic Name</label>
+                                    <input type="text" class="form-control" id="topicName"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputTopicId">Topic ID</label>
+                                    <input type="text" class="form-control" id="topicCode"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-date-input">Deadline</label>
+                                    <input class="form-control" type="datetime-local"
+                                           id="deadline">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputManager">Description</label>
+                                    <textarea class="form-control" id="description"
+                                              aria-label="With textarea"
+                                              spellcheck="false"></textarea>
+                                    <grammarly-extension data-grammarly-shadow-root="true"
+                                                         style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 3;"
+                                                         class="cGcvT"></grammarly-extension>
+                                </div>
+
+                                <div class="model-footer">
+                                    <input type="button"
+                                           class="btn btn-warning btn-update-topic"
+                                           name="change"
+                                           value="Save Changes">
+                                    <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">
+                                        Close
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Detail -->
+            <div class="modal fade" id="detailTopic" tabindex="-1" role="dialog"
+                 aria-labelledby="detailTopic" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="detailTopic">Detai
+                                Infomation Topic
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal"
+                                    aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="detail">
+                                <table class="table table-striped">
+                                    <tbody>
+                                    <tr>
+                                        <td>Topic Name</td>
+                                        <td id="t-name"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Topic ID</td>
+                                        <td id="t-id"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Start Date</td>
+                                        <td id="t_deadline"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Deadline</td>
+                                        <td>22/20/2021</td>
+                                    </tr
+                                    <tr>
+                                        <td>Description</td>
+                                        <td id="t-description">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="button-close float-right">
+                                <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">
+                                    Close
+                                </button>
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
