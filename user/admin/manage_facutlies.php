@@ -16,41 +16,51 @@ session_start();
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<meta charset="UTF-8">
-<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-touch-fullscreen" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta content="" name="author" />
-<meta content="atlas is Bootstrap 4 based admin panel.It comes with 100's widgets,charts and icons" name="description" />
-<meta property="og:locale" content="en_US" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="atlas is Bootstrap 4 based admin panel.It comes with 100's widgets,charts and icons" />
-<meta property="og:description" content="atlas is Bootstrap 4 based admin panel.It comes with 100's widgets,charts and icons" />
-<meta property="og:image" content="https://cdn.dribbble.com/users/180706/screenshots/5424805/the_sceens_-_mobile_perspective_mockup_3_-_by_tranmautritam.jpg" />
-<meta property="og:site_name" content="atlas " />
-<title>Manage Faculty</title>
-<link rel="icon" type="image/x-icon" href="assets/img/logo.png" />
-<link rel="icon" href="assets/img/logo.png" type="image/png" sizes="16x16">
-<link rel='stylesheet' href='https://d33wubrfki0l68.cloudfront.net/css/478ccdc1892151837f9e7163badb055b8a1833a5/light/assets/vendor/pace/pace.css' />
-<script src='https://d33wubrfki0l68.cloudfront.net/js/3d1965f9e8e63c62b671967aafcad6603deec90c/light/assets/vendor/pace/pace.min.js'></script>
-<!--vendors-->
-<link rel='stylesheet' type='text/css' href='https://d33wubrfki0l68.cloudfront.net/bundles/291bbeead57f19651f311362abe809b67adc3fb5.css' />
-<link rel='stylesheet' href='https://d33wubrfki0l68.cloudfront.net/bundles/fc681442cee6ccf717f33ccc57ebf17a4e0792e1.css' />
+    <!DOCTYPE html>
+    <html lang="en">
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta content="" name="author"/>
+    <meta content="atlas is Bootstrap 4 based admin panel.It comes with 100's widgets,charts and icons"
+          name="description"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title"
+          content="atlas is Bootstrap 4 based admin panel.It comes with 100's widgets,charts and icons"/>
+    <meta property="og:description"
+          content="atlas is Bootstrap 4 based admin panel.It comes with 100's widgets,charts and icons"/>
+    <meta property="og:image"
+          content="https://cdn.dribbble.com/users/180706/screenshots/5424805/the_sceens_-_mobile_perspective_mockup_3_-_by_tranmautritam.jpg"/>
+    <meta property="og:site_name" content="atlas "/>
+    <title>Manage Faculty</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/logo.png"/>
+    <link rel="icon" href="assets/img/logo.png" type="image/png" sizes="16x16">
+    <link rel='stylesheet'
+          href='https://d33wubrfki0l68.cloudfront.net/css/478ccdc1892151837f9e7163badb055b8a1833a5/light/assets/vendor/pace/pace.css'/>
+    <script src='https://d33wubrfki0l68.cloudfront.net/js/3d1965f9e8e63c62b671967aafcad6603deec90c/light/assets/vendor/pace/pace.min.js'></script>
+    <!--vendors-->
+    <link rel='stylesheet' type='text/css'
+          href='https://d33wubrfki0l68.cloudfront.net/bundles/291bbeead57f19651f311362abe809b67adc3fb5.css'/>
+    <link rel='stylesheet'
+          href='https://d33wubrfki0l68.cloudfront.net/bundles/fc681442cee6ccf717f33ccc57ebf17a4e0792e1.css'/>
 
 
-<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600" rel="stylesheet">
-<!--Material Icons-->
-<link rel='stylesheet' type='text/css' href='https://d33wubrfki0l68.cloudfront.net/css/548117a22d5d22545a0ab2dddf8940a2e32c04ed/default/assets/fonts/materialdesignicons/materialdesignicons.min.css' />
-<!--Material Icons-->
-<link rel='stylesheet' type='text/css' href='https://d33wubrfki0l68.cloudfront.net/css/0940f25997c8e50e65e95510b30245d116f639f0/light/assets/fonts/feather/feather-icons.css' />
-<!--Bootstrap + atmos Admin CSS-->
-<link rel='stylesheet' type='text/css' href='https://d33wubrfki0l68.cloudfront.net/css/16e33a95bb46f814f87079394f72ef62972bd197/light/assets/css/atmos.min.css' />
-<!-- Additional library for page -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600" rel="stylesheet">
+    <!--Material Icons-->
+    <link rel='stylesheet' type='text/css'
+          href='https://d33wubrfki0l68.cloudfront.net/css/548117a22d5d22545a0ab2dddf8940a2e32c04ed/default/assets/fonts/materialdesignicons/materialdesignicons.min.css'/>
+    <!--Material Icons-->
+    <link rel='stylesheet' type='text/css'
+          href='https://d33wubrfki0l68.cloudfront.net/css/0940f25997c8e50e65e95510b30245d116f639f0/light/assets/fonts/feather/feather-icons.css'/>
+    <!--Bootstrap + atmos Admin CSS-->
+    <link rel='stylesheet' type='text/css'
+          href='https://d33wubrfki0l68.cloudfront.net/css/16e33a95bb46f814f87079394f72ef62972bd197/light/assets/css/atmos.min.css'/>
+    <!-- Additional library for page -->
 
-<body class="sidebar-pinned ">
+    <body class="sidebar-pinned ">
     <?php include 'aside.php' ?>
     <main class="admin-main">
         <!-- Header -->
@@ -76,81 +86,105 @@ session_start();
                                             </div>
                                         </div>
                                         <div class="col-sm-6 ">
-                                            <a href="" class="btn btn-info float-right" role="button" data-toggle="modal" data-target="#addfaculty"><i class="mdi mdi-clipboard-plus"></i> Add Faculty
+                                            <a href="" class="btn btn-info float-right" role="button"
+                                               data-toggle="modal" data-target="#addfaculty"><i
+                                                        class="mdi mdi-clipboard-plus"></i> Add Faculty
                                             </a>
                                         </div>
                                     </div>
                                     <div class="table-responsive p-t-10">
                                         <table id="example" class="table text-center" style="width:100%">
                                             <thead>
-                                                <tr>
-                                                    <th>No</th>
-                                                    <th>Faculty ID</th>
-                                                    <th>Name Faculty</th>
-                                                    <th>Description Faculty</th>
-                                                    <th>Manager Facutly</th>
-                                                    <!-- <th>Topics</th>
-                                                    <th>Articles</th> -->
-                                                    <th>Action</th>
-                                                </tr>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Faculty ID</th>
+                                                <th>Name Faculty</th>
+                                                <th>Description Faculty</th>
+                                                <th>Manager Facutly</th>
+                                                <!-- <th>Topics</th>
+                                                <th>Articles</th> -->
+                                                <th>Action</th>
+                                            </tr>
                                             </thead>
                                             <tbody>
-                                                <?php
-                                                $i = 1;
-                                                $res = mysqli_query($conn, "select * from faculty");
-                                                while ($row = mysqli_fetch_array($res)) {
+                                            <?php
+                                            $i = 1;
+                                            $res = mysqli_query($conn, "select * from faculty");
+                                            while ($row = mysqli_fetch_array($res)) {
                                                 ?>
-                                                    <tr>
-                                                        <td><?= $i++ ?></td>
-                                                        <td><?= $row["faculty_id"] ?></td>
-                                                        <td><?= $row["f_name"] ?></td>
-                                                        <td><?= $row["f_description"] ?></td>
-                                                        <td><?= $row["f_manager"] ?></td>
-                                                        <td>
-                                                            <a href="" class="btn btn-info" role="button" data-toggle="modal" data-target="#editFaculty"><i class="mdi mdi-pencil-outline"></i> </a>
-                                                            <a href="" class="btn btn-danger" role="button" data-toggle="modal" data-target="#deleteFaculty"><i class="mdi mdi-delete"></i> </a>
-                                                            <a href="" class="btn btn-primary" role="button" data-toggle="modal" data-target="#detailFaculty"><i class="mdi mdi-dots-horizontal"></i> </a>
-                                                        </td>
-                                                    </tr>
-                                                <?php                            }
-                                                ?>
+                                                <tr>
+                                                    <td><?= $i++ ?></td>
+                                                    <td><?= $row["faculty_id"] ?></td>
+                                                    <td><?= $row["f_name"] ?></td>
+                                                    <td><?= $row["f_description"] ?></td>
+                                                    <td><?= $row["f_manager"] ?></td>
+                                                    <td>
+                                                        <a href="" class="btn btn-info btn-edit-faculty" role="button"
+                                                           data-id="<?php echo $row["f_id"] ?>"><i
+                                                                    class="mdi mdi-pencil-outline"></i> </a>
+                                                        <a href="" class="btn btn-danger btn-delete-faculty"
+                                                           data-id="<?php echo $row["f_id"] ?>"><i
+                                                                    class="mdi mdi-delete"></i> </a>
+                                                        <a href="" class="btn btn-primary btn-detail-faculty"
+                                                           data-id="<?php echo $row["f_id"] ?>" role="button"><i
+                                                                    class="mdi mdi-dots-horizontal"></i> </a>
+                                                    </td>
+                                                </tr>
+                                            <?php }
+                                            ?>
 
                                             </tbody>
                                         </table>
 
 
                                         <!-- Modal add faculty -->
-                                        <div class="modal fade" id="addfaculty" tabindex="-1" role="dialog" aria-labelledby="addfaculty" aria-hidden="true">
+                                        <div class="modal fade" id="addfaculty" tabindex="-1" role="dialog"
+                                             aria-labelledby="addfaculty" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
                                                         <h5 class="modal-title" id="addfaculty">Add Faculty</h5>
                                                         </h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="" name="addFaculty" method="POST" enctype="multipart/form-data">
+                                                        <form action="" name="addFaculty" method="POST"
+                                                              enctype="multipart/form-data">
                                                             <div class="form-group">
                                                                 <label for="inputfacultyId">Faculty ID</label>
-                                                                <input type="text" class="form-control" id="inputFacultyId" name="idFaculty" placeholder="Input Id" required>
+                                                                <input type="text" class="form-control"
+                                                                       id="inputFacultyId" name="idFaculty"
+                                                                       placeholder="Input Id" required>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="inputNameFaculty">Name Faculty</label>
-                                                                <input type="text" class="form-control" id="inputNameFaculty" name="nameFaculty" placeholder="Input name" required>
+                                                                <input type="text" class="form-control"
+                                                                       id="inputNameFaculty" name="nameFaculty"
+                                                                       placeholder="Input name" required>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="inputNameFaculty">Manage Faculty</label>
-                                                                <input type="text" class="form-control" id="inputFacultyFaculty" name="facultyManage" placeholder="Input name" required>
+                                                                <input type="text" class="form-control"
+                                                                       id="inputFacultyFaculty" name="facultyManage"
+                                                                       placeholder="Input name" required>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="inputManager">Faculty Desciption </label>
-                                                                <textarea class="form-control" aria-label="With textarea" name="descriptionFaculty" spellcheck="false"></textarea>
-                                                                <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 3;" class="cGcvT"></grammarly-extension>
+                                                                <textarea class="form-control"
+                                                                          aria-label="With textarea"
+                                                                          name="descriptionFaculty"
+                                                                          spellcheck="false"></textarea>
+                                                                <grammarly-extension data-grammarly-shadow-root="true"
+                                                                                     style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 3;"
+                                                                                     class="cGcvT"></grammarly-extension>
                                                             </div>
-                                                            <input type="submit" class="btn btn-warning" name="submitFaculty" value="Create Faculty">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                            <input type="submit" class="btn btn-warning"
+                                                                   name="submitFaculty" value="Create Faculty">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                    data-dismiss="modal">
                                                                 Close
                                                             </button>
 
@@ -162,14 +196,16 @@ session_start();
                                         </div>
                                     </div>
                                     <!-- Model edit -->
-                                    <div class="modal fade" id="editFaculty" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal fade" id="editFaculty" tabindex="-1" role="dialog"
+                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalCenterTitle">Edit
                                                         Faculty
                                                     </h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
@@ -177,20 +213,31 @@ session_start();
                                                     <form action="">
                                                         <div class="form-group">
                                                             <label for="inputNameFaculty">Name Faculty</label>
-                                                            <input type="text" class="form-control" id="inputNameFaculty" name="nameFaculty" Value="Advance Computing">
+                                                            <input type="text" class="form-control"
+                                                                   id="facultyName">
                                                         </div>
                                                         <div class="form-group">
-                                                            <label for="inputfacultyId">Faculty ID</label>
-                                                            <input type="text" class="form-control" id="inputFacultyId" name="facultyId" disabled value="Faculty_01">
+                                                            <label for="facultyNameId">Faculty Code</label>
+                                                            <input type="text" class="form-control" id="facultyNameId">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="facultyNameId">Faculty Manager</label>
+                                                            <input type="text" class="form-control" id="facultyManager">
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="inputManager">Desciption</label>
-                                                            <textarea class="form-control" aria-label="With textarea" spellcheck="false"></textarea>
-                                                            <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 3;" class="cGcvT"></grammarly-extension>
+                                                            <label for="inputManager">Description</label>
+                                                            <textarea class="form-control" aria-label="With textarea"
+                                                                      id="description" spellcheck="false"></textarea>
+                                                            <grammarly-extension data-grammarly-shadow-root="true"
+                                                                                 style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 3;"
+                                                                                 class="cGcvT"></grammarly-extension>
                                                         </div>
-                                                        <input type="button" class="btn btn-primary" name="change" value="Save changes">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                        <input type="button" class="btn btn-primary btn-update-faculty"
+                                                               name="change"
+                                                               value="Save changes">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">
                                                             Close
                                                         </button>
 
@@ -204,13 +251,15 @@ session_start();
                                 <!-- Modal delete -->
 
 
-                                <div class="modal fade" id="deleteFaculty" tabindex="-1" role="dialog" aria-labelledby="deleteFaculty" aria-hidden="true">
+                                <div class="modal fade" id="deleteFaculty" tabindex="-1" role="dialog"
+                                     aria-labelledby="deleteFaculty" aria-hidden="true">
                                     <div class="modal-dialog  modal-dialog-align-top-left" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="deleteFaculty">Confirm Delete Faculty
                                                 </h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -231,13 +280,15 @@ session_start();
 
                                 <!-- Modal Detail -->
 
-                                <div class="modal fade" id="detailFaculty" tabindex="-1" role="dialog" aria-labelledby="detailFaculty" aria-hidden="true">
+                                <div class="modal fade" id="detailFaculty" tabindex="-1" role="dialog"
+                                     aria-labelledby="detailFaculty" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="detailFaculty">Detai Infomation Faculty
                                                 </h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
@@ -245,43 +296,32 @@ session_start();
                                                 <div class="detail">
                                                     <table class="table table-striped">
                                                         <tbody>
-                                                            <tr>
-                                                                <td>Name Faculty</td>
-                                                                <td>Advance Computing</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Faculty ID</td>
-                                                                <td>Faculty_01</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Manager Faculty</td>
-                                                                <td>Nguyen Van A</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Amount of Topic</td>
-                                                                <td>2</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Amount of Student</td>
-                                                                <td>2</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Amount of Articles</td>
-                                                                <td>2</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Desciption</td>
-                                                                <td>
-                                                                    Desciption here...
-                                                                </td>
-                                                            </tr>
+                                                        <tr>
+                                                            <td>Name Faculty</td>
+                                                            <td id="f-name"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Faculty ID</td>
+                                                            <td id="f-id"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Manager Faculty</td>
+                                                            <td id="f_manager"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Desciption</td>
+                                                            <td id="f-description">
+                                                                Desciption here...
+                                                            </td>
+                                                        </tr>
 
 
                                                         </tbody>
                                                     </table>
                                                 </div>
                                                 <div class="button-close float-right">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">
                                                         Close
                                                     </button>
                                                 </div>
@@ -299,35 +339,119 @@ session_start();
             </div>
         </section>
     </main>
-</body>
+    <script src="../../js/utils.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            let activeId = null;
+            $(document).on('click', '.btn-edit-faculty', function (e) {
+                e.preventDefault();
+                const facultyId = parseInt($(this).data("id"));
+                activeId = facultyId;
+                console.log(facultyId);
+                Utils.api("get_faculty_info", {
+                    id: facultyId
+                }).then(faculty => {
+                    $("#facultyName").val(faculty.data.f_name);
+                    $("#facultyId").val(faculty.data.f_id);
+                    $("#facultyManager").val(faculty.data.f_manager)
+                    $("#description").val(faculty.data.f_description);
+                    $("#facultyNameId").val(faculty.data.faculty_id)
+                    $("#editFaculty").modal();
+                }).catch(err => {
+
+                });
+            });
+
+            $(document).on('click', '.btn-update-faculty', function (e) {
+                Utils.api("update_faculty_info", {
+                    id: activeId,
+                    facultyName: $("#facultyName").val(),
+                    description: $("#description").val(),
+                    facultyManager: $("#facultyManager").val(),
+                    facultyId: $('#facultyNameId').val()
+                }).then(response => {
+                    $("#editFaculty").modal("hide");
+                    swal("Notice", "Record is updated successfully!", "success").then(function (e) {
+                        location.reload()
+                    });
+                }).catch(err => {
+
+                })
+            });
+
+            $(document).on('click', ".btn-delete-faculty", function (e) {
+                e.preventDefault();
+                swal({
+                    title: "Please confirm",
+                    text: 'Are sure you want to delete this faculty?',
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                }).then((willDelete) => {
+                    if (willDelete) {
+                        Utils.api('delete_faculty_info', {
+                            id: $(this).data('id'),
+                        }).then(response => {
+                            $("#editFaculty").modal("hide");
+                            swal("Notice", response.msg, "success").then(function (e) {
+                                location.reload();
+                            });
+                        }).catch(err => {
+                        })
+                    }
+                });
+            });
+
+            $(document).on('click', '.btn-detail-faculty', function (e) {
+                e.preventDefault();
+                $('#detailFaculty').modal();
+                const facultyId = parseInt($(this).data("id"));
+                console.log(facultyId)
+                Utils.api('get_faculty_info', {
+                    id: facultyId
+                }).then(response => {
+                    $('#f-name').text(response.data.f_name);
+                    $('#f-id').text(response.data.f_id);
+                    $('#f_manager').text(response.data.f_manager)
+                    $('#f-description').text(response.data.f_description)
+                }).catch(err => {
+
+                })
+            })
+
+        })
+
+    </script>
 
 
-</body>
+    <script src='https://d33wubrfki0l68.cloudfront.net/bundles/85bd871e04eb889b6141c1aba0fedfa1a2215991.js'></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
-<script src='https://d33wubrfki0l68.cloudfront.net/bundles/85bd871e04eb889b6141c1aba0fedfa1a2215991.js'></script>
-<!--page specific scripts for demo-->
+    <script src='https://d33wubrfki0l68.cloudfront.net/bundles/85bd871e04eb889b6141c1aba0fedfa1a2215991.js'></script>
+    <!--page specific scripts for demo-->
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-66116118-3"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66116118-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-66116118-3');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
 
-<!--Additional Page includes-->
-<script src='https://d33wubrfki0l68.cloudfront.net/js/c36248babf70a3c7ad1dcd98d4250fa60842eea9/light/assets/vendor/apexchart/apexcharts.min.js'></script>
-<!--chart data for current dashboard-->
-<script src='https://d33wubrfki0l68.cloudfront.net/js/d678dabfdc5c3131d492af7ef517fbe46fbbd8e4/light/assets/js/dashboard-01.js'></script>
+        gtag('js', new Date());
+        gtag('config', 'UA-66116118-3');
+    </script>
 
-</body>
+    <!--Additional Page includes-->
+    <script src='https://d33wubrfki0l68.cloudfront.net/js/c36248babf70a3c7ad1dcd98d4250fa60842eea9/light/assets/vendor/apexchart/apexcharts.min.js'></script>
+    <!--chart data for current dashboard-->
+    <script src='https://d33wubrfki0l68.cloudfront.net/js/d678dabfdc5c3131d492af7ef517fbe46fbbd8e4/light/assets/js/dashboard-01.js'></script>
 
-</html>
+    </body>
+
+    </html>
 
 <?php
 if (isset($_POST["submitFaculty"])) {
@@ -341,20 +465,20 @@ if (isset($_POST["submitFaculty"])) {
     $count = mysqli_num_rows($res);
 
     if ($count > 0) {
-?>
+        ?>
         <script type="text/javascript">
             alert("Faculty Id exits !");
             window.location.replace("./manage_facutlies.php");
         </script>
-    <?php
+        <?php
     } else {
-        $addFaculty =   mysqli_query($conn, "INSERT INTO `faculty` (`f_id`, `f_name`, `f_description`, `f_manager`, `faculty_id`) VALUES (NULL, '$_POST[nameFaculty]', '$_POST[descriptionFaculty]', '$_POST[facultyManage]', '$_POST[idFaculty]');");
-    ?>
+        $addFaculty = mysqli_query($conn, "INSERT INTO `faculty` (`f_id`, `f_name`, `f_description`, `f_manager`, `faculty_id`) VALUES (NULL, '$_POST[nameFaculty]', '$_POST[descriptionFaculty]', '$_POST[facultyManage]', '$_POST[idFaculty]');");
+        ?>
         <script type="text/javascript">
             alert("add faculty success !");
             window.location.replace("./manage_facutlies.php");
         </script>
-<?php
+        <?php
     }
 }
 ?>

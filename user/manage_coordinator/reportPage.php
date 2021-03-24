@@ -4,7 +4,6 @@ include "../../connect_db.php";
 $idFile = $_GET['idfile'];
 $userFacultyId = $_SESSION["current_user"]["faculty_id"];
 $userId = $_SESSION["current_user"]["u_id"];
-
 $fileContent = $conn->query("SELECT * from `file_content` where `file_submit_Id` = '$idFile'");
 // $viewFile = array();
 // while ($view = mysqli_fetch_array($fileContent)) {
