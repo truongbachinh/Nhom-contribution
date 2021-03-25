@@ -3,17 +3,25 @@ include '../connect_db.php';
 session_start();
 // Perform query
 /** @var TYPE_NAME $conn */
-$userid = 1;
-$partnerId = 2;
+$userid = 38;
+$partnerId = 39;
 $_SESSION["userid"] = $userid;
 $_SESSION["partnerId"] = $partnerId;
 
-//printf("select DISTINCT tbl_chat.use_id_1 FROM tbl_chat WHERE tbl_chat.use_id_1 in ($userid, $partnerId) and tbl_chat.use_id_2 in ($userid, $partnerId)");
-$res = mysqli_fetch_array($conn->query("select DISTINCT tbl_chat.use_id_1 FROM tbl_chat WHERE tbl_chat.use_id_1 in ($userid, $partnerId) and tbl_chat.use_id_2 in ($userid, $partnerId)"), MYSQLI_ASSOC);
-var_dump($res);
-exit;
-$useridIsOne = $res["use_id_1"] == $userid;
-$_SESSION["useridIsOne"] = $useridIsOne;
+//if (isset($_GET)) {
+//    var_dump($_GET);
+//}
+
+$query = "select * FROM tbl_chat WHERE id in (SELECT max(id) FROM tbl_chat WHERE tbl_chat.use_id_1 = $userid OR tbl_chat.use_id_2 = $userid GROUP BY use_id_1, use_id_2)";
+$res = $conn->query($query);
+$conversation = [];
+while($row = $res->fetch_array()):
+    $partnerIdCon = $row["use_id_1"] == $userid ? $row["use_id_2"] : $row["use_id_1"];
+    $conversation[$partnerIdCon] = $row;
+endwhile;
+//var_dump($res);
+//$useridIsOne = $res["use_id_1"] == $userid;
+//$_SESSION["useridIsOne"] = $useridIsOne;
 ?>
 
 <!DOCTYPE html>
@@ -62,24 +70,45 @@ $_SESSION["useridIsOne"] = $useridIsOne;
                     </div>
                 </div>
                 <div class="inbox_chat">
-                    <div class="chat_list active_chat">
-                        <div class="chat_people">
-                            <div class="chat_ib">
-                                <h5>Nguyen Trung Hieu <span class="chat_date">Dec 25</span></h5>
-                                <p>Test, which is a new approach to have all solutions
-                                    astrology under one roof.</p>
+<!--                    -->
+                    <?php
+                    foreach ($conversation as $row) {
+                        $partnerIdCon = $row["use_id_1"] == $userid ? $row["use_id_2"] : $row["use_id_1"];
+                        $name = mysqli_fetch_array($conn->query("SELECT user.username FROM user where user.u_id = $partnerIdCon"), MYSQLI_ASSOC);
+                        if ($partnerIdCon == $partnerId) {
+                        ?>
+                        <div class="chat_list active_chat">
+                            <div class="chat_people">
+                                <div class="chat_ib">
+                                    <h5><?= $name["username"] ?>
+                                        <span class="chat_date">
+                                            <?php echo formatDate($row['date']);?>
+                                        </span>
+                                    </h5>
+                                    <p><?php echo $row['message'];?></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="chat_list">
-                        <div class="chat_people">
-                            <div class="chat_ib">
-                                <h5>Nguyen Trung Hieu<span class="chat_date">Dec 25</span></h5>
-                                <p>Test, which is a new approach to have all solutions
-                                    astrology under one roof.</p>
+                    <?php
+                        } else {
+                            ?>
+                            <div class="chat_list">
+                                <div class="chat_people">
+                                    <div class="chat_ib">
+                                        <h5><?= $name["username"] ?>
+                                            <span class="chat_date">
+                                            <?php echo formatDate($row['date']);?>
+                                        </span>
+                                        </h5>
+                                        <p><?php echo $row['message'];?></p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                    <?php
+                        }
+                    }
+                    ?>
+<!--                    -->
                 </div>
             </div>
             <div class="mesgs">
