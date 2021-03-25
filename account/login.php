@@ -35,7 +35,7 @@ include "../connect_db.php";
 
     ?>
         <script type="text/javascript">
-            window.location = "../user/student/homepage.php";
+            window.location = "../user/index.php";
         </script>
     <?php
     } else {
@@ -138,7 +138,7 @@ if (isset($_POST["login"])) {
         $userCurrent =  $_SESSION["current_user"] = $user;
     ?>
         <script type="text/javascript">
-            window.location = "/user/student/";
+            window.location = "/user/index.php";
         </script>
     <?php
     } elseif ($status == "1" && $role == "manager-coordinator") {
@@ -146,14 +146,12 @@ if (isset($_POST["login"])) {
         $userCurrent =  $_SESSION["current_user"] = $user;
     ?>
         <script type="text/javascript">
-            window.location = "/user/manage_coordinator/";
+            window.location = "/user/index.php";
         </script>
     <?php
     } elseif ($status == "1" && $role == "admin") {
         $user = mysqli_fetch_assoc($res);
         $userCurrent =  $_SESSION["current_user"] = $user;
-
-
     ?>
         <script type="text/javascript">
             window.location = "/user/admin/";
