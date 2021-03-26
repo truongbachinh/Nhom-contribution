@@ -95,9 +95,9 @@
                     </li>
 
                     <li class="menu-item ">
-                        <a href="/user/student/view_detail_faculty.php" class="menu-link">
+                        <a href="/user/student/view-all-topic.php" class="menu-link">
                             <span class="menu-label">
-                                <span class="menu-name">My Faculty
+                                <span class="menu-name">My Topic
                                 </span>
                             </span>
                             <span class="menu-icon">
