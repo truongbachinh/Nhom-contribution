@@ -111,7 +111,7 @@ $date2 = strtotime("2018-09-21 10:44:01");
                                 <div class="form-group">
                                     <label for="inputNameTopic">Topic Name</label>
                                     <input type="text" class="form-control" id="inputNameTopic"
-                                           name="nameTopic" value="Advnace Coding" required>
+                                           name="nameTopic"  required>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputTopicId">Topic ID</label>
@@ -129,7 +129,7 @@ $date2 = strtotime("2018-09-21 10:44:01");
                                            id="example-date-input">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputManager">Desription</label>
+                                    <label for="inputManager">Description</label>
                                     <textarea class="form-control" aria-label="With textarea"
                                               spellcheck="false"></textarea>
                                 </div>

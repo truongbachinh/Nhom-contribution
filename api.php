@@ -49,6 +49,18 @@ if ($isLoggedIn) {
                 $msg = "Error delete record: " . $conn->error;
             }
             break;
+        case "add_topic_info":
+                $count = 0;
+                $sql_user = "SELECT * from faculty where faculty_id ='$_POST[idFaculty]'";
+                $res = mysqli_query($conn, $sql_user) or die(mysqli_error($conn));
+                $count = mysqli_num_rows($res);
+
+                if ($count > 0) {
+                    $msg = "Faculty ID is already exist.";
+                } else {
+                    $addFaculty = mysqli_query($conn, "INSERT INTO `faculty` (`f_id`, `f_name`, `f_description`, `f_manager`, `faculty_id`) VALUES (NULL, '$_POST[nameFaculty]', '$_POST[descriptionFaculty]', '$_POST[facultyManage]', '$_POST[idFaculty]');");
+                    $msg = "Successfully added faculty.";
+                }
         case "get_topic_info":
             $id = $_POST['id'];
             $query = $conn ->query("SELECT * FROM `topic` WHERE `id` = $id");
@@ -84,6 +96,10 @@ if ($isLoggedIn) {
                 $error = 400;
                 $msg = "Error delete record: " . $conn->error;
             }
+            break;
+        case "add_user_info":
+
+
             break;
         case "get_user_info":
             $id = $_POST['id'];

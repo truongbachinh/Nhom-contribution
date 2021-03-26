@@ -156,7 +156,7 @@ if (isset($_POST["submitFaculty"])) {
                                                                              style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 3;"
                                                                              class="cGcvT"></grammarly-extension>
                                                     </div>
-                                                    <input type="submit" class="btn btn-warning"
+                                                    <input type="submit" class="btn btn-warning btn-add-faculty"
                                                            name="submitFaculty" value="Create Faculty">
                                                     <button type="button" class="btn btn-secondary"
                                                             data-dismiss="modal">
@@ -395,7 +395,10 @@ if (isset($_POST["submitFaculty"])) {
             }).catch(err => {
 
             })
-        })
+        });
+
+
+        $()
 
     })
 

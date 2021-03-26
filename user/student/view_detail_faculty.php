@@ -1,85 +1,146 @@
 <?php
-session_start();
-include "../connect_db.php";
-$userId = $_SESSION["current_user"]["u_id"];
-$result = mysqli_query($conn, "SELECT faculty.*,user.*, topic.* FROM (( faculty INNER JOIN topic ON faculty.f_id = topic.faculty_id) INNER JOIN user ON faculty.f_id = user.faculty_id) WHERE user.u_id = '$userId' AND user.role = 'student'");
-$faculty = mysqli_fetch_assoc($result);
-
+include "../../config.php";
+$current = new DateTime("now", new DateTimeZone('Asia/Ho_Chi_Minh'));
+$timeSubmitFile = $current->format('Y/m/d H:i:s');
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" name="viewport">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta content="" name="author"/>
+<meta content="atlas is Bootstrap 4 based admin panel.It comes with 100's widgets,charts and icons"
+      name="description"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title"
+      content="atlas is Bootstrap 4 based admin panel.It comes with 100's widgets,charts and icons"/>
+<meta property="og:description"
+      content="atlas is Bootstrap 4 based admin panel.It comes with 100's widgets,charts and icons"/>
+<meta property="og:image"
+      content="https://cdn.dribbble.com/users/180706/screenshots/5424805/the_sceens_-_mobile_perspective_mockup_3_-_by_tranmautritam.jpg"/>
+<meta property="og:site_name" content="atlas "/>
+<title>Home Page</title>
+<link rel="icon" type="image/x-icon" href="assets/img/logo.png"/>
+<link rel="icon" href="assets/img/logo.png" type="image/png" sizes="16x16">
+<link rel='stylesheet'
+      href='https://d33wubrfki0l68.cloudfront.net/css/478ccdc1892151837f9e7163badb055b8a1833a5/light/assets/vendor/pace/pace.css'/>
+<script
+        src='https://d33wubrfki0l68.cloudfront.net/js/3d1965f9e8e63c62b671967aafcad6603deec90c/light/assets/vendor/pace/pace.min.js'></script>
+<!--vendors-->
+<link rel='stylesheet' type='text/css'
+      href='https://d33wubrfki0l68.cloudfront.net/bundles/291bbeead57f19651f311362abe809b67adc3fb5.css'/>
+<link rel='stylesheet'
+      href='https://d33wubrfki0l68.cloudfront.net/bundles/fc681442cee6ccf717f33ccc57ebf17a4e0792e1.css'/>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- font-cdn -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
-    <!-- bootstrap 4 cdn -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <!-- jquery 4 cdn -->
-    <link src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-</head>
 
-<body>
-    <h1>Faculty: <?= $faculty["f_name"] ?></h1>
-    <div class="container">
-        <div class="row-fluid" style="background-color: white; min-height: 1000px; padding:10px;">
-            <div class="widget-content nopadding">
-                <div class="widget-title"> <span class="icon"> <i class="icon-tag"></i> </span>
-                    <h5>List Categories</h5>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600" rel="stylesheet">
+<!--Material Icons-->
+<link rel='stylesheet' type='text/css'
+      href='https://d33wubrfki0l68.cloudfront.net/css/548117a22d5d22545a0ab2dddf8940a2e32c04ed/default/assets/fonts/materialdesignicons/materialdesignicons.min.css'/>
+<!--Material Icons-->
+<link rel='stylesheet' type='text/css'
+      href='https://d33wubrfki0l68.cloudfront.net/css/0940f25997c8e50e65e95510b30245d116f639f0/light/assets/fonts/feather/feather-icons.css'/>
+<!--Bootstrap + atmos Admin CSS-->
+<link rel='stylesheet' type='text/css'
+      href='https://d33wubrfki0l68.cloudfront.net/css/16e33a95bb46f814f87079394f72ef62972bd197/light/assets/css/atmos.min.css'/>
+<!-- Additional library for page -->
+
+<body class="sidebar-pinned ">
+<?php include '../partials/aside.php' ?>
+<main class="admin-main">
+    <!-- Header -->
+    <?php include '../partials/header.php' ?>
+    <!-- Session -->
+
+    <section class="admin-content">
+        <div class="container m-t-30">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <h4>SELECT TOPIC</h4>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group has-search">
+                                        <span class="fa fa-search form-control-feedback"></span>
+                                        <input type="text" class="form-control" placeholder="Search">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive p-t-10">
+                                <table id="example" class="table text-center" style="width:100%">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Topic id</th>
+                                        <th>Topic name</th>
+                                        <th>Topic description</th>
+                                        <th>Topic Start deadline</th>
+                                        <th>Topic End deadline</th>
+                                        <th>Select Topic To submit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php
+                                    $status = false;
+                                    $background = "white";
+                                    $color = "black";
+                                    if( $status === false){
+                                        $background = "#fc5032";
+                                        $color = "white";
+                                    }
+                                    ?>
+                                    <tr style="background-color: <?=$background?>; color:<?=$color?>" >
+                                        <td>1</td>
+                                        <td>GCH18395</td>
+                                        <td>ASM</td>
+                                        <td>Description here...</td>
+                                        <td>10/11/2020</td>
+                                        <td>18/11/2020</td>
+                                        <td><a href="#" class="btn btn-info" role="button">SELECT
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Topic id</th>
-                            <th>Topic name</th>
-                            <th>Topic description</th>
-                            <th>Topic Start deadline</th>
-                            <th>Topic End deadline</th>
-                            <th>Select Topic To sucbmit</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $i = 1;
-                        $topicInfor = $conn->query("SELECT faculty.*,user.*, topic.* FROM (( faculty INNER JOIN topic ON faculty.f_id = topic.faculty_id) INNER JOIN user ON faculty.f_id = user.faculty_id) WHERE user.u_id = '$userId' AND user.role = 'student'");
-                        $topicStudentInfor = array();
-                        while ($tInfor = mysqli_fetch_array($topicInfor)) {
-                            $topicStudentInfor[] = $tInfor;
-                        }
-
-                        foreach ($topicStudentInfor as $row) {
-                            $selected_date = ($row["topic_deadline"]);
-                            // echo $selected_date, "a ";
-                            $duration = 14;
-                            $duration_type = 'day';
-                            $deadline = date('Y/m/d H:i:s', strtotime($selected_date . ' +' . $duration . ' ' . $duration_type));
-                        ?>
-                            <tr>
-                                <td><?php echo $i++; ?></td>
-                                <td><?php echo $row["topic_id"]; ?></td>
-                                <td><?php echo $row["topic_name"]; ?></td>
-                                <td><?php echo $row["topic_description"]; ?></td>
-                                <td><?php echo  $row["topic_deadline"] ?></td>
-                                <td><?= $deadline ?></td>
-                                <td><a href="submit.php?idf=<?= $row["faculty_id"] ?>&idt=<?= $row['id'] ?>">Select</a></td>
-                            </tr>
-                        <?php
-                        }
-                        ?>
-
-                    </tbody>
-                </table>
             </div>
         </div>
+    </section>
+</main>
+
+
+<script src='https://d33wubrfki0l68.cloudfront.net/bundles/85bd871e04eb889b6141c1aba0fedfa1a2215991.js'></script>
+<!--page specific scripts for demo-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-66116118-3"></script>
+<script> window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-66116118-3');</script>
+
+<!--Additional Page includes-->
+<script
+        src='https://d33wubrfki0l68.cloudfront.net/js/c36248babf70a3c7ad1dcd98d4250fa60842eea9/light/assets/vendor/apexchart/apexcharts.min.js'></script>
+<!--chart data for current dashboard-->
+<script
+        src='https://d33wubrfki0l68.cloudfront.net/js/d678dabfdc5c3131d492af7ef517fbe46fbbd8e4/light/assets/js/dashboard-01.js'></script>
 
 </body>
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </html>
