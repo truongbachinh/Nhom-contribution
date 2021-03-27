@@ -45,7 +45,7 @@ $studentFacultyInfor = mysqli_fetch_assoc($faculty);
                     <div class="card">
                         <div class="card-header">
                             <div class="card-title">
-                                <h4>SELECT TOPIC</h4>
+                                <h4>LIST TOPIC</h4>
                             </div>
                         </div>
                         <div class="card-body">
@@ -72,25 +72,50 @@ $studentFacultyInfor = mysqli_fetch_assoc($faculty);
                                     </thead>
                                     <tbody>
                                     <?php
-                                    $status = false;
-                                    $background = "white";
-                                    $color = "black";
-                                    if( $status === false){
-                                        $background = "#fc5032";
-                                        $color = "white";
+                                    $i = 1;
+                                    // $topicInfor = $conn->query("SELECT faculty.*,user.*, topic.* FROM (( faculty INNER JOIN topic ON faculty.f_id = topic.faculty_id) INNER JOIN user ON faculty.f_id = user.faculty_id) WHERE user.u_id = '$userId' AND user.role = 'student'");
+                                    // foreach ($topicStudentInfor as $row) {
+                                    $topicInfor = $conn->query("SELECT topic.* FROM topic");
+                                    while ($row = mysqli_fetch_array($topicInfor)) {
+                                        $selected_date = ($row["topic_deadline"]);
+                                        // echo $selected_date, "a ";
+                                        $duration = 14;
+                                        $duration_type = 'day';
+                                        $deadline = date('Y/m/d H:i:s', strtotime($selected_date . ' +' . $duration . ' ' . $duration_type));
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $i++; ?></td>
+                                            <td><?php echo $row["topic_id"]; ?></td>
+                                            <td><?php echo $row["topic_name"]; ?></td>
+                                            <td><?php echo $row["topic_description"]; ?></td>
+                                            <td><?php echo $row["topic_deadline"] ?></td>
+                                            <td><?= $deadline ?></td>
+                                            <!-- <td><?php
+                                            if (($row["file_status"]) == "1") {
+                                                ?>
+                                        <span style="color:green; font-size:16px;font-weight:bold;">Submited</span>
+                                    <?php
+                                            } else if (($row["file_status"]) == "2") {
+                                                ?>
+                                        <span style="color:blue; font-size:16px;font-weight:bold;">Approved</span>
+                                    <?php
+                                            } else if (($row["file_status"]) == "3") {
+                                                ?>
+                                        <span style="color:red; font-size:16px;font-weight:bold;">Rejected</span>
+                                    <?php
+                                            } else {
+                                                ?>
+                                        <span style="color:black; font-size:16px;font-weight:bold;">Not Graded</span>
+                                    <?php
+                                            }
+                                            ?>
+                                </td> -->
+                                            <!-- <td><a href="submit.php?idf=<?= $row["faculty_id"] ?>&idt=<?= $row['id'] ?>">Select</a></td> -->
+                                            <td><a class="btn btn-primary" role="button" href="submit.php?idt=<?= $row['id'] ?>">Select</a></td>
+                                        </tr>
+                                        <?php
                                     }
                                     ?>
-                                    <tr style="background-color: <?=$background?>; color:<?=$color?>" >
-                                        <td>1</td>
-                                        <td>GCH18395</td>
-                                        <td>ASM</td>
-                                        <td>Description here...</td>
-                                        <td>10/11/2020</td>
-                                        <td>18/11/2020</td>
-                                        <td><a href="#" class="btn btn-info" role="button">SELECT
-                                            </a>
-                                        </td>
-                                    </tr>
                                     </tbody>
                                 </table>
                             </div>

@@ -1,7 +1,5 @@
 <?php
-include "../../config.php"; ?>
-
-<?php
+include "../../config.php";
 
 $userId = $_SESSION["current_user"]["u_id"];
 $idTopic = $_GET["idt"];
@@ -30,8 +28,6 @@ $deadline = date('Y/m/d H:i:s', strtotime($selected_date . ' +' . $duration . ' 
 // echo $deadline;
 
 
-
-
 $current = new DateTime("now", new DateTimeZone('Asia/Ho_Chi_Minh'));
 $timeSubmitFile = $current->format('Y/m/d H:i:s');
 $diff = abs(strtotime($deadline) - strtotime($timeSubmitFile));
@@ -47,9 +43,8 @@ if ($years != 0) {
 } else if ($months != 0) {
     $checkTimeSubmit = $months . " months, " . $days . " days, " . $hours . " hours, " . $minutes . " minutes, " . $seconds . " seconds";
 } else {
-    $checkTimeSubmit =  $days . " days, " . $hours . " hours, " . $minutes . " minutes, " . $seconds . " seconds";
+    $checkTimeSubmit = $days . " days, " . $hours . " hours, " . $minutes . " minutes, " . $seconds . " seconds";
 }
-
 
 
 ?>
@@ -75,7 +70,7 @@ if (isset($_POST['uploadFile'])) {
 
     if (!empty($fileNames)) {
         foreach ($_FILES['inputFileArticle']['name'] as $key => $val) {
-            $fileName =  $tm . basename($_FILES['inputFileArticle']['name'][$key]);
+            $fileName = $tm . basename($_FILES['inputFileArticle']['name'][$key]);
             $targetFilePath = $uploadPath . $fileName;
 
 
@@ -88,7 +83,7 @@ if (isset($_POST['uploadFile'])) {
                     $insertId = $conn->insert_id;
                     $insertValuesSQL .= "(NULL, ' $insertId', '" . $fileName . "', '" . time() . "')";
                     if ($key != count($_FILES["inputFileArticle"]["tmp_name"]) - 1) {
-                        $insertValuesSQL .=  ",";
+                        $insertValuesSQL .= ",";
                     }
                 } else {
                     $errorUpload .= $_FILES['inputFileArticle']['name'][$key] . ' | ';
@@ -118,7 +113,6 @@ if (isset($_POST['uploadFile'])) {
     echo $statusMsg;
 
 
-
     if ($upload_query == true) {
 
         ?>
@@ -135,21 +129,22 @@ if (isset($_POST['uploadFile'])) {
 <head>
     <?php include "../partials/html_header.php"; ?>
 </head>
+
 <body class="sidebar-pinned ">
 <?php include '../partials/aside.php' ?>
 <main class="admin-main">
     <!-- Header -->
     <?php include '../partials/header.php' ?>
     <!-- Session -->
-
     <section class="admin-content">
+
         <div class="container m-t-30">
+
             <div class="card m-b-30">
                 <div class="card-header">
-                    <br>
-                    <br>
-                    <h5>
-                        This is topic <span style="color:red"> <?= $topicSubmit['topic_name'] ?></span>
+                    <h5 style="margin-top: 20px">
+                        TOPIC: <span
+                                style="color:red; text-transform: uppercase"> <?= $topicSubmit['topic_name'] ?></span>
                     </h5>
                     <p class="m-b-0 text-muted">
                     </p>
@@ -161,6 +156,7 @@ if (isset($_POST['uploadFile'])) {
                 } else {
                     ?>
                     <div class="card-body p-b-0">
+
                         <table class="table table-striped">
                             <tbody>
                             <tr>
@@ -208,26 +204,17 @@ if (isset($_POST['uploadFile'])) {
                             <tr>
                                 <td>Deadline date</td>
                                 <td>
-                                    <?php echo (!empty($topicSubmit["topic_deadline"]) ?  $deadline : "Not submited");
+                                    <?php echo(!empty($topicSubmit["topic_deadline"]) ? $deadline : "Not submited");
                                     ?>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td>Time remaining</td>
-                                <td> <?php echo (!empty($fileSubmit["file_date_uploaded"]) ? $checkTimeSubmit : "Not submited"); ?>
+                                <td> <?php echo(!empty($fileSubmit["file_date_uploaded"]) ? $checkTimeSubmit : "Not submited"); ?>
                                 </td>
                             </tr>
-
-                            <!-- <tr>
-                                    <td>Time submit</td>
-                                    <td>
-                                        <?= (!empty($fileSubmit["file_date_uploaded"]) ? date("d/m/Y H:i:s", $fileSubmit["file_date_uploaded"]) : "Not submited") ?>
-                                    </td>
-                                </tr> -->
                             <tr>
                                 <td>Last modified</td>
-
                                 <td>
                                     <?php
                                     if (isset($fileSubmit["file_date_uploaded"]) && strtotime($fileSubmit["file_date_uploaded"]) != '-62169987208') {
@@ -239,14 +226,12 @@ if (isset($_POST['uploadFile'])) {
                                         <span>Not update</span>
                                         <?php
                                     }
-
-
                                     ?>
                                 </td>
                             </tr>
                             <tr>
                                 <td>File submited name</td>
-                                <td> <?php echo (!empty($fileSubmit["file_name"]) ? $fileSubmit["file_name"] : "Not submited"); ?>
+                                <td> <?php echo(!empty($fileSubmit["file_name"]) ? $fileSubmit["file_name"] : "Not submited"); ?>
                                 </td>
                             </tr>
                             <tr>
@@ -256,7 +241,7 @@ if (isset($_POST['uploadFile'])) {
                                     $fileInfor = $conn->query("SELECT file_comment.*, user.*,file_submit_to_topic.* FROM (( user INNER JOIN file_comment ON file_comment.file_comment_user = user.u_id) INNER JOIN file_submit_to_topic ON file_submit_to_topic.id = file_comment.file_submited_id) WHERE `file_userId_uploaded` = '$userId' AND `file_topic_uploaded` = '$idTopic'");
 
                                     $commentContentFile = array();
-                                    while ($rowCmt =  mysqli_fetch_array($fileInfor)) {
+                                    while ($rowCmt = mysqli_fetch_array($fileInfor)) {
                                         $commentContentFile[] = $rowCmt;
                                     }
                                     foreach ($commentContentFile as $rowComment) {
@@ -277,8 +262,11 @@ if (isset($_POST['uploadFile'])) {
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">With textarea</span>
                                         </div>
-                                        <textarea class="form-control" aria-label="With textarea" spellcheck="false"></textarea>
-                                        <grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 3;" class="cGcvT"></grammarly-extension>
+                                        <textarea class="form-control" aria-label="With textarea"
+                                                  spellcheck="false"></textarea>
+                                        <grammarly-extension data-grammarly-shadow-root="true"
+                                                             style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 3;"
+                                                             class="cGcvT"></grammarly-extension>
                                     </div>
                                     <div class="button-comment float-right">
                                         <button class="btn btn-warning">Comments</button>
@@ -286,26 +274,25 @@ if (isset($_POST['uploadFile'])) {
                                     </div>
                                 </td>
                             </tr>
-                            <!-- <?php
-                            if ($datediff < 0) {
-                                ?>
-                                    <tr>
-                                        <td></td>
-                                        <td style="text-align: right">
-                                            <div style="color: red">
-                                                Bạn đã hết hạn nộp bài.
-                                            </div>
-                                        </td>
-                                    </tr>
-                                <?php
-                            }
-                            ?> -->
                             </tbody>
                         </table>
                     </div>
-                    <div class=" card-footer button-submit text-center">
-                        <button type="button" class="btn btn-lg btn-primary" data-toggle="modal" data-target=".modal-submit-artical">Add Submission
-                        </button>
+
+                    <div class="card-footer button-submit text-center">
+                        <?php
+                        if ($fileSubmit == Null) {
+                            ?>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target=".modal-submit-artical">Add Submission
+                            </button>
+                        <?php } else if (($fileSubmit["file_status"]) == "1"){ ?>
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target=".modal-edit-article">Edit Submission
+                            </button>
+                        <?php }
+
+                        ?>
+
                         <!-- <?php
                         if ($datediff > 0) {
                             ?>
@@ -327,7 +314,8 @@ if (isset($_POST['uploadFile'])) {
 
                     <!-- Modal -->
 
-                    <div class="modal fade modal-submit-artical" tabindex="-1" role="dialog" aria-labelledby="submissionModal" aria-hidden="true">
+                    <div class="modal fade modal-submit-artical" tabindex="-1" role="dialog"
+                         aria-labelledby="submissionModal" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -348,23 +336,28 @@ if (isset($_POST['uploadFile'])) {
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="inputName">Name of article</label>
-                                                    <input type="text" class="form-control" id="inputName" name="nameArticle" placeholder="Name of article">
+                                                    <input type="text" class="form-control" id="inputName"
+                                                           name="nameArticle" placeholder="Name of article">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label for="inputAuthor">Author</label>
-                                                    <input type="text" class="form-control" id="inputAuthor" name="nameAuthor" value="<?= $userInforFaculty["fullname"] ?>" readonly>
+                                                    <input type="text" class="form-control" id="inputAuthor"
+                                                           name="nameAuthor"
+                                                           value="<?= $userInforFaculty["fullname"] ?>" readonly>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div>
-                                                    <p class=" font-secondary">File Uploads</p>
                                                     <div class="form-group">
                                                         <div>
                                                             <p class=" font-secondary">File Uploads</p>
                                                             <div class="input-group mb-3">
                                                                 <div class="custom-file" onload="GetFileInfo ()">
-                                                                    <input type="file" class="custom-file-input" id="inputFile" name="inputFileArticle[]" multiple onchange="GetFileInfo ()">
-                                                                    <label class="custom-file-label" for="inputFile">Choose file</label>
+                                                                    <input type="file" class="custom-file-input"
+                                                                           id="inputFile" name="inputFileArticle[]"
+                                                                           multiple onchange="GetFileInfo ()">
+                                                                    <label class="custom-file-label" for="inputFile">Choose
+                                                                        file</label>
                                                                 </div>
                                                             </div>
                                                             <div id="info" style="margin-top:10px"></div>
@@ -372,31 +365,38 @@ if (isset($_POST['uploadFile'])) {
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="form-check">
-                                                            <input class="form-check-input" type="checkbox" id="gridCheck" name="agree">
+                                                            <input class="form-check-input" type="checkbox"
+                                                                   id="gridCheck" name="agree">
                                                             <label class="form-check-label" for="gridCheck">
                                                                 I agree to the Terms and Conditions
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <div class="form-group  float-right">
-                                                        <input type="submit" name="uploadFile" class="btn btn-primary" value="uploadFile" id="uploadFile"></input>
-                                                        <!--                                    <button type="submit" value="Upload" name="uploadFile" class="btn btn-primary" value="uploadFile" id="uploadFile" onclick="onUploadI()">Submit</button>--> <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                        <input type="submit" name="uploadFile" class="btn btn-primary"
+                                                               value="uploadFile" id="uploadFile"></input>
+                                                        <!--                                    <button type="submit" value="Upload" name="uploadFile" class="btn btn-primary" value="uploadFile" id="uploadFile" onclick="onUploadI()">Submit</button>-->
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">
                                                             Close
                                                         </button>
                                                     </div>
+                                                </div>
+                                            </div>
                                         </form>
                                     </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                     <?php
-
                 }
                 ?>
-
             </div>
+
     </section>
 </main>
+
 </section>
 
 <head>
@@ -458,6 +458,7 @@ if (isset($_POST['uploadFile'])) {
     function gtag() {
         dataLayer.push(arguments);
     }
+
     gtag('js', new Date());
     gtag('config', 'UA-66116118-3');
 </script>
