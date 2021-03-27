@@ -111,7 +111,7 @@ while ($rowSt = mysqli_fetch_array($res)) {
                                             <td style="padding: 2.5%;"><?= $stReport["file_date_uploaded"] ?></td>
 
                                             <td style="padding: 1.5%; color:red"><a type="button" class="btn btn-primary"
-                                                        href="reportPage.php?idfile=<?= $idFile ?>&idst=<?= $userId ?>">Select </a>
+                                                        href="view_article.php?idfile=<?= $idFile ?>&idst=<?= $userId ?>">Select </a>
                                             </td>
                                         </tr>
                                         <?php
