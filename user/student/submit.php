@@ -48,10 +48,6 @@ if ($years != 0) {
 
 
 ?>
-
-
-
-
 <?php
 if (isset($_POST['uploadFile'])) {
     $upload_query = $conn->query("INSERT INTO `file_submit_to_topic` (`id`, `file_name`, `file_authod`, `file_status`, `file_date_uploaded`,  `file_topic_uploaded`, `file_userId_uploaded`) VALUES (NULL, '$_POST[nameArticle]', '$_POST[nameAuthor]', '1', '" . $timeSubmitFile . "', '$idTopic', '$userId')");
@@ -286,9 +282,8 @@ if (isset($_POST['uploadFile'])) {
                                     data-target=".modal-submit-artical">Add Submission
                             </button>
                         <?php } else if (($fileSubmit["file_status"]) == "1"){ ?>
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target=".modal-edit-article">Edit Submission
-                            </button>
+                            <a role="button" href="./edit.php" class="btn btn-primary">Edit Submission
+                            </a>
                         <?php }
 
                         ?>
@@ -389,6 +384,7 @@ if (isset($_POST['uploadFile'])) {
                             </div>
                         </div>
                     </div>
+
                     <?php
                 }
                 ?>
