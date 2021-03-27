@@ -1,39 +1,40 @@
 <?php
 include "../config.php";
-session_start();
 $userId = $_SESSION["current_user"]["u_id"];
 $resultInfor = mysqli_query($conn, "select * from user_infor where user_id = '$userId'");
 $result = mysqli_query($conn, "select * from user where u_id = '$userId'");
 $rowInfor = mysqli_fetch_array($resultInfor, MYSQLI_ASSOC);
 $rowUserInfor = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+
 ?>
     <!DOCTYPE html>
-    <head>
-        <?php include "./partials/html_header.php"; ?>
-    </head>
+    <html lang="en">
+   <head>
+       <?php include "partials/html_header.php"?>
+   </head>
+
     <body class="sidebar-pinned ">
-    <?php include './partials/aside.php'?>
+    <?php include "partials/aside.php"?>
     <main class="admin-main">
         <!-- Header -->
-        <?php include './partials/header.php'?>
+        <?php include "partials/header.php"?>
         <!-- Session -->
+
         <section class="admin-content">
             <div class="container m-t-30">
                 <div class="row justify-content-md-center">
                     <div class="col-lg-8">
                         <div class="card m-b-30">
                             <div class="card-media">
-                                <img class="card-img-top"
-                                     src="https://www.balmerlawrie.com/img/main_images/inside_banner/travel-banner1.jpg"
-                                     alt="banner">
+                                <img class="card-img-top" src="https://www.balmerlawrie.com/img/main_images/inside_banner/travel-banner1.jpg" alt="banner">
                             </div>
                             <div class="card-body">
                                 <div class="text-center pull-up-sm">
                                     <div class="avatar avatar-xxl">
 
-                                        <img class="avatar-img rounded-circle"
-                                             src="https://i.pinimg.com/originals/75/31/5d/75315db511a058432745fc37d82a7c44.png"
-                                             alt="avatar">
+                                        <img class="avatar-img rounded-circle" src="https://i.pinimg.com/originals/75/31/5d/75315db511a058432745fc37d82a7c44.png" alt="avatar">
+
                                     </div>
                                     <h4 class="text-center m-t-20">
                                         <div class="text text-center m-b-5"><?= $rowUserInfor["fullname"] ?></div>
@@ -41,97 +42,82 @@ $rowUserInfor = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 </div>
                                 <!-- Modal edit profile -->
                                 <div class="row justify-content-end p-r-40">
-                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                                            data-target="#exampleModalCenter">
+                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
                                         Edit profile
                                     </button>
+
+
                                     <!-- Model edit -->
-                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title" id="exampleModalCenterTitle">Edit profile
                                                     </h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form action="" name="forml" method="post" class="form-horizontal"
-                                                          enctype="multipart/form-data">
+                                                    <form action="" name="forml" method="post" class="form-horizontal" enctype="multipart/form-data">
                                                         <div class="form-group">
                                                             <label for="studentId">Student ID</label>
-                                                            <input type="text" class="form-control" id="inputStudentId"
-                                                                   name="idStudent">
+                                                            <input type="text" class="form-control" id="inputStudentId" name="idStudent">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="studentName">Name Student</label>
-                                                            <input type="text" class="form-control"
-                                                                   id="inputStudentName" name="nameStudent">
+                                                            <input type="text" class="form-control" id="inputStudentName" name="nameStudent">
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="inputAddress">Address</label>
-                                                            <input type="text" class="form-control" id="inputAddress"
-                                                                   placeholder="1234 Main St" name="address">
+                                                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="address">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="inputPhone">Phone</label>
-                                                            <input type="text" class="form-control" id="inputPhone"
-                                                                   name="phone">
+                                                            <input type="text" class="form-control" id="inputPhone" name="phone">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="inputPhone">Email</label>
-                                                            <input type="text" class="form-control" id="inputEmail"
-                                                                   name="email">
+                                                            <input type="text" class="form-control" id="inputEmail" name="email">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="inputPhone">DOB</label>
-                                                            <input type="date" class="form-control" id="inputDoB"
-                                                                   name="DoB">
+                                                            <input type="date" class="form-control" id="inputDoB" name="DoB">
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="inputPhone">Major</label>
-                                                            <input type="text" class="form-control" id="inputMajor"
-                                                                   name="major">
+                                                            <input type="text" class="form-control" id="inputMajor" name="major">
                                                         </div>
-                                                        <button type="button" class="btn btn-secondary"
-                                                                data-dismiss="modal">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                             Close
                                                         </button>
-                                                        <input type="submit" class="btn btn-primary"
-                                                               name="updateProfile" value="Save changes">
+                                                        <input type="submit" class="btn btn-primary" name="updateProfile" value="Save changes">
                                                     </form>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row justify-content-md-center">
                                     <div class="col-md-9">
-                                        <div class="tab-info m-b-15">
-                                            <ul class="nav nav-tabs" id="studentTab" role="tablist">
+                                        <div class="tab-infor m-b-15">
+                                            <ul class="nav nav-tabs" id="myTabInforStudent" role="tablist">
                                                 <li class="nav-item">
-                                                    <a class="nav-link active show" id="home-tab" data-toggle="tab"
-                                                       href="#inforStudent" role="tab" aria-controls="home"
-                                                       aria-selected="true">About</a>
+                                                    <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#inforStudent" role="tab" aria-controls="home" aria-selected="true">About</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" id="facultyTab" data-toggle="tab"
-                                                       href="#myFaculty" role="tab" aria-controls="profile"
-                                                       aria-selected="false">My Faculty</a>
+                                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#myFaculty" role="tab" aria-controls="profile" aria-selected="false">My Faculty</a>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="about-student">
-                                            <div class="tab-content profile-tab" id="studentTab">
-                                                <div class="tab-pane fade active show" id="inforStudent" role="tabpanel"
-                                                     aria-labelledby="home-tab">
+                                            <div class="tab-content profile-tab" id="myTabContent">
+                                                <div class="tab-pane fade active show" id="inforStudent" role="tabpanel" aria-labelledby="home-tab">
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <label>System ID</label>
+                                                            <label>Student ID</label>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <?php
@@ -145,11 +131,12 @@ $rowUserInfor = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                                                 <?php
                                                             }
                                                             ?>
+
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-6">
-                                                            <label>Full Name</label>
+                                                            <label>Student Name</label>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <?php
@@ -163,14 +150,6 @@ $rowUserInfor = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                                                 <?php
                                                             }
                                                             ?>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <label>Position</label>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            Manager-coordinator
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -247,16 +226,19 @@ $rowUserInfor = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                                         </div>
                                                     </div>
                                                 </div>
-                                                    <div class="tab-pane fade" id="myFaculty" role="tabpanel"
-                                                         aria-labelledby="profile-tab">
+                                                    <div class="tab-pane fade" id="myFaculty" role="tabpanel" aria-labelledby="profile-tab">
                                                         <ul class="list-group- list-group-flush p-0">
                                                             <li class="list-group-item list-group-item-action list-group-item-secondary">
                                                                 <span>List of my faculty</span>
                                                             </li>
-                                                            <a class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                                                            <a class="list-group-item list-group-item-action">Morbi leo risus</a>
-                                                            <a class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-                                                            <a class="list-group-item list-group-item-action">Vestibulum at eros</a>
+                                                            <a class="list-group-item list-group-item-action">Dapibus ac
+                                                                facilisis in</a>
+                                                            <a class="list-group-item list-group-item-action">Morbi leo
+                                                                risus</a>
+                                                            <a class="list-group-item list-group-item-action">Porta ac
+                                                                consectetur ac</a>
+                                                            <a class="list-group-item list-group-item-action">Vestibulum
+                                                                at eros</a>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -283,7 +265,6 @@ $rowUserInfor = mysqli_fetch_array($result, MYSQLI_ASSOC);
         function gtag() {
             dataLayer.push(arguments);
         }
-
         gtag('js', new Date());
         gtag('config', 'UA-66116118-3');
     </script>
@@ -298,6 +279,7 @@ $rowUserInfor = mysqli_fetch_array($result, MYSQLI_ASSOC);
     </html>
 
 
+
 <?php
 if (isset($_POST["updateProfile"])) {
 
@@ -307,6 +289,7 @@ if (isset($_POST["updateProfile"])) {
     } else {
         $updateInfor = mysqli_query($conn, "update `user_infor` set `user_id` = '$userId' , `id_card`  = '$_POST[idStudent]', `name`  = '$_POST[nameStudent]', `address`  = '$_POST[address]', `phone`  = '$_POST[phone]',`email`  = '$_POST[email]', `DOB`  = '$_POST[DoB]', `major` = '$_POST[major]';");
     }
+
 
 
     if ($updateInfor == true) {

@@ -49,7 +49,7 @@ include "../../config.php";
                                             <div class="form-group ">
                                                 <select class="form-control " data-select2-id="1" tabindex="-1"
                                                         aria-hidden="true">
-                                                    <option selected="" data-select2-id="3">Select faculty</option>
+                                                    <option selected="" data-select2-id="3">Select topic</option>
                                                     <option data-select2-id="16">Cup Cake</option>
                                                     <option data-select2-id="17">Donut</option>
                                                     <option data-select2-id="18">Eclair</option>

@@ -82,7 +82,7 @@
                     </li>
                 <?php elseif ($currentUser['role'] === "student"): ?>
                     <li class="menu-item active ">
-                        <a href="/user/student/" class="menu-link">
+                        <a href="/user/student/index.php" class="menu-link">
                             <span class="menu-label">
                                 <span class="menu-name">
                                     Home
@@ -107,7 +107,7 @@
                     </li>
                 <?php elseif ($currentUser['role'] === "manager-coordinator"): ?>
                     <li class="menu-item active ">
-                        <a href="#" class="menu-link">
+                        <a href="/user/index.php" class="menu-link">
                             <span class="menu-label">
                                 <span class="menu-name">
                                     Home Page
@@ -119,9 +119,9 @@
                         </a>
                     </li>
                     <li class="menu-item ">
-                        <a href="#" class="menu-link">
+                        <a href="/user/manage_coordinator/my_topic.php" class="menu-link">
                             <span class="menu-label">
-                                <span class="menu-name">My Faculty
+                                <span class="menu-name">Manager Topic
                                 </span>
                             </span>
                             <span class="menu-icon">
@@ -131,7 +131,7 @@
                     </li>
                 <?php elseif ($currentUser['role'] === "manager-marketing"): ?>
                     <li class="menu-item active ">
-                        <a href="#" class="menu-link">
+                        <a href="/user/index.php" class="menu-link">
                             <span class="menu-label">
                                 <span class="menu-name">
                                     Home Page
@@ -153,9 +153,9 @@
                         </a>
                     </li>
                     <li class="menu-item ">
-                        <a href="#" class="menu-link">
+                        <a href="/user/manager_marketing/manage_article.php" class="menu-link">
                             <span class="menu-label">
-                                <span class="menu-name">Manage Faculty
+                                <span class="menu-name">Manage Topic
                                 </span>
                             </span>
                             <span class="menu-icon">

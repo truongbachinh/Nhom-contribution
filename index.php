@@ -1,29 +1,24 @@
-<!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <!DOCTYPE html>
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>Mentor Bootstrap Template - Index</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+    <title>ARTICLE SYSTEM</title>
 
     <!-- Favicons -->
-    <link href="/assets/img/favicon.png" rel="icon">
-    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <link rel="icon" type="image/x-icon" href="/assets/img/logo.png"/>
+    <link rel="icon" href="/assets/img/logo.png" type="image/png" sizes="16x16">
+
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
           rel="stylesheet">
-    <link href="landing/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="landing/vendor/icofont/icofont.min.css" rel="stylesheet">
-    <link href="landing/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="landing/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="landing/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="landing/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="landing/css/landing.css">
+    <link href="assets/landing/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/landing/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/landing/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/landing/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/landing/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/landing/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/landing/css/style.css">
 
 </head>
 
@@ -32,7 +27,7 @@
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-        <h1 class="logo mr-auto"><a href="index.php">LOGO TEAM</a></h1>
+        <h1 class="logo mr-auto"><a href="index.php">ARTICLE SYSTEM</a></h1>
 
         <nav class="nav-menu d-none d-lg-block">
             <ul>
@@ -158,7 +153,7 @@
                 <div class="row">
 
                     <div class="col-lg-3 col-md-6 footer-contact">
-                        <h3>LOGO TEAM</h3>
+                        <h3>ARTICLE SYSTEM</h3>
                         <p>
                             <strong>Phone:</strong> +84 999 999<br>
                             <strong>Email:</strong> logo@example.com<br>
@@ -201,14 +196,14 @@
 
             <div class="mr-md-auto text-center text-md-left">
                 <div class="copyright">
-                    &copy; Copyright <strong><span>LOGO TEAM</span></strong>. All Rights Reserved
+                    &copy; Copyright <strong><span>ARTICLE SYSTEM</span></strong>. All Rights Reserved
                 </div>
                 <div class="credits">
                     <!-- All the links in the footer should remain intact. -->
                     <!-- You can delete the links only if you purchased the pro version. -->
                     <!-- Licensing information: https://bootstrapmade.com/license/ -->
                     <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/ -->
-                    Designed by <a href="https://bootstrapmade.com/">LOGO TEAM</a>
+                    Designed by <a href="https://bootstrapmade.com/">ARTICLE SYSTEM</a>
                 </div>
             </div>
             <div class="social-links text-center text-md-right pt-3 pt-md-0">
@@ -225,16 +220,16 @@
     <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
-    <script src="landing/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/landing/vendor/jquery/jquery.min.js"></script>
     <!-- Template Main JS File -->
-    <script src="landing/js/main.js"></script>
-    <script src="landing/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="landing/vendor/jquery.easing/jquery.easing.min.js"></script>
-    <script src="landing/vendor/php-email-form/validate.js"></script>
-    <script src="landing/vendor/waypoints/jquery.waypoints.min.js"></script>
-    <script src="landing/vendor/owl.carousel/owl.carousel.min.js"></script>
-    <script src="landing/vendor/aos/aos.js"></script>
-    <script src="landing/vendor/counterup/counterup.min.js"></script>
+    <script src="assets/landing/js/landing.js"></script>
+    <script src="assets/landing/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/landing/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/landing/vendor/php-email-form/validate.js"></script>
+    <script src="assets/landing/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="assets/landing/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/landing/vendor/aos/aos.js"></script>
+    <script src="assets/landing/vendor/counterup/counterup.min.js"></script>
 
 
 </body>

@@ -395,7 +395,6 @@ if (isset($_POST['uploadFile'])) {
 
 </section>
 
-<head>
     <script type="text/javascript">
         var mess = "";
         var count = 0;
@@ -441,7 +440,6 @@ if (isset($_POST['uploadFile'])) {
 
         }
     </script>
-</head>
 
 <script src='https://d33wubrfki0l68.cloudfront.net/bundles/85bd871e04eb889b6141c1aba0fedfa1a2215991.js'></script>
 <!--page specific scripts for demo-->

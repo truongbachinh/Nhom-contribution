@@ -4,13 +4,19 @@ $userId = $_SESSION["current_user"]["u_id"];
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <?php include "./partials/html_header.php"; ?>
-</head>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <?php include "./partials/html_header.php"; ?>
+        <style>
+            label.error {
+                margin-top: 10px;
+                color: red;
+            }
+        </style>
+    </head>
 
-<body class="sidebar-pinned ">
+    <body class="sidebar-pinned ">
     <?php include './partials/aside.php' ?>
     <main class="admin-main">
         <!-- Header -->
@@ -29,18 +35,22 @@ $userId = $_SESSION["current_user"]["u_id"];
                         </p>
                     </div>
                     <div class="card-body ">
-                        <form action="" name="formPassword" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <form action="" id="changePass" name="formPassword" method="post" class="form-horizontal"
+                              enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="inputOldPass1">Old Password</label>
-                                <input type="text" class="form-control" id="inputOldPass1" name="oldPassword" placeholder="Enter old password." required>
+                                <input type="text" class="form-control" id="inputOldPass1" name="oldPassword"
+                                       placeholder="Enter old password." required>
                             </div>
                             <div class="form-group">
                                 <label for="inputNewPass1">New Password</label>
-                                <input type="text" class="form-control" id="inputNewPass1" name="newPassword" placeholder="Enter new password." required>
+                                <input type="text" class="form-control" id="inputNewPass1" name="newPassword"
+                                       placeholder="Enter new password." required>
                             </div>
                             <div class="form-group">
                                 <label for="inputNewPass2">Confirm New Password</label>
-                                <input type="text" class="form-control" id="inputNewPass2" name="confirmPassword" placeholder="Comfirm new password." required>
+                                <input type="text" class="form-control" id="inputNewPass2" name="confirmPassword"
+                                       placeholder="Comfirm new password." required>
                             </div>
                             <div class="alert alert-success" id="success" style="margin-top: 10px; display: none">
                                 <strong>Success!</strong> Change password success!
@@ -53,7 +63,9 @@ $userId = $_SESSION["current_user"]["u_id"];
                             </div>
 
                             <div class="text-center">
-                                <button type="submit" name="changePassword" class="btn btn-primary float-right">Change password</button>
+                                <button type="submit" name="changePassword" class="btn btn-primary float-right">Change
+                                    password
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -61,31 +73,66 @@ $userId = $_SESSION["current_user"]["u_id"];
             </div>
         </section>
     </main>
-</body>
 
-<script src='https://d33wubrfki0l68.cloudfront.net/bundles/85bd871e04eb889b6141c1aba0fedfa1a2215991.js'></script>
-<!--page specific scripts for demo-->
+    <script src='https://d33wubrfki0l68.cloudfront.net/bundles/85bd871e04eb889b6141c1aba0fedfa1a2215991.js'></script>
+    <!--page specific scripts for demo-->
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-66116118-3"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-66116118-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-    gtag('config', 'UA-66116118-3');
-</script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
 
-<!--Additional Page includes-->
-<script src='https://d33wubrfki0l68.cloudfront.net/js/c36248babf70a3c7ad1dcd98d4250fa60842eea9/light/assets/vendor/apexchart/apexcharts.min.js'></script>
-<!--chart data for current dashboard-->
-<script src='https://d33wubrfki0l68.cloudfront.net/js/d678dabfdc5c3131d492af7ef517fbe46fbbd8e4/light/assets/js/dashboard-01.js'></script>
+        gtag('js', new Date());
+        gtag('config', 'UA-66116118-3');
+    </script>
 
-</body>
+    <!--Additional Page includes-->
+    <script src='https://d33wubrfki0l68.cloudfront.net/js/c36248babf70a3c7ad1dcd98d4250fa60842eea9/light/assets/vendor/apexchart/apexcharts.min.js'></script>
+    <!--chart data for current dashboard-->
+    <script src='https://d33wubrfki0l68.cloudfront.net/js/d678dabfdc5c3131d492af7ef517fbe46fbbd8e4/light/assets/js/dashboard-01.js'></script>
+    <script src="../assets/vendor/jquery.validate/jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#changePass").validate({
+                rules: {
+                    oldPassword: {
+                        required: true,
+                    },
+                    newPassword: {
+                        required: true,
+                        minlength: 6
+                    },
+                    confirmPassword: {
+                        required: true,
+                        equalTo: "#newPassword",
+                    }
 
-</html>
+                },
+                messages: {
+                    oldPassword: {
+                        minLength: "Password consists of at least 6 characters"
+                    },
+                    newPassword: {
+                        required: "Information required! Please enter full information..",
+                        minLength: "Password consists of at least 6 characters!",
+                    },
+                    confirmPassword: {
+                        required: "Information required! Please enter full information..",
+                        equalTo: "Wrong confirm password!",
+                    }
+                },
+            })
+        })
+
+    </script>
+    </body>
+
+    </html>
+
 
 <?php
 if (isset($_POST["changePassword"])) {
@@ -97,35 +144,33 @@ if (isset($_POST["changePassword"])) {
 
     if ($pOldPassword != $oldPassword) {
 
-?>
+        ?>
         <script type="text/javascript">
             document.getElementById("checkpass").style.display = "none";
             document.getElementById("success").style.display = "none";
             document.getElementById("failure").style.display = "block"
         </script>
-    <?php
+        <?php
     } elseif ($pNewPassword != $pConfirmPassword) {
 
-    ?>
+        ?>
         <script type="text/javascript">
             document.getElementById("checkpass").style.display = "block";
             document.getElementById("success").style.display = "none";
             document.getElementById("failure").style.display = "none"
         </script>
-    <?php
+        <?php
     } elseif (($pOldPassword == $oldPassword) && ($pNewPassword != $oldPassword)) {
         mysqli_query($conn, "update user set `password` = '$pNewPassword' where u_id =  '$userId'");
         unset($_SESSION['current_user']);
-    ?>
+        ?>
         <script type="text/javascript">
             document.getElementById("success").style.display = "block";
             document.getElementById("failure").style.display = "none";
             document.getElementById("checkpass").style.display = "none";
             window.location = "https://ciliweb.vn/a/contribution_application/account/login.php";
         </script>
-<?php
+        <?php
     }
 }
-
-
 ?>
